@@ -6,11 +6,12 @@ public class Player : MonoBehaviour {
 
 	private Transform myTransform;
 	[SerializeField] private Transform rotateTransform = null;
-
+	[SerializeField] Rigidbody myRb = null;
 	private Vector3 moveDir;
 	private float rotateX, rotateY;
 
 	[SerializeField] private float speed = 10.0f;
+	[SerializeField] private float jumpForce = 10.0f;
 
 	[SerializeField] private GameObject bombPrefab = null;
 	[SerializeField] private Transform bombPos = null;
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour {
 
 	private void Update()
 	{
-		
+
 	}
 
 	private void FixedUpdate()
@@ -41,16 +42,21 @@ public class Player : MonoBehaviour {
 		rotateTransform.Rotate(Vector3.right * rotateX);
 		myTransform.Rotate(Vector3.up * rotateY);
 		Quaternion ro = rotateTransform.rotation;
-		ro.x = Mathf.Clamp(ro.x,-0.6427f,0.6427f);
+		ro.x = Mathf.Clamp(ro.x, -0.6427f, 0.6427f);
 		rotateTransform.rotation = ro;
 	}
 
-	public void Bomb()
+	public void Jump()
+	{
+		myRb.AddForce(Vector3.up * jumpForce);
+	}
+
+	public void Bomb(float time)
 	{
 		Quaternion bombRo = myTransform.rotation;
 		//bombRo.x = rotateTransform.eulerAngles.x;
 		GameObject bomb = Instantiate(bombPrefab,bombPos.position,bombRo) as GameObject;
-		bomb.GetComponent<Bomb>().Set(3.0f);
+		bomb.GetComponent<Bomb>().Set(3.0f - time);
 	}
 
 	public void SetMoveDir(float x,float z)

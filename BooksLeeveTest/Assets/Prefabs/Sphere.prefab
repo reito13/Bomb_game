@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 200
   dir: {x: 0, y: 0, z: 0}
-  explosion: {fileID: 100008, guid: 7075bd5fe1480184695a32611c15da57, type: 2}
+  explosion: {fileID: 1599172921027072, guid: 73efc9bb9df0a8547abfa59756202760, type: 2}
 --- !u!135 &135516814370378412
 SphereCollider:
   m_ObjectHideFlags: 1

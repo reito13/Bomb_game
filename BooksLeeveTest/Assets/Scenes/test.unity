@@ -404,7 +404,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateTransform: {fileID: 1514141650}
-  speed: 0.1
+  myRb: {fileID: 1737089715}
+  speed: 0.05
+  jumpForce: 300
   bombPrefab: {fileID: 1158752869307338, guid: 6d0727bf49ccb9e4babe65d1f9cc08dd, type: 2}
   bombPos: {fileID: 2100566654}
 --- !u!4 &1737089713
