@@ -16,7 +16,7 @@ namespace NetWork
 
 		private async void Awake()
 		{
-			RedisConnection rConnection = new RedisConnection("172.15.100.19");
+			RedisConnection rConnection = new RedisConnection("133.18.173.94");
 			await rConnection.Open();
 			StartCoroutine(TestIEnumerator());
 		}

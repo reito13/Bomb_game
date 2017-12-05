@@ -10,11 +10,22 @@ public class Player : MonoBehaviour {
 	private Vector3 moveDir;
 	private float rotateX, rotateY;
 
+	[SerializeField] private GroundCheck groundScript = null;
+
 	[SerializeField] private float speed = 10.0f;
 	[SerializeField] private float jumpForce = 10.0f;
+	private int bombCount = 3; //爆弾の同時使用可能個数
+	public int BombCount
+	{
+		set { bombCount++; }
+		get { return bombCount; }
+	}
 
 	[SerializeField] private GameObject bombPrefab = null;
 	[SerializeField] private Transform bombPos = null;
+
+	public bool grounded = false;
+	public bool jumped = false;
 
 	private void Start()
 	{
@@ -31,6 +42,7 @@ public class Player : MonoBehaviour {
 	{
 		Move();
 		Rotate();
+		GroundCheck();
 	}
 
 	private void Move()
@@ -46,17 +58,36 @@ public class Player : MonoBehaviour {
 		rotateTransform.rotation = ro;
 	}
 
+	private void GroundCheck()
+	{
+		grounded = groundScript.Grounded();
+		if (grounded)
+		{
+			jumped = false;
+		}
+	}
+
 	public void Jump()
 	{
-		myRb.AddForce(Vector3.up * jumpForce);
+		if (grounded || !jumped)
+		{
+			if (!grounded)
+				jumped = true;
+			myRb.velocity = new Vector3(myRb.velocity.x,0,myRb.velocity.z);
+			myRb.AddForce(Vector3.up * jumpForce);
+		}
 	}
 
 	public void Bomb(float time)
 	{
-		Quaternion bombRo = myTransform.rotation;
-		//bombRo.x = rotateTransform.eulerAngles.x;
-		GameObject bomb = Instantiate(bombPrefab,bombPos.position,bombRo) as GameObject;
-		bomb.GetComponent<Bomb>().Set(3.0f - time);
+		if (bombCount > 0)
+		{
+			Quaternion bombRo = myTransform.rotation;
+			//bombRo.x = rotateTransform.eulerAngles.x;
+			GameObject bomb = Instantiate(bombPrefab, bombPos.position, bombRo) as GameObject;
+			bomb.GetComponent<Bomb>().Set(3.0f - time,this);
+			bombCount--;
+		}
 	}
 
 	public void SetMoveDir(float x,float z)

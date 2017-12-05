@@ -263,9 +263,9 @@
     <Compile Include="Assets\Particle Dissolve Shader by Moonflower Carnivore\Scripts\HUDFPS.cs" />
     <Compile Include="Assets\Particle Dissolve Shader by Moonflower Carnivore\Scripts\PDS_GameController.cs" />
     <Compile Include="Assets\Particle Dissolve Shader by Moonflower Carnivore\Scripts\ScrollingUVs_PDS.cs" />
-    <Compile Include="Assets\Scripts\Block.cs" />
     <Compile Include="Assets\Scripts\Bomb.cs" />
     <Compile Include="Assets\Scripts\Explosion.cs" />
+    <Compile Include="Assets\Scripts\GroundCheck.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\StageCreate.cs" />
