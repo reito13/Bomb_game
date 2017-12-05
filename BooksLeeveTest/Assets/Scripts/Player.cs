@@ -54,7 +54,6 @@ public class Player : MonoBehaviour {
 	public void Bomb(float time)
 	{
 		Quaternion bombRo = myTransform.rotation;
-		//bombRo.x = rotateTransform.eulerAngles.x;
 		GameObject bomb = Instantiate(bombPrefab,bombPos.position,bombRo) as GameObject;
 		bomb.GetComponent<Bomb>().Set(3.0f - time);
 	}
