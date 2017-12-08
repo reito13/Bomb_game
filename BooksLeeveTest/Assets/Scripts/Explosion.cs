@@ -6,7 +6,7 @@ public class Explosion : MonoBehaviour {
 
 	private void Start()
 	{
-		Invoke("TimeOver",2.0f);
+		Invoke("TimeOver",1.0f);
 	}
 
 	private void OnTriggerEnter(Collider other)

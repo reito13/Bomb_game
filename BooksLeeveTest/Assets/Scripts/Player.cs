@@ -14,7 +14,23 @@ public class Player : MonoBehaviour {
 
 	[SerializeField] private float speed = 10.0f;
 	[SerializeField] private float jumpForce = 10.0f;
-	private int bombCount = 3; //爆弾の同時使用可能個数
+	[SerializeField] private float bombPower = 1.0f;
+
+	[SerializeField] private bool control = true;
+	public bool Control
+	{
+		set
+		{
+			control = value;
+		}
+
+		get
+		{
+			return control;
+		}
+	}
+	private bool damaged = false;
+	[SerializeField ]private int bombCount = 3; //爆弾の同時使用可能個数
 	public int BombCount
 	{
 		set { bombCount++; }
@@ -83,7 +99,7 @@ public class Player : MonoBehaviour {
 		if (bombCount > 0)
 		{
 			Quaternion bombRo = myTransform.rotation;
-			//bombRo.x = rotateTransform.eulerAngles.x;
+			bombRo.eulerAngles = rotateTransform.eulerAngles;
 			GameObject bomb = Instantiate(bombPrefab, bombPos.position, bombRo) as GameObject;
 			bomb.GetComponent<Bomb>().Set(3.0f - time,this);
 			bombCount--;
@@ -100,6 +116,30 @@ public class Player : MonoBehaviour {
 	{
 		rotateX = x;
 		rotateY = y;
+	}
+
+	private void OnTriggerEnter(Collider coll)
+	{
+		if (coll.tag == "Bomb" && !damaged)
+		{
+			damaged = true;
+			control = false;
+			Debug.Log("Bomb!");
+			Vector3 dir = transform.position - coll.transform.position;
+			myRb.AddForce(dir * bombPower,ForceMode.Impulse);
+
+			Invoke("Damaged",2.0f);
+			Invoke("ControlOn",0.7f);
+		}
+	}
+
+	private void Damaged()
+	{
+		damaged = false;
+	}
+
+	private void ControlOn() {
+		control = true;
 	}
 
 }

@@ -11,6 +11,12 @@ public class PlayerInput : MonoBehaviour {
 
 	private void Update()
 	{
+		if (!player.Control)
+		{
+			player.SetMoveDir(0,0);
+			return;
+		}
+
 		player.SetMoveDir(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
 		player.SetRotate(Input.GetAxis("RotateVertical"),Input.GetAxis("RotateHorizontal"));
 

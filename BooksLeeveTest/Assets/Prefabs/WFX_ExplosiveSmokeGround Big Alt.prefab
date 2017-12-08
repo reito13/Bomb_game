@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 114983969159207272}
   m_Layer: 0
   m_Name: WFX_ExplosiveSmokeGround Big Alt
-  m_TagString: Bomb
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace NetWork
 {
 
-	public class Test : MonoBehaviour
+	public class Test: MonoBehaviour
 	{
 
 		[SerializeField] private Transform playerTransfrom = null;
@@ -49,6 +49,8 @@ namespace NetWork
 			var z = rConnection.Strings.Increment(db: 0, key: "posZ", value: playerTransfrom.position.z);
 
 			await Task.WhenAll(x, y, z);
+
+			Debug.Log("Set");
 
 			var gX = rConnection.Strings.Get(db: 0, key: "posX");
 			var gY = rConnection.Strings.Get(db: 0, key: "posY");
