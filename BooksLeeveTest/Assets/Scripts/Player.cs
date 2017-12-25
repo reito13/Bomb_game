@@ -6,9 +6,11 @@ public class Player : MonoBehaviour {
 
 	private Transform myTransform;
 	[SerializeField] private Transform rotateTransform = null;
-	[SerializeField] Rigidbody myRb = null;
+	[SerializeField] private Rigidbody myRb = null;
 	private Vector3 moveDir;
-	private float rotateX, rotateY;
+	private float rotateX = 0, rotateY = 0;
+	[SerializeField] private float rotateBaseSpeed = 1.0f;
+	private float rotateSpeedX,rotateSpeedY;
 
 	[SerializeField] private GroundCheck groundScript = null;
 
@@ -30,7 +32,7 @@ public class Player : MonoBehaviour {
 		}
 	}
 	private bool damaged = false;
-	[SerializeField ]private int bombCount = 3; //爆弾の同時使用可能個数
+	[SerializeField] private int bombCount = 3; //爆弾の同時使用可能個数
 	public int BombCount
 	{
 		set { bombCount++; }
@@ -47,6 +49,8 @@ public class Player : MonoBehaviour {
 	{
 		myTransform = GetComponent<Transform>();
 		moveDir = Vector3.zero;
+		rotateSpeedX = rotateBaseSpeed;
+		rotateSpeedY = rotateBaseSpeed;
 	}
 
 	private void Update()
@@ -65,13 +69,13 @@ public class Player : MonoBehaviour {
 	{
 		myTransform.Translate(moveDir * speed);
 	}
+
 	private void Rotate()
 	{
-		rotateTransform.Rotate(Vector3.right * rotateX);
-		myTransform.Rotate(Vector3.up * rotateY);
-		Quaternion ro = rotateTransform.rotation;
-		ro.x = Mathf.Clamp(ro.x, -0.6427f, 0.6427f);
-		rotateTransform.rotation = ro;
+		rotateY = rotateY + rotateSpeedY * Time.deltaTime;
+		myTransform.localEulerAngles = new Vector3(0,rotateY,0);
+		rotateX = Mathf.Clamp(rotateX + rotateSpeedX * Time.deltaTime, -80.0f, 80.0f);
+		rotateTransform.localEulerAngles = new Vector3(rotateX,0,0);
 	}
 
 	private void GroundCheck()
@@ -100,6 +104,7 @@ public class Player : MonoBehaviour {
 		{
 			Quaternion bombRo = myTransform.rotation;
 			bombRo.eulerAngles = rotateTransform.eulerAngles;
+			Debug.Log(bombRo.eulerAngles);
 			GameObject bomb = Instantiate(bombPrefab, bombPos.position, bombRo) as GameObject;
 			bomb.GetComponent<Bomb>().Set(3.0f - time,this);
 			bombCount--;
@@ -114,8 +119,8 @@ public class Player : MonoBehaviour {
 
 	public void SetRotate(float x,float y)
 	{
-		rotateX = x;
-		rotateY = y;
+		rotateSpeedX = rotateBaseSpeed * x;
+		rotateSpeedY = rotateBaseSpeed * y;
 	}
 
 	private void OnTriggerEnter(Collider coll)
@@ -124,7 +129,6 @@ public class Player : MonoBehaviour {
 		{
 			damaged = true;
 			control = false;
-			Debug.Log("Bomb!");
 			Vector3 dir = transform.position - coll.transform.position;
 			myRb.AddForce(dir * bombPower,ForceMode.Impulse);
 
@@ -132,6 +136,7 @@ public class Player : MonoBehaviour {
 			Invoke("ControlOn",0.7f);
 		}
 	}
+
 
 	private void Damaged()
 	{
