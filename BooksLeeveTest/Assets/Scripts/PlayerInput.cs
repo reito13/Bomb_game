@@ -20,17 +20,17 @@ public class PlayerInput : MonoBehaviour {
 		player.SetMoveDir(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
 		player.SetRotate(Input.GetAxis("RotateVertical"),Input.GetAxis("RotateHorizontal"));
 
-		if (Input.GetButtonDown("Jump"))
+		if ((Input.GetButtonDown("Jump")) || (Input.GetButtonDown("R2")) )
 		{
 			player.Jump();
 		}
 
-		if (Input.GetKeyDown(KeyCode.Z))
+		if ((Input.GetKeyDown(KeyCode.Z)) || (Input.GetButtonDown("R1")))
 		{
 			bombSet = true;
 		}
-		if (Input.GetKeyUp(KeyCode.Z))
-		{
+		if ((Input.GetKeyUp(KeyCode.Z)) || (Input.GetButtonUp("R1")))
+        {
 			player.Bomb(bombTime);
 			bombSet = false;
 			bombTime = 0.0f;
