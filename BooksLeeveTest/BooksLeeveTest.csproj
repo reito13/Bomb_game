@@ -320,19 +320,17 @@
     <Compile Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Scripts\HUDFPS.cs" />
     <Compile Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Scripts\PDS_GameController.cs" />
     <Compile Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Scripts\ScrollingUVs_PDS.cs" />
-    <Compile Include="Assets\Scripts\Bomb.cs" />
-    <Compile Include="Assets\Scripts\Explosion.cs" />
-    <Compile Include="Assets\Scripts\GroundCheck.cs" />
-    <Compile Include="Assets\Scripts\ObjectRotation.cs" />
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Redis.cs" />
     <Compile Include="Assets\Scripts\Sample.cs" />
-    <Compile Include="Assets\Scripts\SceneTransitionManager.cs" />
-    <Compile Include="Assets\Scripts\SkyBoxTest.cs" />
-    <Compile Include="Assets\Scripts\StageCreate.cs" />
-    <Compile Include="Assets\Scripts\TitleSceneManager.cs" />
-    <Compile Include="Assets\Scripts\TransformData.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\Bomb.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\Explosion.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\GameStatusManager.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\GroundCheck.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\Manager\SceneTransitionManager.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\Manager\SingletonMonoBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\Manager\TitleSceneManager.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\Player.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\UredisTest.cs" />
   </ItemGroup>
   <ItemGroup>
