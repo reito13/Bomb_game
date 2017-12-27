@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour {
 
-	private void Start()
+	private int number;
+
+	public void Set(int num)
 	{
+		number = num;
 		Invoke("TimeOver",1.0f);
 	}
 
@@ -13,7 +16,8 @@ public class Explosion : MonoBehaviour {
 	{
 		if (other.tag == "Block")
 		{
-			Destroy(other.gameObject);
+			MainManager.Instance.AddScore(number);
+			MainManager.Instance.StageDelete(other);
 		}
 	}
 

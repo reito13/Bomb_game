@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+	[SerializeField] private int number = 1;
+
 	private Transform myTransform;
 	[SerializeField] private Transform rotateTransform = null;
 	[SerializeField] private Rigidbody myRb = null;
@@ -11,6 +13,8 @@ public class Player : MonoBehaviour {
 	private float rotateX = 0, rotateY = 0;
 	[SerializeField] private float rotateBaseSpeed = 1.0f;
 	private float rotateSpeedX,rotateSpeedY;
+
+	private Vector3 startPosition;
 
 	[SerializeField] private GroundCheck groundScript = null;
 
@@ -45,21 +49,24 @@ public class Player : MonoBehaviour {
 	public bool grounded = false;
 	public bool jumped = false;
 
-	private void Start()
+	private void Awake()
 	{
 		myTransform = GetComponent<Transform>();
+	}
+
+	private void Start()
+	{
 		moveDir = Vector3.zero;
 		rotateSpeedX = rotateBaseSpeed;
 		rotateSpeedY = rotateBaseSpeed;
-	}
-
-	private void Update()
-	{
-
+		startPosition = myTransform.position;
 	}
 
 	private void FixedUpdate()
 	{
+		if (GameStatusManager.Instance.GameEnd)
+			return;
+
 		Move();
 		Rotate();
 		GroundCheck();
@@ -68,6 +75,11 @@ public class Player : MonoBehaviour {
 	private void Move()
 	{
 		myTransform.Translate(moveDir * speed);
+
+		if(myTransform.position.y < -10.0f)
+		{
+			Fall();
+		}
 	}
 
 	private void Rotate()
@@ -100,13 +112,15 @@ public class Player : MonoBehaviour {
 
 	public void Bomb(float time)
 	{
+		if (GameStatusManager.Instance.GameStart)
+			return;
+
 		if (bombCount > 0)
 		{
 			Quaternion bombRo = myTransform.rotation;
 			bombRo.eulerAngles = rotateTransform.eulerAngles;
-			Debug.Log(bombRo.eulerAngles);
 			GameObject bomb = Instantiate(bombPrefab, bombPos.position, bombRo) as GameObject;
-			bomb.GetComponent<Bomb>().Set(3.0f - time,this);
+			bomb.GetComponent<Bomb>().Set(number,3.0f - time,this);
 			bombCount--;
 		}
 	}
@@ -133,7 +147,8 @@ public class Player : MonoBehaviour {
 			myRb.AddForce(dir * bombPower,ForceMode.Impulse);
 
 			Invoke("Damaged",2.0f);
-			Invoke("ControlOn",0.7f);
+			Invoke("ControlOn", 0.7f);
+			StartCoroutine(MainManager.Instance.TakeScore(number, false, 0.3f));
 		}
 	}
 
@@ -145,6 +160,12 @@ public class Player : MonoBehaviour {
 
 	private void ControlOn() {
 		control = true;
+	}
+
+	private void Fall()
+	{
+		StartCoroutine(MainManager.Instance.TakeScore(number, true, 0.3f));
+		myTransform.position = startPosition;
 	}
 
 }
