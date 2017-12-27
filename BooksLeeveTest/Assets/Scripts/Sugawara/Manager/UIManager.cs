@@ -18,9 +18,8 @@ public class UIManager : MonoBehaviour
 
 	public void ScoreUpdate(int num,int score)
 	{
-		scoreTexts[num].text = score.ToString() + "P";
+		scoreTexts[num-1].text = score.ToString() + "P";
 	}
-
 	public void CountDown(string countText)
 	{
 		countDownText.text = countText;

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class StageCreate : MonoBehaviour {
 
-	[SerializeField] private GameObject block = null;
-	[SerializeField] private GameObject block2 = null;
+	[SerializeField] private GameObject[] blocks = null;
 	[SerializeField] Transform parentObj = null; 
 	private float startPos = 31.0f;
 	private int count = 0;
@@ -29,11 +28,19 @@ public class StageCreate : MonoBehaviour {
 
 					if ((z % 6 == 0 || x % 6 == 0) && y == 0)
 					{
-						obj = Instantiate(block2, pos, transform.rotation) as GameObject;
+						obj = Instantiate(blocks[3], pos, transform.rotation) as GameObject;
+					}
+					else if(y == 0)
+					{
+						obj = Instantiate(blocks[0], pos, transform.rotation) as GameObject;
+					}
+					else if(y == 1)
+					{
+						obj = Instantiate(blocks[1], pos, transform.rotation) as GameObject;
 					}
 					else
 					{
-						obj = Instantiate(block, pos, transform.rotation) as GameObject;
+						obj = Instantiate(blocks[2], pos, transform.rotation) as GameObject;
 					}
 					obj.transform.parent = parentObj.transform;
 					obj.name = count.ToString();

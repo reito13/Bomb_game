@@ -5,13 +5,12 @@ using UnityEngine;
 public class TimeManager : MonoBehaviour {
 
 	private float timer;
-	private int timeCount;
+	[SerializeField] private int timeCount = 60;
 
 
 	private void Start()
 	{
 		timer = 0.0f;
-		timeCount = 60;
 	}
 
 	private void Update()
@@ -27,7 +26,7 @@ public class TimeManager : MonoBehaviour {
 			MainManager.Instance.TimeUpdate(timeCount);
 			if (timeCount <= 0)
 			{
-				MainManager.Instance.GameEnd();
+				StartCoroutine(MainManager.Instance.GameEnd());
 			}
 		}
 	}

@@ -5,36 +5,45 @@ using UnityEngine;
 public class MainManager : SingletonMonoBehaviour<MainManager>
 {
 	private UIManager uiManager;
-
-	private int[] scores = { 0, 0 };
+	private ScoreManager scoreManager;
 
 	private new Renderer renderer;
 
 	private void Awake()
 	{
 		uiManager = GetComponent<UIManager>();
+		scoreManager = GetComponent<ScoreManager>();
+		scoreManager.ResetScore();
 		StartCoroutine(GameStart());
 	}
 
 	private IEnumerator GameStart()
 	{
 		uiManager.CountDown("3");
+		SoundManager.Instance.PlaySE("Count");
 		yield return new WaitForSeconds(1.0f);
 		uiManager.CountDown("2");
+		SoundManager.Instance.PlaySE("Count");
 		yield return new WaitForSeconds(1.0f);
 		uiManager.CountDown("1");
+		SoundManager.Instance.PlaySE("Count");
 		yield return new WaitForSeconds(1.0f);
 		uiManager.CountDown("GameStart");
+		SoundManager.Instance.PlaySE("GameStart");
 
 		GameStatusManager.Instance.GameStart = false;
 		yield return new WaitForSeconds(1.0f);
 		uiManager.CountTextDelete();
 	}
 	
-	public void GameEnd()
+	public IEnumerator GameEnd()
 	{
+		SoundManager.Instance.PlaySE("GameEnd");
+
 		GameStatusManager.Instance.GameEnd = true;
 		uiManager.EndText();
+		yield return new WaitForSeconds(1.0f);
+		SceneTransitionManager.Instance.SceneTransition();
 	}
 
 	public void TimeUpdate(int timeCount)
@@ -44,27 +53,23 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 
 	public void AddScore(int num)
 	{
-		num--;
-		scores[num]++;
-		uiManager.ScoreUpdate(num,scores[num]);
+		scoreManager.AddScore(num);
+		uiManager.ScoreUpdate(num,scoreManager.GetScore(num));
 	}
 
 	public IEnumerator TakeScore(int num,bool fall,float delayTime)
 	{
-		num--;
 		yield return new WaitForSeconds(delayTime);
 
 		if (fall)
 		{
-			scores[num] /= 2;
+			scoreManager.DivideScore(num);
 		}
 		else
 		{
-			scores[num] -= 20;
-			if (scores[num] <= 0)
-				scores[num] = 0;
+			scoreManager.TakeScore(num,20);
 		}
-		uiManager.ScoreUpdate(num,scores[num]);
+		uiManager.ScoreUpdate(num, scoreManager.GetScore(num));
 	}
 
 	public void StageDelete(Collider collider)

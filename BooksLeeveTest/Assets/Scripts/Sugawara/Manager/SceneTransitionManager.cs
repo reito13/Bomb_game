@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneTransitionManager : MonoBehaviour {
+public class SceneTransitionManager : SingletonMonoBehaviour<SceneTransitionManager> {
 
 	private enum SceneName
 	{
-		Title,Menu,OthersRoom,FriendsRoom,Main
+		Title,Menu,OthersRoom,FriendsRoom,Main,Result
 	}
 
 	[SerializeField] private SceneName sceneName = SceneName.Title;

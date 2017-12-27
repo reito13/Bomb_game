@@ -31,6 +31,8 @@ public class Bomb : MonoBehaviour
 
 	private void Explosion()
 	{
+		SoundManager.Instance.PlaySE("Explosion");
+
 		playerScript.BombCount = 1;
 		GameObject obj = Instantiate(explosion, transform.position, transform.rotation)as GameObject;
 		obj.GetComponent<Explosion>().Set(number);

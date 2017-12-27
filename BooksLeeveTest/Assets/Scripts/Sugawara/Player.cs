@@ -10,19 +10,18 @@ public class Player : MonoBehaviour {
 	[SerializeField] private Transform rotateTransform = null;
 	[SerializeField] private Rigidbody myRb = null;
 	private Vector3 moveDir;
-	private float rotateX = 0, rotateY = 0;
-	[SerializeField] private float rotateBaseSpeed = 1.0f;
-	private float rotateSpeedX,rotateSpeedY;
 
 	private Vector3 startPosition;
 
 	[SerializeField] private GroundCheck groundScript = null;
+	[SerializeField] private CameraController cameraScript = null;
 
 	[SerializeField] private float speed = 10.0f;
 	[SerializeField] private float jumpForce = 10.0f;
 	[SerializeField] private float bombPower = 1.0f;
 
 	[SerializeField] private bool control = true;
+
 	public bool Control
 	{
 		set
@@ -57,8 +56,6 @@ public class Player : MonoBehaviour {
 	private void Start()
 	{
 		moveDir = Vector3.zero;
-		rotateSpeedX = rotateBaseSpeed;
-		rotateSpeedY = rotateBaseSpeed;
 		startPosition = myTransform.position;
 	}
 
@@ -84,10 +81,7 @@ public class Player : MonoBehaviour {
 
 	private void Rotate()
 	{
-		rotateY = rotateY + rotateSpeedY * Time.deltaTime;
-		myTransform.localEulerAngles = new Vector3(0,rotateY,0);
-		rotateX = Mathf.Clamp(rotateX + rotateSpeedX * Time.deltaTime, -80.0f, 80.0f);
-		rotateTransform.localEulerAngles = new Vector3(rotateX,0,0);
+		cameraScript.RotatitonUpdate();
 	}
 
 	private void GroundCheck()
@@ -107,6 +101,8 @@ public class Player : MonoBehaviour {
 				jumped = true;
 			myRb.velocity = new Vector3(myRb.velocity.x,0,myRb.velocity.z);
 			myRb.AddForce(Vector3.up * jumpForce);
+
+			SoundManager.Instance.PlaySE("Jump");
 		}
 	}
 
@@ -117,6 +113,8 @@ public class Player : MonoBehaviour {
 
 		if (bombCount > 0)
 		{
+			SoundManager.Instance.PlaySE("BombThrow");
+
 			Quaternion bombRo = myTransform.rotation;
 			bombRo.eulerAngles = rotateTransform.eulerAngles;
 			GameObject bomb = Instantiate(bombPrefab, bombPos.position, bombRo) as GameObject;
@@ -131,12 +129,6 @@ public class Player : MonoBehaviour {
 		moveDir.z = z;
 	}
 
-	public void SetRotate(float x,float y)
-	{
-		rotateSpeedX = rotateBaseSpeed * x;
-		rotateSpeedY = rotateBaseSpeed * y;
-	}
-
 	private void OnTriggerEnter(Collider coll)
 	{
 		if (coll.tag == "Bomb" && !damaged)
@@ -149,6 +141,8 @@ public class Player : MonoBehaviour {
 			Invoke("Damaged",2.0f);
 			Invoke("ControlOn", 0.7f);
 			StartCoroutine(MainManager.Instance.TakeScore(number, false, 0.3f));
+
+			SoundManager.Instance.PlaySE("ScoreDown");
 		}
 	}
 
@@ -164,8 +158,11 @@ public class Player : MonoBehaviour {
 
 	private void Fall()
 	{
+		myRb.velocity = Vector3.zero;
 		StartCoroutine(MainManager.Instance.TakeScore(number, true, 0.3f));
 		myTransform.position = startPosition;
+
+		SoundManager.Instance.PlaySE("ScoreDown");
 	}
 
 }
