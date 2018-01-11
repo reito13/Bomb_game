@@ -38,7 +38,10 @@ public class Player : MonoBehaviour {
 	[SerializeField] private int bombCount = 3; //爆弾の同時使用可能個数
 	public int BombCount
 	{
-		set { bombCount++; }
+		set { bombCount += value;
+			MainManager.Instance.BombUpdate(bombCount);
+
+		}
 		get { return bombCount; }
 	}
 
@@ -119,7 +122,7 @@ public class Player : MonoBehaviour {
 			bombRo.eulerAngles = rotateTransform.eulerAngles;
 			GameObject bomb = Instantiate(bombPrefab, bombPos.position, bombRo) as GameObject;
 			bomb.GetComponent<Bomb>().Set(number,3.0f - time,this);
-			bombCount--;
+			BombCount = -1;
 		}
 	}
 
@@ -129,21 +132,23 @@ public class Player : MonoBehaviour {
 		moveDir.z = z;
 	}
 
-	private void OnTriggerEnter(Collider coll)
+	public void Damage(Transform collT)
 	{
-		if (coll.tag == "Bomb" && !damaged)
-		{
-			damaged = true;
-			control = false;
-			Vector3 dir = transform.position - coll.transform.position;
-			myRb.AddForce(dir * bombPower,ForceMode.Impulse);
+		damaged = true;
+		control = false;
+		Vector3 dir = transform.position - collT.position;
+		Debug.Log(dir);
+		dir.x = (((dir.x >= 0) ? 3 : -3) - dir.x) * 1;
+		dir.y = 1.3f;
+		dir.z = (((dir.z >= 0) ? 3 : -3) - dir.z) * 1;
+		Debug.Log(dir);
+		myRb.AddForce(dir * bombPower, ForceMode.Impulse);
 
-			Invoke("Damaged",2.0f);
-			Invoke("ControlOn", 0.7f);
-			StartCoroutine(MainManager.Instance.TakeScore(number, false, 0.3f));
+		Invoke("Damaged", 2.0f);
+		Invoke("ControlOn", 0.7f);
+		StartCoroutine(MainManager.Instance.TakeScore(number, false, 0.3f));
 
-			SoundManager.Instance.PlaySE("ScoreDown");
-		}
+		SoundManager.Instance.PlaySE("ScoreDown");
 	}
 
 

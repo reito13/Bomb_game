@@ -323,10 +323,13 @@
     <Compile Include="Assets\Scripts\Redis.cs" />
     <Compile Include="Assets\Scripts\Sample.cs" />
     <Compile Include="Assets\Scripts\StageCreate.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\Block.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Bomb.cs" />
     <Compile Include="Assets\Scripts\Sugawara\CameraController.cs" />
-    <Compile Include="Assets\Scripts\Sugawara\Explosion.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\ExplosionObject.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\ExplosionStage.cs" />
     <Compile Include="Assets\Scripts\Sugawara\GroundCheck.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\Manager\AnimationManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Manager\GameStatusManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Manager\MainManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Manager\ResultManager.cs" />

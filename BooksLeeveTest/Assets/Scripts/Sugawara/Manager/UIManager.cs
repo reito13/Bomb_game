@@ -11,6 +11,10 @@ public class UIManager : MonoBehaviour
 
 	[SerializeField] private Text[] scoreTexts = null;
 
+	[SerializeField] private Image[] images = null;
+
+	private int i = 0;
+
 	public void TimeUpdate(int timeCount)
 	{
 		timeText.text = timeCount.ToString();
@@ -20,6 +24,18 @@ public class UIManager : MonoBehaviour
 	{
 		scoreTexts[num-1].text = score.ToString() + "P";
 	}
+
+	public void BombUpdate(int value)
+	{
+		for(i = 0; i < 3; i++)
+		{
+			if (i + 1 > value)
+				images[i].enabled = false;
+			else
+				images[i].enabled = true;
+		}
+	}
+
 	public void CountDown(string countText)
 	{
 		countDownText.text = countText;

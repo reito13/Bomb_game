@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33209256796264454}
   - component: {fileID: 23722711163738792}
   - component: {fileID: 65953491651701010}
+  - component: {fileID: 114978101482816304}
   m_Layer: 0
   m_Name: StageBlock 2
   m_TagString: Block
@@ -95,3 +96,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114978101482816304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1241058417315416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373aea9ff013a904db4a8a393a2ebde8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 2

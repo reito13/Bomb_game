@@ -57,6 +57,11 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 		uiManager.ScoreUpdate(num,scoreManager.GetScore(num));
 	}
 
+	public void BombUpdate(int value)
+	{
+		uiManager.BombUpdate(value);
+	}
+
 	public IEnumerator TakeScore(int num,bool fall,float delayTime)
 	{
 		yield return new WaitForSeconds(delayTime);

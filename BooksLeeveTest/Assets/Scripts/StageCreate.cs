@@ -22,31 +22,44 @@ public class StageCreate : MonoBehaviour {
 				for (int x = 0; x < startPos; x++)
 				{
 					count++;
-					Vector3 pos = new Vector3(-startPos/2 + x, -y, -startPos/2 + z);
+					Vector3 pos = new Vector3(-startPos / 2 + x, -y, -startPos / 2 + z);
 
 					GameObject obj;
 
-					if ((z % 6 == 0 || x % 6 == 0) && y == 0)
-					{
-						obj = Instantiate(blocks[3], pos, transform.rotation) as GameObject;
-					}
-					else if(y == 0)
-					{
-						obj = Instantiate(blocks[0], pos, transform.rotation) as GameObject;
-					}
-					else if(y == 1)
-					{
-						obj = Instantiate(blocks[1], pos, transform.rotation) as GameObject;
-					}
+					int r = Random.Range(0, 10); //0~9
+					if (r <= 5)
+						r = 0;
+					else if (r <= 7)
+						r = 1;
 					else
-					{
-						obj = Instantiate(blocks[2], pos, transform.rotation) as GameObject;
-					}
+						r = 2;
+					obj = Instantiate(blocks[r], pos, transform.rotation) as GameObject;
+					
 					obj.transform.parent = parentObj.transform;
 					obj.name = count.ToString();
 				}
 			}
 		}
 	}
+
+	/*private void CreateLine()
+	{
+		if ((z % 6 == 0 || x % 6 == 0) && y == 0)
+		{
+			obj = Instantiate(blocks[3], pos, transform.rotation) as GameObject;
+		}
+		else if (y == 0)
+		{
+			obj = Instantiate(blocks[0], pos, transform.rotation) as GameObject;
+		}
+		else if (y == 1)
+		{
+			obj = Instantiate(blocks[1], pos, transform.rotation) as GameObject;
+		}
+		else
+		{
+			obj = Instantiate(blocks[2], pos, transform.rotation) as GameObject;
+		}
+	}*/
 }
 

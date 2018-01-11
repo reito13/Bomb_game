@@ -29,14 +29,15 @@ public class Bomb : MonoBehaviour
 		gameObject.layer = 9;
 	}
 
-	private void Explosion()
+	public void Explosion()
 	{
 		SoundManager.Instance.PlaySE("Explosion");
 
 		playerScript.BombCount = 1;
 		GameObject obj = Instantiate(explosion, transform.position, transform.rotation)as GameObject;
-		obj.GetComponent<Explosion>().Set(number);
+		obj.GetComponent<ExplosionStage>().Set(number);
 		obj = Instantiate(explosion2,transform.position,transform.rotation)as GameObject;
+		obj.GetComponent<ExplosionObject>().Set(number);
 		Destroy(obj,1.0f);
 		Destroy(this.gameObject);
 	}

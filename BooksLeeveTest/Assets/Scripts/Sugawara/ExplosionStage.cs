@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explosion : MonoBehaviour {
+public class ExplosionStage : MonoBehaviour {
 
 	private int number;
 
@@ -16,8 +16,7 @@ public class Explosion : MonoBehaviour {
 	{
 		if (other.tag == "Block")
 		{
-			MainManager.Instance.AddScore(number);
-			MainManager.Instance.StageDelete(other);
+			other.GetComponent<Block>().Damage(number);
 		}
 	}
 
