@@ -134,16 +134,15 @@ public class Player : MonoBehaviour {
 
 	public void Damage(Transform collT)
 	{
+		if (damaged)
+			return;
 		damaged = true;
 		control = false;
 		Vector3 dir = transform.position - collT.position;
-		Debug.Log(dir);
 		dir.x = (((dir.x >= 0) ? 3 : -3) - dir.x) * 1;
 		dir.y = 1.3f;
 		dir.z = (((dir.z >= 0) ? 3 : -3) - dir.z) * 1;
-		Debug.Log(dir);
 		myRb.AddForce(dir * bombPower, ForceMode.Impulse);
-
 		Invoke("Damaged", 2.0f);
 		Invoke("ControlOn", 0.7f);
 		StartCoroutine(MainManager.Instance.TakeScore(number, false, 0.3f));
@@ -157,7 +156,8 @@ public class Player : MonoBehaviour {
 		damaged = false;
 	}
 
-	private void ControlOn() {
+	private void ControlOn()
+	{
 		control = true;
 	}
 
