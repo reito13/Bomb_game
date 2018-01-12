@@ -6,13 +6,24 @@ using System.Threading.Tasks;
 
 public class TransformSetter : MonoBehaviour {
 
+	[SerializeField] private Player player;
 
     [SerializeField] private string ipAddress;
     [SerializeField] private int port = 6379;
 
     private Redis redis;
 
-    private void Start()
+	private void Awake()
+	{
+		Debug.Log(player.number);
+		Debug.Log(MainManager.playerNum);
+		if (player.number != MainManager.playerNum)
+		{
+			this.enabled = false;
+		}
+	}
+
+	private void Start()
     {
         ExampleConnect();
     }

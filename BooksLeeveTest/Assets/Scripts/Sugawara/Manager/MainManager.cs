@@ -9,12 +9,19 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 
 	private new Renderer renderer;
 
+	public static int playerNum = 1;
+
+	public bool mainScene = true;
+
 	private void Awake()
 	{
-		uiManager = GetComponent<UIManager>();
-		scoreManager = GetComponent<ScoreManager>();
-		scoreManager.ResetScore();
-		StartCoroutine(GameStart());
+		if (mainScene)
+		{
+			uiManager = GetComponent<UIManager>();
+			scoreManager = GetComponent<ScoreManager>();
+			scoreManager.ResetScore();
+			StartCoroutine(GameStart());
+		}
 	}
 
 	private IEnumerator GameStart()
@@ -91,4 +98,5 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 		coll.enabled = true;
 		ren.enabled = true;
 	}
+
 }

@@ -10,6 +10,16 @@ public class PlayerInput : MonoBehaviour {
 	private bool bombSet = false;
 	private float bombTime = 0.0f;
 
+	private void Awake()
+	{
+		Debug.Log(player.number);
+		Debug.Log(MainManager.playerNum);
+		if(player.number != MainManager.playerNum)
+		{
+			this.enabled = false;
+		}
+	}
+
 	private void Update()
 	{
 		if (!player.Control)
