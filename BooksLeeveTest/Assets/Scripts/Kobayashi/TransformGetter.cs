@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 public class TransformGetter : MonoBehaviour
 {
+    public Player player;
 
     private float posX;
     private float posY;
@@ -13,11 +14,22 @@ public class TransformGetter : MonoBehaviour
 
     [SerializeField] private TransformSetter setter;
 
+    private void Awake()
+    {
+        Debug.Log(player.number);
+        Debug.Log(MainManager.playerNum);
+        if (player.number == MainManager.playerNum)
+        {
+            this.enabled = false;
+        }
+    }
+
     private async void FixedUpdate()
     {
-        posX = await setter.TransformGet("posX");
-        posY = await setter.TransformGet("posY");
-        posZ = await setter.TransformGet("posZ");
+
+        posX = await setter.TransformGet("posX" + player.number);
+        posY = await setter.TransformGet("posY" + player.number);
+        posZ = await setter.TransformGet("posZ" + player.number);
 
         transform.position = new Vector3(posX, posY, posZ);
     }
