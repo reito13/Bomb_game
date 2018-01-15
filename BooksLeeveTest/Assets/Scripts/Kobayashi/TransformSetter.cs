@@ -6,10 +6,6 @@ using System.Threading.Tasks;
 
 public class TransformSetter : MonoBehaviour {
 
-<<<<<<< HEAD
-	public Player player;
-=======
->>>>>>> parent of e3b73d9... プレイヤーの番号を選択できるように変更
 
     [SerializeField] private string ipAddress;
     [SerializeField] private int port = 6379;
@@ -29,6 +25,9 @@ public class TransformSetter : MonoBehaviour {
     private void FixedUpdate()
     {
         TransformSet("pos",transform.position);
+        TransformGet("posX");
+        TransformGet("posY");
+        TransformGet("posZ");
     }
 
     private async void TransformSet(string key,Vector3 pos)
@@ -36,9 +35,9 @@ public class TransformSetter : MonoBehaviour {
         string valueX = (pos.x).ToString();
         string valueY = (pos.y).ToString();
         string valueZ = (pos.z).ToString();
-        await redis.Set(key + "X" + player.number, valueX);
-        await redis.Set(key + "Y" + player.number, valueY);
-        await redis.Set(key + "Z" + player.number, valueZ);
+        await redis.Set(key + "X", valueX);
+        await redis.Set(key + "Y", valueY);
+        await redis.Set(key + "Z", valueZ);
 
     }
 

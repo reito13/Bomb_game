@@ -1,11 +1,7 @@
 fileFormatVersion: 2
 guid: 4cbfbd2e563d2934fb2b029ad0303f05
 folderAsset: yes
-<<<<<<< HEAD
-timeCreated: 1515721861
-=======
 timeCreated: 1515631573
->>>>>>> parent of e3b73d9... プレイヤーの番号を選択できるように変更
 licenseType: Free
 DefaultImporter:
   externalObjects: {}
