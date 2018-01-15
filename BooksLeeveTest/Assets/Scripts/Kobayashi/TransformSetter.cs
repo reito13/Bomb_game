@@ -6,24 +6,17 @@ using System.Threading.Tasks;
 
 public class TransformSetter : MonoBehaviour {
 
+<<<<<<< HEAD
 	public Player player;
+=======
+>>>>>>> parent of e3b73d9... プレイヤーの番号を選択できるように変更
 
     [SerializeField] private string ipAddress;
     [SerializeField] private int port = 6379;
 
     private Redis redis;
 
-	private void Awake()
-	{
-		Debug.Log(player.number);
-		Debug.Log(MainManager.playerNum);
-		if (player.number != MainManager.playerNum)
-		{
-			this.enabled = false;
-		}
-	}
-
-	private void Start()
+    private void Start()
     {
         ExampleConnect();
     }
