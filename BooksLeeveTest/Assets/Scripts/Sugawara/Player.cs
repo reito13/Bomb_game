@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	public int number = 1;
+	[SerializeField] private int number = 1;
 
 	private Transform myTransform;
 	[SerializeField] private Transform rotateTransform = null;
 	[SerializeField] private Rigidbody myRb = null;
-
-	[SerializeField] private GameObject cameraObj = null;
-
 	private Vector3 moveDir;
 
 	private Vector3 startPosition;
@@ -57,11 +54,6 @@ public class Player : MonoBehaviour {
 	private void Awake()
 	{
 		myTransform = GetComponent<Transform>();
-
-		if (number != MainManager.playerNum)
-		{
-			cameraObj.SetActive(false);
-		}
 	}
 
 	private void Start()
