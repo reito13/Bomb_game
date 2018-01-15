@@ -323,6 +323,10 @@
     <Compile Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Scripts\HUDFPS.cs" />
     <Compile Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Scripts\PDS_GameController.cs" />
     <Compile Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Scripts\ScrollingUVs_PDS.cs" />
+    <Compile Include="Assets\Scripts\Kobayashi\BombGetter.cs" />
+    <Compile Include="Assets\Scripts\Kobayashi\BombSetter.cs" />
+    <Compile Include="Assets\Scripts\Kobayashi\StateGetter.cs" />
+    <Compile Include="Assets\Scripts\Kobayashi\StateSetter.cs" />
     <Compile Include="Assets\Scripts\Kobayashi\TransformGetter.cs" />
     <Compile Include="Assets\Scripts\Kobayashi\TransformSetter.cs" />
     <Compile Include="Assets\Scripts\Kobayashi\TransformTest.cs" />

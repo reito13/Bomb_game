@@ -14,10 +14,8 @@ public class TransformGetter : MonoBehaviour
 
     [SerializeField] private TransformSetter setter;
 
-    private void Awake()
+    private void Start()
     {
-        Debug.Log(player.number);
-        Debug.Log(MainManager.playerNum);
         if (player.number == MainManager.playerNum)
         {
             this.enabled = false;
@@ -26,11 +24,13 @@ public class TransformGetter : MonoBehaviour
 
     private async void FixedUpdate()
     {
+        if (setter.set)
+        {
+            posX = await setter.TransformGet("posX" + player.number);
+            posY = await setter.TransformGet("posY" + player.number);
+            posZ = await setter.TransformGet("posZ" + player.number);
 
-        posX = await setter.TransformGet("posX" + player.number);
-        posY = await setter.TransformGet("posY" + player.number);
-        posZ = await setter.TransformGet("posZ" + player.number);
-
-        transform.position = new Vector3(posX, posY, posZ);
+            transform.position = new Vector3(posX, posY, posZ);
+        }
     }
 }

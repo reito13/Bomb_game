@@ -13,19 +13,20 @@ public class TransformSetter : MonoBehaviour {
 
     private Redis redis;
 
+    public bool set = false;
+
 	private void Awake()
 	{
-		Debug.Log(player.number);
-		Debug.Log(MainManager.playerNum);
-		if (player.number != MainManager.playerNum)
-		{
-			this.enabled = false;
-		}
+        ExampleConnect();
+
 	}
 
 	private void Start()
     {
-        ExampleConnect();
+        if (player.number != MainManager.playerNum)
+        {
+            this.enabled = false;
+        }
     }
 
     private void Update()
@@ -51,6 +52,8 @@ public class TransformSetter : MonoBehaviour {
 
     public async Task<float> TransformGet(string key)
     {
+        if (redis == null)
+            Debug.Log("RedisError");
         Task<string> getter = redis.Get(key);
         string data = await getter;
         Debug.Log(data);
@@ -77,5 +80,6 @@ public class TransformSetter : MonoBehaviour {
         redis = new Redis();
         await redis.Connect(ipAddress, port);
         Debug.Log("Connected");
+        set = true;
     }
 }
