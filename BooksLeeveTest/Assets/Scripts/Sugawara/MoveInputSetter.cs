@@ -24,13 +24,13 @@ public class MoveInputSetter : MonoBehaviour {
 	{
 		string valueX = x.ToString();
 		string valueY = y.ToString();
-		await RedisSingleton.Instance.RedisSet("MoveInput" + "X" + number.ToString(), valueX);
-		await RedisSingleton.Instance.RedisSet("MoveInput" + "Y" + number.ToString(), valueY);
+		await RedisSingleton.Instance.RedisSet("RotateInput" + "X" + number.ToString(), valueX);
+		await RedisSingleton.Instance.RedisSet("RotateInput" + "Y" + number.ToString(), valueY);
 	}
 
 	public async Task<float> RotateGet(string dir, int number)
 	{
-		float x = await RedisSingleton.Instance.RedisGet("MoveInput" + dir + number.ToString(), false);
+		float x = await RedisSingleton.Instance.RedisGet("RotateInput" + dir + number.ToString(), false);
 		return x;
 	}
 }

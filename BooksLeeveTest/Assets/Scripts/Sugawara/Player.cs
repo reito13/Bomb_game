@@ -90,6 +90,15 @@ public class Player : MonoBehaviour {
 	{
 		myTransform.Translate(moveDir * speed);
 
+		if(moveDir.x>0 || moveDir.z > 0)
+		{
+			AnimationChange(AnimStats.RUN);
+		}
+		else
+		{
+			AnimationChange(AnimStats.WAIT);
+		}
+
 		if(myTransform.position.y < -10.0f)
 		{
 			Fall();

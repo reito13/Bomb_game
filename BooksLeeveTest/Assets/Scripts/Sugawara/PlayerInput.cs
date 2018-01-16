@@ -10,11 +10,11 @@ public class PlayerInput : MonoBehaviour {
 	private bool bombSet = false;
 	private float bombTime = 0.0f;
 
-	private MoveInputSetter moveInputSetter;
+	private InputController inputController;
 
 	private void Awake()
 	{
-		moveInputSetter = GetComponent<MoveInputSetter>();
+		inputController = GetComponent<InputController>();
 	}
 
 	private void Update()
@@ -24,10 +24,12 @@ public class PlayerInput : MonoBehaviour {
 			player.SetMoveDir(0,0);
 			return;
 		}
+
+		MoveInputSet();
+		RotateInputSet();
+
 		if (player.number == MainManager.playerNum) //このスクリプトをアタッチしたプレイヤーキャラの番号が操作キャラの番号であるとき
 		{
-			MoveInput();
-			RotateInput();
 
 			if ((Input.GetButtonDown("Jump")) || (Input.GetButtonDown("R2")))
 			{
@@ -50,27 +52,44 @@ public class PlayerInput : MonoBehaviour {
 			bombTime += Time.deltaTime;
 
 		MoveInputGet();
+		if (player.number == MainManager.playerNum)
+		{
+			NormalRotateInput();
+		}
+		else
+		{
+			RotateInputGet();
+		}
 	}
 
-	private void MoveInput()
+	private void MoveInputSet()
 	{
 		if (player.number == MainManager.playerNum)
 		{
-			moveInputSetter.InputSet(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), player.number);
+			inputController.MoveSet(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), player.number);
+		}
+	}
+
+	private void RotateInputSet()
+	{
+		if (player.number == MainManager.playerNum)
+		{
+			inputController.RotateSet(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), player.number);
 		}
 	}
 
 	private async void MoveInputGet()
 	{
-		player.SetMoveDir(await moveInputSetter.InputGet("X", player.number), await moveInputSetter.InputGet("Y", player.number));
+		player.SetMoveDir(await inputController.MoveGet("X", player.number), await inputController.MoveGet("Y", player.number));
 	}
 
-	private async void RotateInput()
+	private async void RotateInputGet()
 	{
-		if(player.number == MainManager.playerNum)
-		{
-			//moveInputSetter.RotateSet();
-		}
+		cameraScript.SetRotate(await inputController.RotateGet("X",player.number), await inputController.RotateGet("Y", player.number));
+	}
+
+	private void NormalRotateInput()
+	{
 		cameraScript.SetRotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
 	}
 }
