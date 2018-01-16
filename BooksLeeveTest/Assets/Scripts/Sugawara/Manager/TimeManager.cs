@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class TimeManager : MonoBehaviour {
 
 	private float timer;
 	[SerializeField] private int timeCount = 60;
 
 
-	private void Start()
+    private void Start()
 	{
 		timer = 0.0f;
 	}
@@ -32,11 +33,11 @@ public class TimeManager : MonoBehaviour {
 
 	private void TimeGet()
 	{
-
+        timeCount
 	}
 	private void TimeSet()
 	{
-
+        timeCount
 	}
 
 	private void TimeCount()
