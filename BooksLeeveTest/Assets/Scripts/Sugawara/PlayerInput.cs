@@ -14,11 +14,6 @@ public class PlayerInput : MonoBehaviour {
 
 	private void Awake()
 	{
-		if(player.number != MainManager.playerNum)
-		{
-			this.enabled = false;
-		}
-
 		moveInputSetter = GetComponent<MoveInputSetter>();
 	}
 
@@ -29,39 +24,45 @@ public class PlayerInput : MonoBehaviour {
 			player.SetMoveDir(0,0);
 			return;
 		}
-
-		//player.SetMoveDir(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-		//cameraScript.SetRotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
-		MoveInput();
-		RotateInput();
-
-		if ((Input.GetButtonDown("Jump")) || (Input.GetButtonDown("R2")))
+		if (player.number == MainManager.playerNum) //このスクリプトをアタッチしたプレイヤーキャラの番号が操作キャラの番号であるとき
 		{
-			player.Jump();
-		}
+			MoveInput();
+			RotateInput();
 
-		if ((Input.GetKeyDown(KeyCode.Z)) || (Input.GetButtonDown("R1") || Input.GetMouseButtonDown(0)))
-		{
-			bombSet = true;
-		}
-		if ((Input.GetKeyUp(KeyCode.Z)) || (Input.GetButtonUp("R1") || Input.GetMouseButtonUp(0)))
-        {
-			player.Bomb(bombTime);
-			bombSet = false;
-			bombTime = 0.0f;
-		}
+			if ((Input.GetButtonDown("Jump")) || (Input.GetButtonDown("R2")))
+			{
+				player.Jump();
+			}
 
+			if ((Input.GetKeyDown(KeyCode.Z)) || (Input.GetButtonDown("R1") || Input.GetMouseButtonDown(0)))
+			{
+				bombSet = true;
+			}
+			if ((Input.GetKeyUp(KeyCode.Z)) || (Input.GetButtonUp("R1") || Input.GetMouseButtonUp(0)))
+			{
+				player.Bomb(bombTime);
+				bombSet = false;
+				bombTime = 0.0f;
+			}
+		}
+		
 		if (bombSet)
 			bombTime += Time.deltaTime;
+
+		MoveInputGet();
 	}
 
-	private async void MoveInput()
+	private void MoveInput()
 	{
 		if (player.number == MainManager.playerNum)
 		{
 			moveInputSetter.InputSet(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), player.number);
 		}
-		player.SetMoveDir(await moveInputSetter.InputGet("X",player.number), await moveInputSetter.InputGet("Y",player.number));
+	}
+
+	private async void MoveInputGet()
+	{
+		player.SetMoveDir(await moveInputSetter.InputGet("X", player.number), await moveInputSetter.InputGet("Y", player.number));
 	}
 
 	private async void RotateInput()

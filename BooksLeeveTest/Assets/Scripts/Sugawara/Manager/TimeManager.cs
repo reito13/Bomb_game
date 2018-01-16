@@ -33,11 +33,11 @@ public class TimeManager : MonoBehaviour {
 
 	private void TimeGet()
 	{
-        timeCount
+        //timeCount
 	}
 	private void TimeSet()
 	{
-        timeCount
+        //timeCount
 	}
 
 	private void TimeCount()
