@@ -29,17 +29,11 @@ public class PlayerInput : MonoBehaviour {
 			player.SetMoveDir(0,0);
 			return;
 		}
-		if(player.number == MainManager.playerNum)
-		{
-			//player.SetMoveDir(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-			//cameraScript.SetRotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
-			moveInputSetter.InputSet(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),player.number);
 
-		}
-		else
-		{
-
-		}
+		//player.SetMoveDir(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+		//cameraScript.SetRotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
+		MoveInput();
+		RotateInput();
 
 		if ((Input.GetButtonDown("Jump")) || (Input.GetButtonDown("R2")))
 		{
@@ -59,5 +53,23 @@ public class PlayerInput : MonoBehaviour {
 
 		if (bombSet)
 			bombTime += Time.deltaTime;
+	}
+
+	private async void MoveInput()
+	{
+		if (player.number == MainManager.playerNum)
+		{
+			moveInputSetter.InputSet(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), player.number);
+		}
+		player.SetMoveDir(await moveInputSetter.InputGet("X",player.number), await moveInputSetter.InputGet("Y",player.number));
+	}
+
+	private async void RotateInput()
+	{
+		if(player.number == MainManager.playerNum)
+		{
+			//moveInputSetter.RotateSet();
+		}
+		cameraScript.SetRotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
 	}
 }
