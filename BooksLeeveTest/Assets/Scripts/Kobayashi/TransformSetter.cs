@@ -49,7 +49,6 @@ public class TransformSetter : MonoBehaviour {
         await redis.Set(key + "X" + player.number, valueX);
         await redis.Set(key + "Y" + player.number, valueY);
         await redis.Set(key + "Z" + player.number, valueZ);
-
     }
 
     public async Task<float> TransformGet(string key)

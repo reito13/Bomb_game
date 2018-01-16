@@ -54,6 +54,12 @@ public class Player : MonoBehaviour {
 	public bool grounded = false;
 	public bool jumped = false;
 
+	[SerializeField] Animator animator;
+	public enum AnimStats
+	{
+		WAIT,RUN,LANDING,JUMP,THROW,DAMAGE,
+	}
+
 	private void Awake()
 	{
 		myTransform = GetComponent<Transform>();
@@ -114,6 +120,7 @@ public class Player : MonoBehaviour {
 			myRb.AddForce(Vector3.up * jumpForce);
 
 			SoundManager.Instance.PlaySE("Jump");
+
 		}
 	}
 
@@ -176,6 +183,18 @@ public class Player : MonoBehaviour {
 		myTransform.position = startPosition;
 
 		SoundManager.Instance.PlaySE("ScoreDown");
+	}
+
+	private void AnimationChange(AnimStats animation)
+	{
+		if(animation == AnimStats.WAIT || animation == AnimStats.RUN)
+		{
+			animator.Play(animation.ToString());
+		}
+		else
+		{
+			animator.Play(animation.ToString(),0,0.0f);
+		}
 	}
 
 }

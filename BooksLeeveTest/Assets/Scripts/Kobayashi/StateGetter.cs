@@ -5,6 +5,7 @@ using URedis;
 using System.Threading.Tasks;
 
 public class StateGetter : MonoBehaviour {
+
     public Player player;
 
     private float posX;
@@ -23,7 +24,7 @@ public class StateGetter : MonoBehaviour {
         }
     }
 
-    private async void FixedUpdate()
+	private async void FixedUpdate()
     {
 
         posX = await setter.TransformGet("posX" + player.number);

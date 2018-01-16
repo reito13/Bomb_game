@@ -10,12 +10,16 @@ public class PlayerInput : MonoBehaviour {
 	private bool bombSet = false;
 	private float bombTime = 0.0f;
 
+	private MoveInputSetter moveInputSetter;
+
 	private void Awake()
 	{
 		if(player.number != MainManager.playerNum)
 		{
 			this.enabled = false;
 		}
+
+		moveInputSetter = GetComponent<MoveInputSetter>();
 	}
 
 	private void Update()
@@ -25,10 +29,17 @@ public class PlayerInput : MonoBehaviour {
 			player.SetMoveDir(0,0);
 			return;
 		}
+		if(player.number == MainManager.playerNum)
+		{
+			//player.SetMoveDir(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+			//cameraScript.SetRotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
+			moveInputSetter.InputSet(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),player.number);
 
-		player.SetMoveDir(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
-		//player.SetRotate(Input.GetAxis("RotateVertical"),Input.GetAxis("RotateHorizontal"));
-		cameraScript.SetRotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
+		}
+		else
+		{
+
+		}
 
 		if ((Input.GetButtonDown("Jump")) || (Input.GetButtonDown("R2")))
 		{
