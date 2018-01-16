@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public class TransformGetter : MonoBehaviour
 {
-    public Player player;
+    private Player player;
 
     private float posX;
     private float posY;
@@ -16,6 +16,7 @@ public class TransformGetter : MonoBehaviour
 
     private void Start()
     {
+		player = GetComponent<Player>();
         if (player.number == MainManager.playerNum)
         {
             this.enabled = false;
