@@ -16,7 +16,12 @@ public class RedisSingleton : SingletonMonoBehaviour<RedisSingleton>
 
 	private Redis redis;
 
-	public async void RedisSet(string key,string value)
+	private void Awake()
+	{
+		RedisSingleton.Instance.ExampleConnect();
+	}
+
+	public async Task RedisSet(string key,string value)
 	{
 		await redis.Set(key,value);
 	}
@@ -30,7 +35,8 @@ public class RedisSingleton : SingletonMonoBehaviour<RedisSingleton>
 	}
 
 	/// <summary>
-	/// 
+	/// Redisサーバからデータを取得する。
+	/// 第2引数にtrueを入れるとint型、falseを入れるとfloat型で返す
 	/// </summary>
 	/// <param name="key"></param>
 	/// <param name="b"></param>
