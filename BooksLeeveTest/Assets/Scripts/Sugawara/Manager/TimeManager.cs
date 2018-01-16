@@ -18,8 +18,31 @@ public class TimeManager : MonoBehaviour {
 		if (!GameStatusManager.Instance.NormalState)
 			return;
 
+		if (MainManager.playerNum == 1)
+		{
+			TimeCount();
+			TimeSet();
+		}
+		else
+		{
+			TimeGet();
+		}
+
+	}
+
+	private void TimeGet()
+	{
+
+	}
+	private void TimeSet()
+	{
+
+	}
+
+	private void TimeCount()
+	{
 		timer += Time.deltaTime;
-		if(timer >= 1.0f)
+		if (timer >= 1.0f)
 		{
 			timer = 0.0f;
 			timeCount--;
@@ -30,5 +53,4 @@ public class TimeManager : MonoBehaviour {
 			}
 		}
 	}
-
 }
