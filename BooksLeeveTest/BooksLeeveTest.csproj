@@ -325,7 +325,6 @@
     <Compile Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Scripts\ScrollingUVs_PDS.cs" />
     <Compile Include="Assets\Scripts\Kobayashi\BombGetter.cs" />
     <Compile Include="Assets\Scripts\Kobayashi\BombSetter.cs" />
-    <Compile Include="Assets\Scripts\Kobayashi\MatchingSystemByRedis.cs" />
     <Compile Include="Assets\Scripts\Kobayashi\StateGetter.cs" />
     <Compile Include="Assets\Scripts\Kobayashi\StateSetter.cs" />
     <Compile Include="Assets\Scripts\Kobayashi\TransformGetter.cs" />

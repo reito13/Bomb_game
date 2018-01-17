@@ -15,7 +15,7 @@ public class TimeManager : MonoBehaviour {
 		timer = 0.0f;
 	}
 
-	private async void FixedUpdate()
+	private async void Update()
 	{
 		if (!GameStatusManager.Instance.NormalState)
 			return;
@@ -23,17 +23,13 @@ public class TimeManager : MonoBehaviour {
 		if (MainManager.playerNum == 1)
 		{
 			TimeCount();
-           await  TimeSet(timeCount, MainManager.playerNum);
+        //   await  TimeSet(timeCount, MainManager.playerNum);
         }
 		else
 		{
-            timeCount = await TimeGet();
-            MainManager.Instance.TimeUpdate(timeCount);
-            if (timeCount <= 0)
-            {
-                StartCoroutine(MainManager.Instance.GameEnd());
-            }
-        }
+           // timeCount = await TimeGet();
+
+		}
 
 	}
 
