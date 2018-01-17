@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 
 public class TimeManager : MonoBehaviour {
@@ -14,7 +15,7 @@ public class TimeManager : MonoBehaviour {
 		timer = 0.0f;
 	}
 
-	private void Update()
+	private async void Update()
 	{
 		if (!GameStatusManager.Instance.NormalState)
 			return;
@@ -22,23 +23,27 @@ public class TimeManager : MonoBehaviour {
 		if (MainManager.playerNum == 1)
 		{
 			TimeCount();
-			TimeSet();
-		}
+        //   await  TimeSet(timeCount, MainManager.playerNum);
+        }
 		else
 		{
-			TimeGet();
+           // timeCount = await TimeGet();
+
 		}
 
 	}
 
-	private void TimeGet()
+
+    private async Task <int> TimeGet()
 	{
-      //  timeCount
-	}
-	private void TimeSet()
+        float testTime = await RedisSingleton.Instance.RedisGet("TimeManager1",false);
+        return (int)testTime;
+    }
+	private async Task TimeSet(int timeCount, int number)
 	{
-       // timeCount
-	}
+        string currentTime = timeCount.ToString();
+        await RedisSingleton.Instance.RedisSet("TimeManager1", currentTime);
+    }
 
 	private void TimeCount()
 	{
