@@ -30,7 +30,6 @@ public class RedisSingleton : SingletonMonoBehaviour<RedisSingleton>
 	{
 		Task<string> getter = redis.Get(key);
 		string data = await getter;
-		Debug.Log(data);
 		return data;
 	}
 
@@ -46,7 +45,6 @@ public class RedisSingleton : SingletonMonoBehaviour<RedisSingleton>
 	{
 		Task<string> getter = redis.Get(key);
 		string data = await getter;
-		Debug.Log(data);
 
 		if (b)
 		{

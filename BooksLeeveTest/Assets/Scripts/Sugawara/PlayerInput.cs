@@ -26,14 +26,14 @@ public class PlayerInput : MonoBehaviour {
 		}
 
 		MoveInputSet();
-		RotateInputSet();
+		//RotateInputSet();
 
 		if (player.number == MainManager.playerNum) //このスクリプトをアタッチしたプレイヤーキャラの番号が操作キャラの番号であるとき
 		{
-
 			if ((Input.GetButtonDown("Jump")) || (Input.GetButtonDown("R2")))
 			{
-				player.Jump();
+				//player.Jump();
+				inputController.JumpFlagSet(player.number);
 			}
 
 			if ((Input.GetKeyDown(KeyCode.Z)) || (Input.GetButtonDown("R1") || Input.GetMouseButtonDown(0)))
@@ -52,6 +52,7 @@ public class PlayerInput : MonoBehaviour {
 			bombTime += Time.deltaTime;
 
 		MoveInputGet();
+
 		if (player.number == MainManager.playerNum)
 		{
 			NormalRotateInput();
@@ -60,6 +61,8 @@ public class PlayerInput : MonoBehaviour {
 		{
 			RotateInputGet();
 		}
+
+		JumpInputGet();
 	}
 
 	private void MoveInputSet()
@@ -74,7 +77,7 @@ public class PlayerInput : MonoBehaviour {
 	{
 		if (player.number == MainManager.playerNum)
 		{
-			inputController.RotateSet(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), player.number);
+			inputController.RotateSet(Input.GetAxis("Mouse X"), player.number);
 		}
 	}
 
@@ -83,13 +86,28 @@ public class PlayerInput : MonoBehaviour {
 		player.SetMoveDir(await inputController.MoveGet("X", player.number), await inputController.MoveGet("Y", player.number));
 	}
 
+	/*private async void RotateInputGet()
+	{
+		cameraScript.SetRotate(Input.GetAxis("Mouse Y"), await inputController.RotateGet(player.number));
+	}*/
 	private async void RotateInputGet()
 	{
-		cameraScript.SetRotate(await inputController.RotateGet("X",player.number), await inputController.RotateGet("Y", player.number));
+		Quaternion ro = transform.rotation;
+		ro.y = await inputController.RotateGet(player.number);
+		transform.rotation = ro;
 	}
 
 	private void NormalRotateInput()
 	{
 		cameraScript.SetRotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
+		inputController.RotateSet(transform.rotation.y,player.number);
+	}
+
+	private async void JumpInputGet()
+	{
+		if (await inputController.JumpFlagGet(player.number))
+		{
+			player.Jump();
+		}
 	}
 }

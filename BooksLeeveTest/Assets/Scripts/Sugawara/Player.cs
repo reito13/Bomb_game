@@ -54,7 +54,7 @@ public class Player : MonoBehaviour {
 	public bool grounded = false;
 	public bool jumped = false;
 
-	[SerializeField] Animator animator;
+	[SerializeField] Animator animator = null;
 	public enum AnimStats
 	{
 		WAIT,RUN,LANDING,JUMP,THROW,DAMAGE,
@@ -90,18 +90,21 @@ public class Player : MonoBehaviour {
 	{
 		myTransform.Translate(moveDir * speed);
 
-		if (moveDir.x != 0 || moveDir.z != 0)
+		if (grounded)
 		{
-			AnimationChange(AnimStats.RUN);
-		}
-		else
-		{
-			AnimationChange(AnimStats.WAIT);
-		}
+			if (moveDir.x != 0 || moveDir.z != 0)
+			{
+				AnimationChange(AnimStats.RUN);
+			}
+			else
+			{
+				AnimationChange(AnimStats.WAIT);
+			}
 
-		if (myTransform.position.y < -10.0f)
-		{
-			Fall();
+			if (myTransform.position.y < -10.0f)
+			{
+				Fall();
+			}
 		}
 	}
 
@@ -128,6 +131,7 @@ public class Player : MonoBehaviour {
 			myRb.velocity = new Vector3(myRb.velocity.x,0,myRb.velocity.z);
 			myRb.AddForce(Vector3.up * jumpForce);
 
+			AnimationChange(AnimStats.JUMP);
 			SoundManager.Instance.PlaySE("Jump");
 
 		}
@@ -146,6 +150,7 @@ public class Player : MonoBehaviour {
 			bombRo.eulerAngles = rotateTransform.eulerAngles;
 			GameObject bomb = Instantiate(bombPrefab, bombPos.position, bombRo) as GameObject;
 			bomb.GetComponent<Bomb>().Set(number,3.0f - time,this);
+			Debug.Log(((number - 1) * 3) + bombCount - 1);
 			BombCount = -1;
 		}
 	}

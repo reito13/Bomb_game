@@ -5,6 +5,11 @@ using System.Threading.Tasks;
 
 public class InputController : MonoBehaviour
 {
+	public async void Start()
+	{
+		await RedisSingleton.Instance.RedisSet("Jump1", "false");
+		await RedisSingleton.Instance.RedisSet("Jump2", "false");
+	}
 
 	public async void MoveSet(float x, float y, int number) //Horizontal,Verticalの入力、プレイヤー番号を渡す
 	{
@@ -20,7 +25,7 @@ public class InputController : MonoBehaviour
 		return x;
 	}
 
-	public async void RotateSet(float x, float y, int number) //Horizontal,Verticalの入力、プレイヤー番号を渡す
+	/*public async void RotateSet(float x, float y, int number) //Horizontal,Verticalの入力、プレイヤー番号を渡す
 	{
 		string valueX = x.ToString();
 		string valueY = y.ToString();
@@ -32,6 +37,34 @@ public class InputController : MonoBehaviour
 	{
 		float x = await RedisSingleton.Instance.RedisGet("RotateInput" + dir + number.ToString(), false);
 		return x;
+	}*/
+	public async void RotateSet(float y,int number) //Horizontal,Verticalの入力、プレイヤー番号を渡す
+	{
+		string value = y.ToString();
+		await RedisSingleton.Instance.RedisSet("RotateInput" + number.ToString(), value);
 	}
 
+	public async Task<float> RotateGet(int number)
+	{
+		float value = await RedisSingleton.Instance.RedisGet("RotateInput" + number.ToString(), false);
+		return value;
+	}
+
+	public async void JumpFlagSet(int number)
+	{
+		await RedisSingleton.Instance.RedisSet("Jump" + number.ToString(), "true");
+	}
+	public async Task<bool> JumpFlagGet(int number)
+	{
+		if (await RedisSingleton.Instance.RedisGet("Jump" + number.ToString()) == "true")
+		{
+			Debug.Log("Jump" + number.ToString());
+			await RedisSingleton.Instance.RedisSet("Jump" + number.ToString(), "false");
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
