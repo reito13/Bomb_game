@@ -150,7 +150,6 @@ public class Player : MonoBehaviour {
 			bombRo.eulerAngles = rotateTransform.eulerAngles;
 			GameObject bomb = Instantiate(bombPrefab, bombPos.position, bombRo) as GameObject;
 			bomb.GetComponent<Bomb>().Set(number,3.0f - time,this);
-			Debug.Log(((number - 1) * 3) + bombCount - 1);
 			BombCount = -1;
 		}
 	}

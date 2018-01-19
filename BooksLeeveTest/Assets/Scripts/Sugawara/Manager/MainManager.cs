@@ -21,7 +21,6 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 			scoreManager = GetComponent<ScoreManager>();
 			scoreManager.ResetScore();
 			StartCoroutine(GameStart());
-			Debug.Log(playerNum);
 		}
 	}
 
