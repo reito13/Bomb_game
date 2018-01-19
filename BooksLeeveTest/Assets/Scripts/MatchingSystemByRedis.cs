@@ -34,7 +34,7 @@ public class MatchingSystemByRedis : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        MainManager.playerNum = pNum;
+		
 	}
 
     private void AssignId () //ID割り当てメソッド
