@@ -7,6 +7,7 @@ public class PlayerTransformManager : MonoBehaviour {
 
 	[SerializeField] private Transform[] playerTransforms = null; //全プレイヤーのTransform
 	private Vector3 syncPos; //サーバーからGetした全プレイヤーの座標を格納する変数。座標移動の補間に使用する
+	private float syncRotateY;
 
 	private int i,j; //ループを回す用の変数
 	private int transformCount; //playerTransformsの配列数
@@ -30,6 +31,7 @@ public class PlayerTransformManager : MonoBehaviour {
 			if (myPlayerNum != j)
 			{
 				LerpPosition(j);
+				LerpRotation(j);
 			}
 		}
 
@@ -50,7 +52,9 @@ public class PlayerTransformManager : MonoBehaviour {
 		Task y = RedisSingleton.Instance.RedisSet("PlayerPositionY," + myPlayerNum.ToString(), (playerTransforms[myPlayerNum].position.y).ToString()); //プレイヤーのY座標をセット
 		Task z = RedisSingleton.Instance.RedisSet("PlayerPositionZ," + myPlayerNum.ToString(), (playerTransforms[myPlayerNum].position.z).ToString()); //プレイヤーのZ座標をセット
 
-		await Task.WhenAll(x,y,z); //Task待機
+		Task roY = RedisSingleton.Instance.RedisSet("PlayerRotationY," + myPlayerNum.ToString(), (playerTransforms[myPlayerNum].rotation.x).ToString()); //プレイヤーのY角度をセット
+
+		await Task.WhenAll(x,y,z,roY); //Task待機
 	}
 
 	private async Task TransformGet()
@@ -62,7 +66,11 @@ public class PlayerTransformManager : MonoBehaviour {
 				float x = await RedisSingleton.Instance.RedisGet("PlayerPositionX," + i.ToString(), false);
 				float y = await RedisSingleton.Instance.RedisGet("PlayerPositionY," + i.ToString(), false);
 				float z = await RedisSingleton.Instance.RedisGet("PlayerPositionZ," + i.ToString(), false);
+
+				float roY = await RedisSingleton.Instance.RedisGet("PlayerRotationY," + i.ToString(),false);
+
 				syncPos = new Vector3(x, y, z);
+				syncRotateY = roY;
 			}
 		}
 
@@ -71,6 +79,13 @@ public class PlayerTransformManager : MonoBehaviour {
 	private void LerpPosition(int num) //プレイヤーの移動を補間する処理。TransformGet()のfor文から呼び出され、numにはfor文のiが入る
 	{
 		playerTransforms[num].position = Vector3.Lerp(playerTransforms[num].position, syncPos, Time.deltaTime * lerpRate);
+	}
+
+	private void LerpRotation(int num)
+	{
+		Quaternion quaternion = playerTransforms[num].rotation;
+		quaternion.y = Mathf.Lerp(quaternion.y,syncRotateY,Time.deltaTime * lerpRate);
+		playerTransforms[num].rotation = quaternion;
 	}
 
 }
