@@ -320,6 +320,7 @@
     <Compile Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Scripts\HUDFPS.cs" />
     <Compile Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Scripts\PDS_GameController.cs" />
     <Compile Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Scripts\ScrollingUVs_PDS.cs" />
+    <Compile Include="Assets\Scripts\MatchingSystemByRedis.cs" />
     <Compile Include="Assets\Scripts\Redis.cs" />
     <Compile Include="Assets\Scripts\Sample.cs" />
     <Compile Include="Assets\Scripts\StageCreate.cs" />
