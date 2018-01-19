@@ -26,7 +26,7 @@ public class PlayerInput : MonoBehaviour {
 		}
 
 		MoveInputSet();
-		//RotateInputSet();
+		RotateInputSet();
 
 		if (player.number == MainManager.playerNum) //このスクリプトをアタッチしたプレイヤーキャラの番号が操作キャラの番号であるとき
 		{
@@ -51,7 +51,7 @@ public class PlayerInput : MonoBehaviour {
 		if (bombSet)
 			bombTime += Time.deltaTime;
 
-		MoveInputGet();
+		//MoveInputGet();
 
 		if (player.number == MainManager.playerNum)
 		{
@@ -69,7 +69,8 @@ public class PlayerInput : MonoBehaviour {
 	{
 		if (player.number == MainManager.playerNum)
 		{
-			inputController.MoveSet(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), player.number);
+			//inputController.MoveSet(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), player.number);
+			player.SetMoveDir(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 		}
 	}
 
@@ -83,13 +84,9 @@ public class PlayerInput : MonoBehaviour {
 
 	private async void MoveInputGet()
 	{
-		player.SetMoveDir(await inputController.MoveGet("X", player.number), await inputController.MoveGet("Y", player.number));
+		//player.SetMoveDir(await inputController.MoveGet("X", player.number), await inputController.MoveGet("Y", player.number));
 	}
 
-	/*private async void RotateInputGet()
-	{
-		cameraScript.SetRotate(Input.GetAxis("Mouse Y"), await inputController.RotateGet(player.number));
-	}*/
 	private async void RotateInputGet()
 	{
 		Quaternion ro = transform.rotation;
