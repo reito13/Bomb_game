@@ -34,6 +34,7 @@ public class PlayerTransformManager : MonoBehaviour {
 				LerpRotation(j);
 			}
 		}
+		Debug.Log(playerTransforms[myPlayerNum].eulerAngles.y);
 
 	}
 
@@ -52,8 +53,8 @@ public class PlayerTransformManager : MonoBehaviour {
 		Task y = RedisSingleton.Instance.RedisSet("PlayerPositionY," + myPlayerNum.ToString(), (playerTransforms[myPlayerNum].position.y).ToString()); //プレイヤーのY座標をセット
 		Task z = RedisSingleton.Instance.RedisSet("PlayerPositionZ," + myPlayerNum.ToString(), (playerTransforms[myPlayerNum].position.z).ToString()); //プレイヤーのZ座標をセット
 
-		Task roY = RedisSingleton.Instance.RedisSet("PlayerRotationY," + myPlayerNum.ToString(), (playerTransforms[myPlayerNum].rotation.x).ToString()); //プレイヤーのY角度をセット
-
+		Task roY = RedisSingleton.Instance.RedisSet("PlayerRotationY," + myPlayerNum.ToString(), (playerTransforms[myPlayerNum].eulerAngles.y).ToString()); //プレイヤーのY角度をセット
+		Debug.Log(roY);
 		await Task.WhenAll(x,y,z,roY); //Task待機
 	}
 
@@ -83,9 +84,12 @@ public class PlayerTransformManager : MonoBehaviour {
 
 	private void LerpRotation(int num)
 	{
-		Quaternion quaternion = playerTransforms[num].rotation;
-		quaternion.y = Mathf.Lerp(quaternion.y,syncRotateY,Time.deltaTime * lerpRate);
-		playerTransforms[num].rotation = quaternion;
+		Vector3 ro = playerTransforms[num].eulerAngles;
+		//quaternion.y = Mathf.Lerp(quaternion.y,syncRotateY,Time.deltaTime * lerpRate);
+		//quaternion.y = syncRotateY;
+		//playerTransforms[num].rotation = Quaternion.Slerp(playerTransforms[num].rotation,quaternion,Time.deltaTime);
+		ro.y = syncRotateY;//Mathf.Lerp(ro.y,syncRotateY,Time.deltaTime * lerpRate);
+		playerTransforms[num].rotation = Quaternion.Euler(ro);
 	}
 
 }

@@ -324,6 +324,7 @@
     <Compile Include="Assets\Scripts\Redis.cs" />
     <Compile Include="Assets\Scripts\Sample.cs" />
     <Compile Include="Assets\Scripts\StageCreate.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\BaseAsyncLoop.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Block.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Bomb.cs" />
     <Compile Include="Assets\Scripts\Sugawara\BombManager.cs" />
