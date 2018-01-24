@@ -19,12 +19,11 @@ public class Bomb : MonoBehaviour
 
 	public void Set(Vector3 pos,Quaternion ro,float time)
 	{
-		setExplosion = false;
 		transform.position = pos;
 		transform.rotation = ro;
 		power = power * (1 + transform.localRotation.x);
 		rb.AddForce(transform.forward * power);
-		//rb.angularVelocity = new Vector3(-1,0,0) * rotatePower;
+		rb.angularVelocity = new Vector3(-1,0,0) * rotatePower;
 		Invoke("GetHit",0.3f);
 		Invoke("ExplosionSet", time);
 	}
@@ -39,19 +38,20 @@ public class Bomb : MonoBehaviour
 		if (!gameObject.activeSelf)
 			return;
 
-		Debug.Log("Set");
 		setExplosion = true;
 	}
 
 	public void Explosion()
 	{
-
 		SoundManager.Instance.PlaySE("Explosion");
+
 		playerScript.BombCount = 1;
+
 		GameObject obj = Instantiate(explosion, transform.position, transform.rotation)as GameObject;
 		obj.GetComponent<ExplosionStage>().Set(number);
 		obj = Instantiate(explosion2,transform.position,transform.rotation)as GameObject;
 		obj.GetComponent<ExplosionObject>().Set(number);
+
 		Destroy(obj,1.0f);
 		setExplosion = false;
 		gameObject.SetActive(false);

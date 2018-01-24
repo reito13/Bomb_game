@@ -9,7 +9,7 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 
 	private new Renderer renderer;
 
-	public static int playerNum = 2;
+	public static int playerNum = 1;
 
 	public bool mainScene = true;
 
