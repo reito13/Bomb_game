@@ -6,7 +6,7 @@ using UnityEngine;
 //Redisによるマッチングシステム
 
 
-public class MatchingSystemByRedis : MonoBehaviour
+public class MatchingSystemByRedis : SingletonMonoBehaviour<MatchingSystemByRedis>
 {
 
     private bool matchingCompFlag = false;    //ルームは満員か（マッチング完了フラグ）
@@ -25,14 +25,16 @@ public class MatchingSystemByRedis : MonoBehaviour
 
     [SerializeField] private bool ready = false; //参戦準備完了（参戦ボタン）
 
-    // Use this for initialization
-    void Start ()
+    void Start()
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
+
+    }
+    void MyOnClick(int index)
+    {
+        print(index);
+    }
+    // Update is called once per frame
+    void Update ()
     {
 		
 	}
