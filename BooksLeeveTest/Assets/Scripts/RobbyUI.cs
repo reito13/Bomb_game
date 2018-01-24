@@ -1,39 +1,72 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 
 //マッチングロビー用UI
 
 public class RobbyUI : MonoBehaviour {
 
-    GameObject ButtonPrefab;
+[SerializeField]
 
+    private GameObject btnPref;  //ボタンプレハブ
 
-    // Use this for initialization
+    //ボタン表示数
+
+    const int BUTTON_COUNT = 10;
+
     void Start()
+
     {
-        Transform list = transform.Find("List");
-        for (int i = 0; i <= 5; i++)
+
+        //Content取得(ボタンを並べる場所)
+
+        RectTransform content = GameObject.Find("Canvas / Scroll View / Viewport / Content").GetComponent<RectTransform>();
+
+        //Contentの高さ決定
+
+        //(ボタンの高さ+ボタン同士の間隔)*ボタン数
+
+        float btnSpace = content.GetComponent<VerticalLayoutGroup>().spacing;
+
+        float btnHeight = btnPref.GetComponent<LayoutElement>().preferredHeight;
+
+        content.sizeDelta = new Vector2(0, (btnHeight + btnSpace) * BUTTON_COUNT);
+
+        for (int i = 0; i < BUTTON_COUNT; i++)
+
         {
-            //プレハブからボタンを生成
-            GameObject listButton = Instantiate(ButtonPrefab) as GameObject;
-            //Vertical Layout Group の子にする
-            listButton.transform.SetParent(list, false);
-            listButton.transform.Find("Text").GetComponent<Text>().text = i.ToString();
-            //以下、追加---------
-            int n = i;
-            //引数に何番目のボタンかを渡す
-            listButton.GetComponent<Button>().onClick.AddListener(() => MyOnClick(n));
+
+            int no = i;
+
+            //ボタン生成
+
+            GameObject btn = (GameObject)Instantiate(btnPref);
+
+            //ボタンをContentの子に設定
+
+            btn.transform.SetParent(content, false);
+
+            //ボタンのテキスト変更
+
+            btn.transform.GetComponentInChildren<Text>().text = "Btn_"+no.ToString();
+
+            //ボタンのクリックイベント登録
+
+            btn.transform.GetComponent<Button>().onClick.AddListener(() => OnClick(no));
+
         }
-    }
-    void MyOnClick(int index)
-    {
-        print(index);
+
     }
 
-    // Update is called once per frame
-    void Update () {
-		
-	}
+    public void OnClick(int no)
+
+    {
+
+        Debug.Log(no);
+
+    }
+
 }
+
+    */
