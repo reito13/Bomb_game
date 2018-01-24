@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using System.Linq;
 
-public class PlayerTransformManager : MonoBehaviour {
+public class PlayerTransformManager : BaseAsyncLoop {
 
 	[SerializeField] private Transform[] playerTransforms = null; //全プレイヤーのTransform
+	[SerializeField] float lerpRate = 15; //2ベクトル間を補間する
 	private Vector3 syncPos; //サーバーからGetした全プレイヤーの座標を格納する変数。座標移動の補間に使用する
 	private float syncRotateY;
 
@@ -13,14 +15,18 @@ public class PlayerTransformManager : MonoBehaviour {
 	private int transformCount; //playerTransformsの配列数
 	private int myPlayerNum; //自分が操作するプレイヤーの番号 例:1なら1P
 
-	[SerializeField] float lerpRate = 15; //2ベクトル間を補間する
+	private string setKey; //データをセットするときのキー
+	private string getKey; //データをゲットするときのキー
+	private string str; //Redisから読み込んだ分割前のプレイヤー情報
+	private float[] splitStr; //プレイヤー情報を分割しfloatにしたもの 要素0がX,1がY,2がZの座標,3がYの角度
 
-	private void Start()
+	protected override void Awake()
 	{
 		transformCount = playerTransforms.Length;
 		myPlayerNum = MainManager.playerNum;
 		myPlayerNum--;
-
+		setKey = "PlayerTransform" + myPlayerNum;
+		getKey = "PlayerTransform" + ((myPlayerNum == 0) ? 1 : 0);
 		Task task = TransformCoroutine();
 	}
 
@@ -34,46 +40,39 @@ public class PlayerTransformManager : MonoBehaviour {
 				LerpRotation(j);
 			}
 		}
-		Debug.Log(playerTransforms[myPlayerNum].eulerAngles.y);
-
 	}
 
-	private async Task TransformCoroutine()
+	protected override async Task TransformCoroutine()
 	{
-		while (true) {
-			await TransformSet();
-			await TransformGet();
+		while (true)
+		{
+			if (RedisSingleton.Instance.connect)
+			{
+				//CountStart();
+				await Set();
+				//CountEnd();
+				await Get();
+			}
 			await Task.Delay(100);
 		}
 	}
 
-	private async Task TransformSet()
+	protected override async Task Set()
 	{
-		Task x = RedisSingleton.Instance.RedisSet("PlayerPositionX," + myPlayerNum.ToString(),(playerTransforms[myPlayerNum].position.x).ToString()); //プレイヤーのX座標をセット
-		Task y = RedisSingleton.Instance.RedisSet("PlayerPositionY," + myPlayerNum.ToString(), (playerTransforms[myPlayerNum].position.y).ToString()); //プレイヤーのY座標をセット
-		Task z = RedisSingleton.Instance.RedisSet("PlayerPositionZ," + myPlayerNum.ToString(), (playerTransforms[myPlayerNum].position.z).ToString()); //プレイヤーのZ座標をセット
-
-		Task roY = RedisSingleton.Instance.RedisSet("PlayerRotationY," + myPlayerNum.ToString(), (playerTransforms[myPlayerNum].eulerAngles.y).ToString()); //プレイヤーのY角度をセット
-		Debug.Log(roY);
-		await Task.WhenAll(x,y,z,roY); //Task待機
+		await RedisSingleton.Instance.RedisSet(setKey, playerTransforms[myPlayerNum].position.x.ToString("f2") + "," + playerTransforms[myPlayerNum].position.y.ToString("f2") + ","
+			+ playerTransforms[myPlayerNum].position.z.ToString("f2") + "," + playerTransforms[myPlayerNum].eulerAngles.y.ToString("f2"));
 	}
 
-	private async Task TransformGet()
+	protected override async Task Get()
 	{
-		for (i = 0; i < transformCount; i++)
-		{
-			if (myPlayerNum != i)
-			{
-				float x = await RedisSingleton.Instance.RedisGet("PlayerPositionX," + i.ToString(), false);
-				float y = await RedisSingleton.Instance.RedisGet("PlayerPositionY," + i.ToString(), false);
-				float z = await RedisSingleton.Instance.RedisGet("PlayerPositionZ," + i.ToString(), false);
+		str = await RedisSingleton.Instance.RedisGet(getKey);
 
-				float roY = await RedisSingleton.Instance.RedisGet("PlayerRotationY," + i.ToString(),false);
+		if (str == null)
+			return;
 
-				syncPos = new Vector3(x, y, z);
-				syncRotateY = roY;
-			}
-		}
+		splitStr = str.Split(',').Select(s => float.Parse(s)).ToArray();
+		syncPos = new Vector3(splitStr[0], splitStr[1], splitStr[2]);
+		syncRotateY = splitStr[3];
 
 	}
 
@@ -88,7 +87,8 @@ public class PlayerTransformManager : MonoBehaviour {
 		//quaternion.y = Mathf.Lerp(quaternion.y,syncRotateY,Time.deltaTime * lerpRate);
 		//quaternion.y = syncRotateY;
 		//playerTransforms[num].rotation = Quaternion.Slerp(playerTransforms[num].rotation,quaternion,Time.deltaTime);
-		ro.y = syncRotateY;//Mathf.Lerp(ro.y,syncRotateY,Time.deltaTime * lerpRate);
+		ro.y = syncRotateY;
+		Mathf.Lerp(ro.y,syncRotateY,Time.deltaTime * lerpRate);
 		playerTransforms[num].rotation = Quaternion.Euler(ro);
 	}
 
