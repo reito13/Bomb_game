@@ -1,60 +1,122 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
+using System.Linq;
 
-public class BombManager : MonoBehaviour {
+public class BombManager : BaseAsyncLoop {
 
 	public Transform[] bombs = new Transform[6];
+	private Bomb[] bombScripts = new Bomb[6];
 
-	private int i;
-	private int mainNum;
+	[SerializeField] float lerpRate = 15; //2ベクトル間を補間する
 
-	private void Awake()
+	private int i,j;
+	
+	private int myPlayerNum;
+	private int otherPlayerNum;
+
+	private string setKey; //データをセットするときのキー
+	private string getKey; //データをゲットするときのキー
+	private string str; //Redisから読み込んだ分割前のプレイヤー情報
+	private float[] splitStr; //プレイヤー情報を分割しfloatにしたもの 要素0がX,1がY,2がZの座標,3がYの角度
+
+	private Vector3[] syncPos = new Vector3[3];//サーバーからGetした全プレイヤーの座標を格納する変数。座標同期の補間に使用する
+	private Vector3[] syncRo = new Vector3[3];//サーバーからGetした全プレイヤーの角度を格納する変数。角度同期の補間に使用する
+
+	protected override void Awake()
 	{
-		mainNum = MainManager.playerNum - 1;	
+		for (i = 0; i < 6; i++)
+		{
+			bombScripts[i] = bombs[i].GetComponent<Bomb>();
+		}
+
+		myPlayerNum = MainManager.playerNum;
+		myPlayerNum--;
+		otherPlayerNum = (myPlayerNum == 0) ? 3 : 0;
+
+		setKey = "Bomb" + myPlayerNum;
+		getKey = "Bomb" + ((myPlayerNum == 0) ? 1 : 0);
+
+		myPlayerNum *= 3;
+		Task task = TransformCoroutine();
 	}
+
 	private void FixedUpdate()
 	{
-		TransformSet();
-		TransformGet();
-	}
-
-	private async void TransformSet()
-	{
-		for (i = mainNum * 3; i < 3 + (mainNum * 3); i++) //1Pのときはbombs[0~2]、2Pのときはbombs[3~5]に処理を行う
+		for (int i = otherPlayerNum; i < otherPlayerNum + 3; i++)
 		{
-			if(bombs[i] != null)
-			{
-				Debug.Log(i);
-				await RedisSingleton.Instance.RedisSet("Bomb,X," + i.ToString(), bombs[i].position.x.ToString());
-				await RedisSingleton.Instance.RedisSet("Bomb,Y," + i.ToString(), bombs[i].position.y.ToString());
-				await RedisSingleton.Instance.RedisSet("Bomb,Z," + i.ToString(), bombs[i].position.z.ToString());
-			}
+			LerpPosition(i);
+			LerpRotation(i);
 		}
 	}
-	private async void TransformGet()
-	{
-		for (i = mainNum * 3; i < 3 + (mainNum * 3); i++) //1Pのときはbombs[0~2]、2Pのときはbombs[3~5]に処理を行う
-		{
-			if (bombs[i] != null)
-			{
-				Debug.Log(i);
-				float x = await RedisSingleton.Instance.RedisGet("Bomb,X," + i.ToString(),false);
-				float y = await RedisSingleton.Instance.RedisGet("Bomb,Y," + i.ToString(),false);
-				float z = await RedisSingleton.Instance.RedisGet("Bomb,Z," + i.ToString(),false);
 
-				Vector3 pos = new Vector3(x,y,z);
-				if(pos == null)
-				{
-					Debug.Log("posがnullです");
-				}
-				if(bombs[i] == null)
-				{
-					Debug.Log("bombs[i].transform.positionがnullです");
-				}
-				bombs[i].transform.position = pos;
+	protected override async Task TransformCoroutine()
+	{
+		while (true)
+		{
+			if (RedisSingleton.Instance.connect)
+			{
+				CountStart();
+				await Set();
+				await Get();
+				CountEnd();
 			}
+			await Task.Delay(100);
 		}
+	}
+
+	protected override async Task Set()
+	{
+		await RedisSingleton.Instance.RedisSet(setKey,bombs[myPlayerNum].position.x.ToString("f2") + "," + bombs[myPlayerNum].position.y.ToString("f2") + "," + bombs[myPlayerNum].position.z.ToString("f2") + "," +
+			bombs[myPlayerNum].eulerAngles.x.ToString("f2") + "," + bombs[myPlayerNum].eulerAngles.y.ToString("f2") + "," + bombs[myPlayerNum].eulerAngles.z.ToString("f2") + "," +
+			bombs[myPlayerNum+1].position.x.ToString("f2") + "," + bombs[myPlayerNum+1].position.y.ToString("f2") + "," + bombs[myPlayerNum+1].position.z.ToString("f2") + "," +
+			bombs[myPlayerNum+1].eulerAngles.x.ToString("f2") + "," + bombs[myPlayerNum+1].eulerAngles.y.ToString("f2") + "," + bombs[myPlayerNum+1].eulerAngles.z.ToString("f2") + "," +
+			bombs[myPlayerNum+2].position.x.ToString("f2") + "," + bombs[myPlayerNum+2].position.y.ToString("f2") + "," + bombs[myPlayerNum+2].position.z.ToString("f2") + "," +
+			bombs[myPlayerNum+2].eulerAngles.x.ToString("f2") + "," + bombs[myPlayerNum+2].eulerAngles.y.ToString("f2") + "," + bombs[myPlayerNum+2].eulerAngles.z.ToString("f2"));
+	}
+
+	protected override async Task Get()
+	{ 
+		str = await RedisSingleton.Instance.RedisGet(getKey);
+
+		if (str == null)
+			return;
+
+		splitStr = str.Split(',').Select(s => float.Parse(s)).ToArray();
+
+		syncPos[0] = new Vector3(splitStr[0],splitStr[1],splitStr[2]);
+		syncRo[0] = new Vector3(splitStr[3], splitStr[4], splitStr[5]);
+		syncPos[1] = new Vector3(splitStr[6], splitStr[7], splitStr[8]);
+		syncRo[1] = new Vector3(splitStr[9], splitStr[10], splitStr[11]);
+		syncPos[2] = new Vector3(splitStr[12], splitStr[13], splitStr[14]);
+		syncRo[2] = new Vector3(splitStr[15], splitStr[16], splitStr[17]);
+
+	}
+
+	private async Task GetExplosion(int num)
+	{
+		string setExplosion = await RedisSingleton.Instance.RedisGet("Bomb,SetExplosion," + num.ToString());
+		if (setExplosion == "true" && bombs[num].gameObject.activeSelf)
+		{
+			bombScripts[num].Explosion();
+		}
+	}
+
+	private void LerpPosition(int num) //プレイヤーの移動を補間する処理。TransformGet()のfor文から呼び出され、numにはfor文のiが入る
+	{
+		bombs[num].position = Vector3.Lerp(bombs[num].position, syncPos[num - otherPlayerNum], Time.deltaTime * lerpRate);
+		Debug.Log(bombs[num].gameObject.name + syncPos[num - otherPlayerNum]);
+	}
+
+	private void LerpRotation(int num)
+	{
+		Vector3 ro = bombs[num].eulerAngles;
+
+			ro = syncRo[num - otherPlayerNum];
+
+		//Mathf.Lerp(ro.y, syncRotateY, Time.deltaTime * lerpRate);
+		bombs[num].rotation = Quaternion.Euler(ro);
 	}
 
 }

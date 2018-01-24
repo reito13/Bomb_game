@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	public int number = 1;
+	[Range(1,4)] public int number = 1;
 
 	private Transform myTransform;
 	[SerializeField] private Transform rotateTransform = null;
@@ -16,8 +16,8 @@ public class Player : MonoBehaviour {
 
 	private Vector3 startPosition;
 
-	[SerializeField] private GroundCheck groundScript = null;
-	[SerializeField] private CameraController cameraScript = null;
+	private GroundCheck groundScript = null;
+	private CameraController cameraScript = null;
 
 	[SerializeField] private float speed = 10.0f;
 	[SerializeField] private float jumpForce = 10.0f;
@@ -42,13 +42,16 @@ public class Player : MonoBehaviour {
 	public int BombCount
 	{
 		set { bombCount += value;
+			if (bombCount > 3)
+				bombCount = 3;
 			MainManager.Instance.BombUpdate(bombCount);
 
 		}
 		get { return bombCount; }
 	}
 
-	[SerializeField] private GameObject bombPrefab = null;
+	[SerializeField] private GameObject[] bombPrefabs = new GameObject[3];
+	private Bomb[] bombScripts = new Bomb[3];
 	[SerializeField] private Transform bombPos = null;
 
 	public bool grounded = false;
@@ -63,6 +66,12 @@ public class Player : MonoBehaviour {
 	private void Awake()
 	{
 		myTransform = GetComponent<Transform>();
+		groundScript = GetComponent<GroundCheck>();
+		cameraScript = GetComponent<CameraController>();
+		for (int i = 0;i<3;i++)
+		{
+			bombScripts[i] = bombPrefabs[i].GetComponent<Bomb>();
+		}
 
 		if (number != MainManager.playerNum)
 		{
@@ -101,10 +110,11 @@ public class Player : MonoBehaviour {
 				AnimationChange(AnimStats.WAIT);
 			}
 
-			if (myTransform.position.y < -10.0f)
-			{
-				Fall();
-			}
+		}
+
+		if (myTransform.position.y < -10.0f)
+		{
+			Fall();
 		}
 	}
 
@@ -148,8 +158,9 @@ public class Player : MonoBehaviour {
 
 			Quaternion bombRo = myTransform.rotation;
 			bombRo.eulerAngles = rotateTransform.eulerAngles;
-			GameObject bomb = Instantiate(bombPrefab, bombPos.position, bombRo) as GameObject;
-			bomb.GetComponent<Bomb>().Set(number,3.0f - time,this);
+
+			bombPrefabs[bombCount - 1].SetActive(true);
+			bombScripts[bombCount - 1].Set(bombPos.position,bombRo,3.0f - time);
 			BombCount = -1;
 		}
 	}

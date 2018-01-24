@@ -322,8 +322,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\FromStore\GE Common Assets\GE Touch Joystick\CrossPlatformInput\Scripts\Editor\CrossPlatformInputInitialize.cs" />
-    <Compile Include="Assets\FromStore\GE Common Assets\GE Touch Joystick\CrossPlatformInput\Scripts\Editor\InputAxisScrollbarCI.cs" />
     <Compile Include="Assets\FromStore\JMO Assets\Cartoon FX Easy Editor\Editor\CFXEasyEditor.cs" />
     <Compile Include="Assets\FromStore\JMO Assets\WarFX\Editor\CFX_SpawnSystemEditor.cs" />
     <Compile Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Shaders\unity5\Editor\CustomMaterialEditor.cs" />
@@ -332,10 +330,6 @@
   <ItemGroup>
     <None Include="Assets\FromStore\Fantasy Skybox FREE\Fog and Ambient reference.txt" />
     <None Include="Assets\FromStore\Fantasy Skybox FREE\Readme.txt" />
-    <None Include="Assets\FromStore\GE Common Assets\GE Touch Joystick\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
-    <None Include="Assets\FromStore\GE Common Assets\GE Touch Joystick\Characters\RollerBall\RollerBallGuidelines.txt" />
-    <None Include="Assets\FromStore\GE Common Assets\GE Touch Joystick\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
-    <None Include="Assets\FromStore\GE Common Assets\Readme.txt" />
     <None Include="Assets\FromStore\GUI Animator\GUI Animator FREE\!How to.txt" />
     <None Include="Assets\FromStore\GUI Animator\GUI Animator FREE\Readme.txt" />
     <None Include="Assets\FromStore\JMO Assets\!JMO Assets Readme.txt" />

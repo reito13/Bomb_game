@@ -16,18 +16,15 @@ public class RedisSingleton : SingletonMonoBehaviour<RedisSingleton>
 
 	private Redis redis;
 
-	private bool connect = false;
+	public bool connect = false;
 
 	private void Awake()
 	{
-		RedisSingleton.Instance.ExampleConnect();
+		ExampleConnect();
 	}
 
 	public async Task RedisSet(string key,string value)
 	{
-		if (!connect)
-			return;
-
 		await redis.Set(key,value);
 	}
 
@@ -48,9 +45,6 @@ public class RedisSingleton : SingletonMonoBehaviour<RedisSingleton>
 	/// 
 	public async Task<float> RedisGet(string key,bool b) //bool b が「true」だと「int型」、「false」だと「float型」が返る
 	{
-		if (!connect)
-			return 0;
-
 		Task<string> getter = redis.Get(key);
 		string data = await getter;
 
