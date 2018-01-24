@@ -57,7 +57,8 @@ public class Player : MonoBehaviour {
 	public bool grounded = false;
 	public bool jumped = false;
 
-	[SerializeField] Animator animator = null;
+	[SerializeField] private Animator animator = null;
+
 	public enum AnimStats
 	{
 		WAIT,RUN,LANDING,JUMP,THROW,DAMAGE,

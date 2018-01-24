@@ -58,7 +58,6 @@ public class InputController : MonoBehaviour
 	{
 		if (await RedisSingleton.Instance.RedisGet("Jump" + number.ToString()) == "true")
 		{
-			Debug.Log("Jump" + number.ToString());
 			await RedisSingleton.Instance.RedisSet("Jump" + number.ToString(), "false");
 			return true;
 		}

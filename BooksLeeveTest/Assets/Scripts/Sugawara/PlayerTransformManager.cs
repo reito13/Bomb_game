@@ -87,8 +87,9 @@ public class PlayerTransformManager : BaseAsyncLoop {
 		//quaternion.y = Mathf.Lerp(quaternion.y,syncRotateY,Time.deltaTime * lerpRate);
 		//quaternion.y = syncRotateY;
 		//playerTransforms[num].rotation = Quaternion.Slerp(playerTransforms[num].rotation,quaternion,Time.deltaTime);
-		ro.y = syncRotateY;
-		Mathf.Lerp(ro.y,syncRotateY,Time.deltaTime * lerpRate);
+
+		//ro.y = syncRotateY;
+		ro.y = Mathf.Lerp(ro.y,syncRotateY,Time.deltaTime * lerpRate);
 		playerTransforms[num].rotation = Quaternion.Euler(ro);
 	}
 
