@@ -24,7 +24,7 @@ public class BombManager : BaseAsyncLoop {
 	private string flagSetKey;
 	private string flagGetKey;
 	private string flagStr;
-	private string[] splitFlagStr;
+	private bool[] splitFlagStr;
 
 	private Vector3[] syncPos = new Vector3[3];//サーバーからGetした全プレイヤーの座標を格納する変数。座標同期の補間に使用する
 	private Vector3[] syncRo = new Vector3[3];//サーバーからGetした全プレイヤーの角度を格納する変数。角度同期の補間に使用する
@@ -55,6 +55,7 @@ public class BombManager : BaseAsyncLoop {
 	{
 		for (int i = otherPlayerNum; i < otherPlayerNum + 3; i++)
 		{
+			Split();
 			LerpPosition(i);
 			LerpRotation(i);
 		}
@@ -77,14 +78,15 @@ public class BombManager : BaseAsyncLoop {
 
 	private async Task FlagCoroutine()
 	{
+
 		while (true)
 		{
 			if (RedisSingleton.Instance.connect)
 			{
-				CountStart();
+				//CountStart();
 				await FlagSet();
 				await FlagGet();
-				CountEnd();
+				//CountEnd();
 			}
 			await Task.Delay(100);
 		}
@@ -103,13 +105,38 @@ public class BombManager : BaseAsyncLoop {
 	protected override async Task Get()
 	{ 
 		str = await RedisSingleton.Instance.RedisGet(getKey);
+	}
 
+	private async Task FlagSet()
+	{
+		await RedisSingleton.Instance.RedisSet(flagSetKey, bombScripts[myPlayerNum].setActive.ToString() + "," + bombScripts[myPlayerNum].setExplosion.ToString()
+			+ "," + bombScripts[myPlayerNum + 1].setActive.ToString() + "," + bombScripts[myPlayerNum + 1].setExplosion.ToString()
+			+ "," + bombScripts[myPlayerNum + 2].setActive.ToString() + "," + bombScripts[myPlayerNum + 2].setExplosion.ToString());
+	}
+
+	private async Task FlagGet()
+	{
+		if (myPlayerNum == 0)
+		{
+			flagStr = await RedisSingleton.Instance.RedisGet(flagSetKey) + "," + await RedisSingleton.Instance.RedisGet(flagGetKey);
+		}
+		else
+		{
+			flagStr = await RedisSingleton.Instance.RedisGet(flagGetKey) + "," + await RedisSingleton.Instance.RedisGet(flagSetKey);
+		}
+
+		FlagCheck();
+
+	}
+
+	private void Split()
+	{
 		if (str == null)
 			return;
 
 		splitStr = str.Split(',').Select(s => float.Parse(s)).ToArray();
 
-		syncPos[0] = new Vector3(splitStr[0],splitStr[1],splitStr[2]);
+		syncPos[0] = new Vector3(splitStr[0], splitStr[1], splitStr[2]);
 		syncRo[0] = new Vector3(splitStr[3], splitStr[4], splitStr[5]);
 		syncPos[1] = new Vector3(splitStr[6], splitStr[7], splitStr[8]);
 		syncRo[1] = new Vector3(splitStr[9], splitStr[10], splitStr[11]);
@@ -118,26 +145,10 @@ public class BombManager : BaseAsyncLoop {
 
 	}
 
-	private async Task FlagSet()
-	{
-		await RedisSingleton.Instance.RedisSet(flagSetKey, bombs[myPlayerNum].gameObject.activeSelf.ToString() + "," + bombScripts[myPlayerNum].setExplosion.ToString()
-			+ "," + bombs[myPlayerNum + 1].gameObject.activeSelf.ToString() + "," + bombScripts[myPlayerNum + 1].setExplosion.ToString()
-			+ "," + bombs[myPlayerNum + 2].gameObject.activeSelf.ToString() + "," + bombScripts[myPlayerNum + 2].setExplosion.ToString());
-	}
-
-	private async Task FlagGet()
-	{
-		flagStr = await RedisSingleton.Instance.RedisGet(flagGetKey);
-		if (flagStr == null)
-			return;
-
-		splitFlagStr = flagStr.Split(',');
-	}
-
 	private async Task GetExplosion(int num)
 	{
 		string setExplosion = await RedisSingleton.Instance.RedisGet("Bomb,SetExplosion," + num.ToString());
-		if (setExplosion == "true" && bombs[num].gameObject.activeSelf)
+		if (setExplosion == "true")
 		{
 			bombScripts[num].Explosion();
 		}
@@ -158,7 +169,24 @@ public class BombManager : BaseAsyncLoop {
 		//ro = syncRo[num - otherPlayerNum];
 
 		//Mathf.Lerp(ro.y, syncRotateY, Time.deltaTime * lerpRate);
-		bombs[num].rotation = Quaternion.Euler(ro);
+		//bombs[num].rotation = Quaternion.Euler(ro);
+		bombs[num].eulerAngles = ro;
 	}
 
+	private void FlagCheck()
+	{
+		if (flagStr == null)
+			return;
+
+		splitFlagStr = flagStr.Split(',').Select(b => bool.Parse(b)).ToArray();
+		Debug.Log(flagStr);
+		for(j = 0; j < 6; j++)
+		{
+			bombs[j].gameObject.SetActive(splitFlagStr[j * 2]);
+			if(splitFlagStr[j*2 + 1] && bombs[j].gameObject.activeSelf)
+			{
+				bombScripts[j].Explosion();
+			}
+		}
+	}
 }

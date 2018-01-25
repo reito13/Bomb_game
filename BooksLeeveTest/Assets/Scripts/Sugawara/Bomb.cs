@@ -15,10 +15,13 @@ public class Bomb : MonoBehaviour
 
 	[SerializeField] Rigidbody rb = null;
 
+	public bool setActive = false;
 	public bool setExplosion = false;
 
 	public void Set(Vector3 pos,Quaternion ro,float time)
 	{
+		setActive = true;
+		gameObject.SetActive(true);
 		transform.position = pos;
 		transform.rotation = ro;
 		power = power * (1 + transform.localRotation.x);
@@ -53,6 +56,7 @@ public class Bomb : MonoBehaviour
 		obj.GetComponent<ExplosionObject>().Set(number);
 
 		Destroy(obj,1.0f);
+		setActive = false;
 		setExplosion = false;
 		gameObject.SetActive(false);
 	}
