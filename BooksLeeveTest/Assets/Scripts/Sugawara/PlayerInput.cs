@@ -32,8 +32,8 @@ public class PlayerInput : MonoBehaviour {
 		{
 			if ((Input.GetButtonDown("Jump")) || (Input.GetButtonDown("R2")))
 			{
-				//player.Jump();
-				inputController.JumpFlagSet(player.number);
+				player.Jump();
+				//inputController.JumpFlagSet(player.number);
 			}
 
 			if ((Input.GetKeyDown(KeyCode.Z)) || (Input.GetButtonDown("R1") || Input.GetMouseButtonDown(0)))

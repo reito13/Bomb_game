@@ -33,7 +33,7 @@ public class ExplosionObject : MonoBehaviour
 		}
 		else if (other.tag == "Bomb")
 		{
-			//other.GetComponent<Bomb>().ExplosionSet();
+			other.GetComponent<Bomb>().ExplosionSet();
 		}
 	}
 

@@ -36,6 +36,7 @@ public class PlayerTransformManager : BaseAsyncLoop {
 		{
 			if (myPlayerNum != j)
 			{
+				Split();
 				LerpPosition(j);
 				LerpRotation(j);
 			}
@@ -67,6 +68,10 @@ public class PlayerTransformManager : BaseAsyncLoop {
 	{
 		str = await RedisSingleton.Instance.RedisGet(getKey);
 
+	}
+
+	private void Split()
+	{
 		if (str == null)
 			return;
 
@@ -90,7 +95,8 @@ public class PlayerTransformManager : BaseAsyncLoop {
 
 		//ro.y = syncRotateY;
 		ro.y = Mathf.Lerp(ro.y,syncRotateY,Time.deltaTime * lerpRate);
-		playerTransforms[num].rotation = Quaternion.Euler(ro);
+		//playerTransforms[num].rotation = Quaternion.Euler(ro);
+		playerTransforms[num].eulerAngles = ro;
 	}
 
 }
