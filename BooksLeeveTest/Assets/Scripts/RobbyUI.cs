@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/*
+using UnityEngine.UI;
+
 
 //マッチングロビー用UI
 
-public class RobbyUI : MonoBehaviour {
+public class RobbyUI : MonoBehaviour
+{
 
-[SerializeField]
+    [SerializeField]
 
     private GameObject btnPref;  //ボタンプレハブ
 
@@ -21,7 +23,7 @@ public class RobbyUI : MonoBehaviour {
 
         //Content取得(ボタンを並べる場所)
 
-        RectTransform content = GameObject.Find("Canvas / Scroll View / Viewport / Content").GetComponent<RectTransform>();
+        RectTransform content = GameObject.Find("Canvas/Scroll View/Viewport/Content").GetComponent<RectTransform>();
 
         //Contentの高さ決定
 
@@ -33,7 +35,7 @@ public class RobbyUI : MonoBehaviour {
 
         content.sizeDelta = new Vector2(0, (btnHeight + btnSpace) * BUTTON_COUNT);
 
-        for (int i = 0; i < BUTTON_COUNT; i++)
+        for (int i = 1; i <= BUTTON_COUNT; i++)
 
         {
 
@@ -49,7 +51,7 @@ public class RobbyUI : MonoBehaviour {
 
             //ボタンのテキスト変更
 
-            btn.transform.GetComponentInChildren<Text>().text = "Btn_"+no.ToString();
+            btn.transform.GetComponentInChildren<Text>().text = "ルーム" + no.ToString();
 
             //ボタンのクリックイベント登録
 
@@ -69,4 +71,4 @@ public class RobbyUI : MonoBehaviour {
 
 }
 
-    */
+
