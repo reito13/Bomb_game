@@ -61,21 +61,6 @@ public class BombManager : BaseAsyncLoop {
 		}
 	}
 
-	protected override async Task TransformCoroutine()
-	{
-		while (true)
-		{
-			if (RedisSingleton.Instance.connect)
-			{
-				//CountStart();
-				await Set();
-				await Get();
-				//CountEnd();
-			}
-			await Task.Delay(100);
-		}
-	}
-
 	private async Task FlagCoroutine()
 	{
 
@@ -92,7 +77,7 @@ public class BombManager : BaseAsyncLoop {
 		}
 	}
 
-	protected override async Task Set()
+	protected override async Task Set(int count)
 	{
 		await RedisSingleton.Instance.RedisSet(setKey,bombs[myPlayerNum].position.x.ToString("f2") + "," + bombs[myPlayerNum].position.y.ToString("f2") + "," + bombs[myPlayerNum].position.z.ToString("f2") + "," +
 			bombs[myPlayerNum].eulerAngles.x.ToString("f2") + "," + bombs[myPlayerNum].eulerAngles.y.ToString("f2") + "," + bombs[myPlayerNum].eulerAngles.z.ToString("f2") + "," +
@@ -102,7 +87,7 @@ public class BombManager : BaseAsyncLoop {
 			bombs[myPlayerNum+2].eulerAngles.x.ToString("f2") + "," + bombs[myPlayerNum+2].eulerAngles.y.ToString("f2") + "," + bombs[myPlayerNum+2].eulerAngles.z.ToString("f2"));
 	}
 
-	protected override async Task Get()
+	protected override async Task Get(int count)
 	{ 
 		str = await RedisSingleton.Instance.RedisGet(getKey);
 	}

@@ -8,6 +8,7 @@ public class BaseAsyncLoop : MonoBehaviour
 
 	private float timer = 0;
 	private bool timerFlag = false;
+    public int count = 0;
 
 	protected virtual void Awake()
 	{
@@ -19,20 +20,21 @@ public class BaseAsyncLoop : MonoBehaviour
 		while (true)
 		{
 			if (RedisSingleton.Instance.connect)
-			{
-				await Set();
-				await Get();
+   			{
+                count++;
+				await Set(count);
+                await Task.Delay(100);
+                await Get(count);
 			}
-			await Task.Delay(100);
 		}
 	}
 
-	protected async virtual Task Set()
+	protected async virtual Task Set(int count)
 	{
 		await Task.Delay(0);
 	}
 
-	protected async virtual Task Get()
+	protected async virtual Task Get(int count)
 	{
 		await Task.Delay(0);
 	}

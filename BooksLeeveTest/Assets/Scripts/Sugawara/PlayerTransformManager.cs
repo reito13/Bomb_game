@@ -6,8 +6,8 @@ using System.Linq;
 
 public class PlayerTransformManager : BaseAsyncLoop {
 
-	[SerializeField] private Transform[] playerTransforms = null; //全プレイヤーのTransform
-	[SerializeField] float lerpRate = 15; //2ベクトル間を補間する
+	[System.NonSerialized] public Transform[] playerTransforms = null; //全プレイヤーのTransform
+	[System.NonSerialized] public float lerpRate = 15; //2ベクトル間を補間する
 	private Vector3 syncPos; //サーバーからGetした全プレイヤーの座標を格納する変数。座標移動の補間に使用する
 	private float syncRotateY;
 
@@ -20,8 +20,19 @@ public class PlayerTransformManager : BaseAsyncLoop {
 	private string str; //Redisから読み込んだ分割前のプレイヤー情報
 	private float[] splitStr; //プレイヤー情報を分割しfloatにしたもの 要素0がX,1がY,2がZの座標,3がYの角度
 
-	protected override void Awake()
+    [SerializeField] private Vector3 pos1;
+    [SerializeField] private Vector3 pos2;
+    [SerializeField] private float roY1;
+    [SerializeField] private float roY2;
+
+    protected override void Awake()
 	{
+        pos1 = playerTransforms[0].position;
+        pos2 = playerTransforms[1].position;
+        roY1 = playerTransforms[0].eulerAngles.y;
+        roY2 = playerTransforms[1].eulerAngles.y;
+
+
 		transformCount = playerTransforms.Length;
 		myPlayerNum = MainManager.playerNum;
 		myPlayerNum--;
@@ -32,7 +43,12 @@ public class PlayerTransformManager : BaseAsyncLoop {
 
 	private void FixedUpdate()
 	{
-		for (j = 0; j < transformCount; j++)
+        pos1 = playerTransforms[0].position;
+        pos2 = playerTransforms[1].position;
+        roY1 = playerTransforms[0].eulerAngles.y;
+        roY2 = playerTransforms[1].eulerAngles.y;
+
+        for (j = 0; j < transformCount; j++)
 		{
 			if (myPlayerNum != j)
 			{
@@ -43,28 +59,13 @@ public class PlayerTransformManager : BaseAsyncLoop {
 		}
 	}
 
-	protected override async Task TransformCoroutine()
-	{
-		while (true)
-		{
-			if (RedisSingleton.Instance.connect)
-			{
-				//CountStart();
-				await Set();
-				//CountEnd();
-				await Get();
-			}
-			await Task.Delay(100);
-		}
-	}
-
-	protected override async Task Set()
+	protected override async Task Set(int count)
 	{
 		await RedisSingleton.Instance.RedisSet(setKey, playerTransforms[myPlayerNum].position.x.ToString("f2") + "," + playerTransforms[myPlayerNum].position.y.ToString("f2") + ","
 			+ playerTransforms[myPlayerNum].position.z.ToString("f2") + "," + playerTransforms[myPlayerNum].eulerAngles.y.ToString("f2"));
 	}
 
-	protected override async Task Get()
+	protected override async Task Get(int count)
 	{
 		str = await RedisSingleton.Instance.RedisGet(getKey);
 
