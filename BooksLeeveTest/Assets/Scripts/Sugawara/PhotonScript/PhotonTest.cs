@@ -26,8 +26,14 @@ public class PhotonTest :Photon.MonoBehaviour
 	{
 		Debug.Log("ルームへ入室しました。");
 
-		GameObject player1 = PhotonNetwork.Instantiate("1Player", playerPosition[0], transform.rotation, 0);
-		GameObject player2 = PhotonNetwork.Instantiate("2Player", playerPosition[1], transform.rotation, 0);
+		if (!GameObject.Find("1Player"))
+		{
+			GameObject player1 = PhotonNetwork.Instantiate("1Player", playerPosition[0], transform.rotation, 0);
+		}
+		else
+		{
+			GameObject player2 = PhotonNetwork.Instantiate("2Player", playerPosition[1], transform.rotation, 0);
+		}
 	}
 
 	// ルームの入室に失敗すると呼ばれる
