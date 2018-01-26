@@ -10,13 +10,6 @@ public class PlayerInput : MonoBehaviour {
 	private bool bombSet = false;
 	private float bombTime = 0.0f;
 
-	private InputController inputController;
-
-	private void Awake()
-	{
-		inputController = GetComponent<InputController>();
-	}
-
 	private void Update()
 	{
 		if (!player.Control)
@@ -51,7 +44,6 @@ public class PlayerInput : MonoBehaviour {
 		if (bombSet)
 			bombTime += Time.deltaTime;
 
-		JumpInputGet();
 	}
 
 	private void MoveInput()
@@ -70,11 +62,4 @@ public class PlayerInput : MonoBehaviour {
 		}
 	}
 
-	private async void JumpInputGet()
-	{
-		if (await inputController.JumpFlagGet(player.number))
-		{
-			player.Jump();
-		}
-	}
 }

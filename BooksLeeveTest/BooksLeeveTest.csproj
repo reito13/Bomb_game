@@ -480,6 +480,7 @@
     <Compile Include="Assets\Scripts\Sugawara\Manager\TitleSceneManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Manager\UIManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\MonoBehaviorExtentsion.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\PhotonScript\PhotonTest.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Player.cs" />
     <Compile Include="Assets\Scripts\Sugawara\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Sugawara\PlayerTransformManager.cs" />
