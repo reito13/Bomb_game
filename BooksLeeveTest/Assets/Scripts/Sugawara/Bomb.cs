@@ -18,6 +18,11 @@ public class Bomb : MonoBehaviour
 	public bool setActive = false;
 	public bool setExplosion = false;
 
+	private void Awake()
+	{
+		transform.parent = GameObject.Find("Bombs").transform;
+	}
+
 	public void Set(Vector3 pos,Quaternion ro,float time)
 	{
 		setActive = true;
@@ -41,7 +46,8 @@ public class Bomb : MonoBehaviour
 		if (!gameObject.activeSelf)
 			return;
 
-		setExplosion = true;
+		//setExplosion = true;
+		Explosion();
 	}
 
 	public void Explosion()
