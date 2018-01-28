@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class JsonTest : MonoBehaviour {
 
-    public string GetJson(AsyncPlayer player)
+    public string GetJson(AsyncPlayerData playerData) //AsyncPlayerクラスを渡すことで、同期させたい変数をJson形式にしてstring型で返す
     {
-        return JsonUtility.ToJson(player);
+        return JsonUtility.ToJson(playerData);
     }
 
-    public AsyncPlayer GetClass(string json)
+    public AsyncPlayerData GetClass(string json) //Json形式のstringを渡すことで、Json形式からAsyncPlayerクラスに戻して返す
     {
-        return JsonUtility.FromJson<AsyncPlayer>(json);
+        return JsonUtility.FromJson<AsyncPlayerData>(json);
     }
+
+	public Vector3 GetPosition(string json)
+	{
+		AsyncPlayerData asyncPlayer = JsonUtility.FromJson<AsyncPlayerData>(json);
+		return asyncPlayer.syncPos;
+	}
+
+	public float GetEularAngelY(string json)
+	{
+		AsyncPlayerData asyncPlayer = JsonUtility.FromJson<AsyncPlayerData>(json);
+		return asyncPlayer.syncRoY;
+	}
 
 }
