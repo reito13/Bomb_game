@@ -365,11 +365,11 @@ GameObject:
   - component: {fileID: 114086178063874072}
   m_Layer: 10
   m_Name: Bomb
-  m_TagString: Bomb
+  m_TagString: PhotonBomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1664187049505868
 GameObject:
   m_ObjectHideFlags: 1

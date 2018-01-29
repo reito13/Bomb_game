@@ -12,7 +12,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 	[SerializeField] private GameObject cameraObj = null;
 
-	private Vector3 moveDir;
+	public Vector3 moveDir;
 
 	private Vector3 startPosition;
 
@@ -57,7 +57,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		get { return bombCount; }
 	}
 
-	[System.NonSerialized] public GameObject[] bombPrefabs = new GameObject[3];
+	public GameObject[] bombPrefabs = new GameObject[3];
 	[System.NonSerialized] public PhotonBomb[] bombScripts = new PhotonBomb[3];
 	[SerializeField] private Transform bombPos = null;
 
@@ -71,7 +71,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		WAIT, RUN, LANDING, JUMP, THROW, DAMAGE,
 	}
 
-	private void Set()
+	private void Awake()
 	{
 		photonTransformView = GetComponent<PhotonTransformView>();
 		photonView = PhotonView.Get(this);
@@ -86,14 +86,10 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		myTransform = GetComponent<Transform>();
 		groundScript = GetComponent<GroundCheck>();
 		cameraScript = GetComponent<CameraController>();
+
 		for (int i = 0; i < 3; i++)
 		{
 			bombScripts[i] = bombPrefabs[i].GetComponent<PhotonBomb>();
-		}
-
-		if (number != MainManager.playerNum)
-		{
-			cameraObj.SetActive(false);
 		}
 	}
 
@@ -107,15 +103,19 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 	private void FixedUpdate()
 	{
-		if (photonView.isMine)
+		if (!photonView.isMine)
 		{
-			if (GameStatusManager.Instance.GameEnd)
-				return;
-
-			Move();
-			Rotate();
-			GroundCheck();
+			cameraObj.SetActive(false);
+			return;
 		}
+
+		if (GameStatusManager.Instance.GameEnd)
+			return;
+
+		Move();
+		Rotate();
+		GroundCheck();
+
 	}
 
 	private void Move()
@@ -155,23 +155,21 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			jumped = false;
 		}
 	}
-	[PunRPC]
 	public void Jump()
 	{
-		if (photonView.isMine)
+		if (!photonView.isMine)
+			return;
+
+		if (grounded || !jumped)
 		{
+			if (!grounded)
+				jumped = true;
+			myRb.velocity = new Vector3(myRb.velocity.x, 0, myRb.velocity.z);
+			myRb.AddForce(Vector3.up * jumpForce);
 
-			if (grounded || !jumped)
-			{
-				if (!grounded)
-					jumped = true;
-				myRb.velocity = new Vector3(myRb.velocity.x, 0, myRb.velocity.z);
-				myRb.AddForce(Vector3.up * jumpForce);
+			//AnimationChange(AnimStats.JUMP);
+			SoundManager.Instance.PlaySE("Jump");
 
-				//AnimationChange(AnimStats.JUMP);
-				SoundManager.Instance.PlaySE("Jump");
-
-			}
 		}
 	}
 
@@ -252,15 +250,20 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		}
 	}
 
-	private void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+	{
 		if (stream.isWriting)
 		{
-			stream.SendNext(myRb.velocity);
+			stream.SendNext(bombPrefabs[0].activeSelf);
+			stream.SendNext(bombPrefabs[1].activeSelf);
+			stream.SendNext(bombPrefabs[2].activeSelf);
 		}
 		else
 		{
-			myRb.velocity = (Vector3)stream.ReceiveNext();
+			//データの受信
+			bombPrefabs[0].SetActive((bool)stream.ReceiveNext());
+			bombPrefabs[1].SetActive((bool)stream.ReceiveNext());
+			bombPrefabs[2].SetActive((bool)stream.ReceiveNext());
 		}
 	}
-
 }

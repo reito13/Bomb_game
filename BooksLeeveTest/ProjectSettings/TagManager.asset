@@ -9,6 +9,8 @@ TagManager:
   - SoundManager
   - FxTemporaire
   - StageObject
+  - PhotonBomb
+  - PhotonPlayer
   layers:
   - Default
   - TransparentFX

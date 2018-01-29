@@ -491,6 +491,7 @@
     <Compile Include="Assets\Scripts\Sugawara\Player.cs" />
     <Compile Include="Assets\Scripts\Sugawara\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Sugawara\PlayerTransformManager.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\SetTest.cs" />
     <Compile Include="Assets\Scripts\Sugawara\SyncPlayer.cs" />
     <Compile Include="Assets\Scripts\UredisTest.cs" />
   </ItemGroup>

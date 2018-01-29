@@ -10,7 +10,7 @@ public class PhotonBomb : Photon.MonoBehaviour {
 	[SerializeField] GameObject explosion = null;
 	[SerializeField] GameObject explosion2 = null;
 
-	[SerializeField] private PhotonPlayerController playerScript = null;
+	[SerializeField] public PhotonPlayerController playerScript = null;
 	[SerializeField] private int number = 0;
 
 	[SerializeField] Rigidbody rb = null;
@@ -28,16 +28,12 @@ public class PhotonBomb : Photon.MonoBehaviour {
 			rb.isKinematic = true;
 			return;
 		}
-		transform.parent = GameObject.Find("Bombs").transform;
+		//transform.parent = GameObject.Find("Bombs").transform;
 	}
 
 	public void Set(Vector3 pos, Quaternion ro, float time)
 	{
 		photonView = PhotonView.Get(this);
-		if (!photonView.isMine)
-		{
-			return;
-		}
 		setActive = true;
 		gameObject.SetActive(true);
 		transform.position = pos;
@@ -60,9 +56,9 @@ public class PhotonBomb : Photon.MonoBehaviour {
 			return;
 
 		//setExplosion = true;
-		Explosion();
+		photonView.RPC("Explosion",PhotonTargets.All);
 	}
-
+	[PunRPC]
 	public void Explosion()
 	{
 		SoundManager.Instance.PlaySE("Explosion");
