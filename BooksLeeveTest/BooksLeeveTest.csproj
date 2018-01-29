@@ -476,7 +476,9 @@
     <Compile Include="Assets\Scripts\Sugawara\Manager\TitleSceneManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Manager\UIManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\MonoBehaviorExtentsion.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\PhotonScript\PhotonBomb.cs" />
     <Compile Include="Assets\Scripts\Sugawara\PhotonScript\PhotonPlayerController.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\PhotonScript\PhotonPlayerInput.cs" />
     <Compile Include="Assets\Scripts\Sugawara\PhotonScript\PhotonTest.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Player.cs" />
     <Compile Include="Assets\Scripts\Sugawara\PlayerInput.cs" />

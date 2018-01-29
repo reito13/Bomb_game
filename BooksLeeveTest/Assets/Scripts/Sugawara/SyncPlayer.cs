@@ -47,8 +47,8 @@ public class SyncPlayer : BaseAsyncLoop {
 
 	protected override async Task TransformCoroutine()
 	{
-		//await RedisSingleton.Instance.RedisSet(count + setKey, jsonSet);
-		//await RedisSingleton.Instance.RedisSet(count + setKey, jsonSet);
+		await RedisSingleton.Instance.RedisSet(count + setKey, jsonSet);
+		await RedisSingleton.Instance.RedisSet(count + setKey, jsonSet);
 
 		while (true)
 		{
@@ -56,10 +56,9 @@ public class SyncPlayer : BaseAsyncLoop {
 			count++;
 			Debug.Log(count);
 			//await Set(count);
-			//await RedisSingleton.Instance.RedisSet(count + setKey, jsonSet);
-			Debug.Log("a");
+			await RedisSingleton.Instance.RedisSet(count + setKey, jsonSet);
 			await Task.Delay(100);
-			//jsonGet = await RedisSingleton.Instance.RedisGet(count + getKey);
+			jsonGet = await RedisSingleton.Instance.RedisGet(count + getKey);
 			Debug.Log(jsonGet);
 			//await Get(count);
 			CountEnd();

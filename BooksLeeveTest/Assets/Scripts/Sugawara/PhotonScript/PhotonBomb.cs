@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
-{
+public class PhotonBomb : Photon.MonoBehaviour {
+
 	[SerializeField] float power = 10.0f;
 	[SerializeField] float rotatePower = 10.0f;
 
 	[SerializeField] GameObject explosion = null;
 	[SerializeField] GameObject explosion2 = null;
 
-	[SerializeField] private Player playerScript = null;
+	[SerializeField] private PhotonPlayerController playerScript = null;
 	[SerializeField] private int number = 0;
 
 	[SerializeField] Rigidbody rb = null;
@@ -18,22 +18,35 @@ public class Bomb : MonoBehaviour
 	public bool setActive = false;
 	public bool setExplosion = false;
 
+	private PhotonView photonView;
+
 	private void Awake()
 	{
+		photonView = PhotonView.Get(this);
+		if (!photonView.isMine)
+		{
+			rb.isKinematic = true;
+			return;
+		}
 		transform.parent = GameObject.Find("Bombs").transform;
 	}
 
-	public void Set(Vector3 pos,Quaternion ro,float time)
+	public void Set(Vector3 pos, Quaternion ro, float time)
 	{
+		photonView = PhotonView.Get(this);
+		if (!photonView.isMine)
+		{
+			return;
+		}
 		setActive = true;
 		gameObject.SetActive(true);
 		transform.position = pos;
 		transform.rotation = ro;
 		power = power * (1 + transform.localRotation.x);
 		rb.AddForce(transform.forward * power);
-		rb.angularVelocity = new Vector3(-1,0,0) * rotatePower;
-		Invoke("GetHit",0.3f);
-		Invoke("Explosion", time);
+		rb.angularVelocity = new Vector3(-1, 0, 0) * rotatePower;
+		Invoke("GetHit", 0.3f);
+		Invoke("ExplosionSet", time);
 	}
 
 	private void GetHit()
@@ -56,12 +69,12 @@ public class Bomb : MonoBehaviour
 
 		playerScript.BombCount = 1;
 
-		GameObject obj = Instantiate(explosion, transform.position, transform.rotation)as GameObject;
+		GameObject obj = Instantiate(explosion, transform.position, transform.rotation) as GameObject;
 		obj.GetComponent<ExplosionStage>().Set(number);
-		obj = Instantiate(explosion2,transform.position,transform.rotation)as GameObject;
+		obj = Instantiate(explosion2, transform.position, transform.rotation) as GameObject;
 		obj.GetComponent<ExplosionObject>().Set(number);
 
-		Destroy(obj,1.0f);
+		Destroy(obj, 1.0f);
 		setActive = false;
 		setExplosion = false;
 		gameObject.SetActive(false);

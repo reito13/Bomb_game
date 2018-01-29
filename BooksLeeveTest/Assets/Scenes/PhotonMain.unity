@@ -1256,6 +1256,7 @@ GameObject:
   - component: {fileID: 860629194}
   - component: {fileID: 860629195}
   - component: {fileID: 860629196}
+  - component: {fileID: 860629197}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1364,6 +1365,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: 5
+--- !u!81 &860629197
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 860629189}
+  m_Enabled: 1
 --- !u!1 &897284773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,6 +1703,16 @@ Prefab:
     - target: {fileID: 4539808846046482, guid: 568e2993eb5bae94bbacd5dff02fc956, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 82491661072355966, guid: 568e2993eb5bae94bbacd5dff02fc956,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82063596732839322, guid: 568e2993eb5bae94bbacd5dff02fc956,
+        type: 2}
+      propertyPath: m_Volume
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 568e2993eb5bae94bbacd5dff02fc956, type: 2}

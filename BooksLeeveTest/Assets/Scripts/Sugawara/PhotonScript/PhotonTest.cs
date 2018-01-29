@@ -5,6 +5,9 @@ public class PhotonTest :Photon.MonoBehaviour
 {
 
 	[SerializeField] private Vector3[] playerPosition;
+	private PhotonPlayerController photonPlayer;
+	private GameObject[] bombs = new GameObject[3];
+	private PhotonBomb[] bombScripts = new PhotonBomb[3];
 
 	void Start()
 	{
@@ -26,7 +29,18 @@ public class PhotonTest :Photon.MonoBehaviour
 	{
 		Debug.Log("ルームへ入室しました。");
 
-		GameObject player1 = PhotonNetwork.Instantiate("Player", playerPosition[0], transform.rotation, 0);
+		for (int i = 0; i < 3; i++)
+		{
+			bombs[i] = PhotonNetwork.Instantiate("Bomb", transform.position, transform.rotation, 0);
+			bombScripts[i] = bombs[i].GetComponent<PhotonBomb>();
+		}
+
+		GameObject player = PhotonNetwork.Instantiate("Player", playerPosition[0], transform.rotation, 0);
+
+		for (int i = 0; i < 3; i++)
+		{
+			photonPlayer.bombPrefabs[i] = bombs[i];
+		}
 	}
 
 	// ルームの入室に失敗すると呼ばれる

@@ -308,9 +308,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4920633690445838}
-  - component: {fileID: 114924707538035412}
   - component: {fileID: 54251632547323676}
   - component: {fileID: 136754162727594314}
+  - component: {fileID: 114461544859791638}
+  - component: {fileID: 114094479599130624}
+  - component: {fileID: 114042996094951912}
   m_Layer: 10
   m_Name: CarotoBomb 1
   m_TagString: Bomb
@@ -441,9 +443,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4291809253624632}
-  - component: {fileID: 114472056565576998}
   - component: {fileID: 54374786587947066}
   - component: {fileID: 136375169169011326}
+  - component: {fileID: 114042169520827510}
+  - component: {fileID: 114569182105562778}
+  - component: {fileID: 114641071832457448}
   m_Layer: 10
   m_Name: CarotoBomb 3
   m_TagString: Bomb
@@ -1418,13 +1422,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4787878829635560}
-  - component: {fileID: 114972071414102640}
-  - component: {fileID: 114699660604538378}
   - component: {fileID: 54901442146172994}
   - component: {fileID: 114286947785315858}
   - component: {fileID: 114696723830012826}
   - component: {fileID: 114717926848508716}
   - component: {fileID: 114176912759067964}
+  - component: {fileID: 114528066222387196}
+  - component: {fileID: 114016482263889198}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1636,7 +1640,6 @@ GameObject:
   - component: {fileID: 4037398609056344}
   - component: {fileID: 20996378470008110}
   - component: {fileID: 124073622911745572}
-  - component: {fileID: 81039598895417488}
   m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1880,9 +1883,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4662538776683150}
-  - component: {fileID: 114674859963038436}
   - component: {fileID: 54915500654945788}
   - component: {fileID: 136179953333313432}
+  - component: {fileID: 114213830108485116}
+  - component: {fileID: 114292319433966764}
+  - component: {fileID: 114959627331873788}
   m_Layer: 10
   m_Name: CarotoBomb 2
   m_TagString: Bomb
@@ -8198,13 +8203,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!81 &81039598895417488
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1661720529770566}
-  m_Enabled: 1
 --- !u!95 &95135729476858354
 Animator:
   serializedVersion: 3
@@ -8273,12 +8271,71 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114176912759067964
+--- !u!114 &114016482263889198
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598413722231954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bdb9611f8947db419a4b8b534cd98af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 114528066222387196}
+  cameraScript: {fileID: 114696723830012826}
+--- !u!114 &114042169520827510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1169792768504842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 114569182105562778}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
+--- !u!114 &114042996094951912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159488757480042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043a7e6b3c83ee043a8558be2f12048b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 300
+  rotatePower: -30
+  explosion: {fileID: 1599172921027072, guid: 73efc9bb9df0a8547abfa59756202760, type: 2}
+  explosion2: {fileID: 1988139470245746, guid: 686416fb3ec0d33459fa35211611927f, type: 2}
+  playerScript: {fileID: 114528066222387196}
+  number: 1
+  rb: {fileID: 54251632547323676}
+  setActive: 0
+  setExplosion: 0
+--- !u!114 &114094479599130624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159488757480042}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
@@ -8290,7 +8347,7 @@ MonoBehaviour:
     TeleportIfDistanceGreaterThan: 3
     InterpolateOption: 4
     InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
+    InterpolateLerpSpeed: 10
     InterpolateMoveTowardsAcceleration: 2
     InterpolateMoveTowardsDeceleration: 2
     InterpolateSpeedCurve:
@@ -8338,6 +8395,97 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &114176912759067964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598413722231954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 4
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 10
+    InterpolateMoveTowardsAcceleration: 2
+    InterpolateMoveTowardsDeceleration: 2
+    InterpolateSpeedCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: -1
+        value: 0
+        inSlope: 0
+        outSlope: Infinity
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 4
+        value: 4
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+    DrawErrorGizmo: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 2
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
+--- !u!114 &114213830108485116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1781676495173954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 114292319433966764}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!114 &114286947785315858
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8351,27 +8499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayPosition: {fileID: 4476326436708886}
   rayRange: 0.5
---- !u!114 &114472056565576998
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1169792768504842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f09f42cea0311604b97940332e304cbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  power: 300
-  rotatePower: -30
-  explosion: {fileID: 1599172921027072, guid: 73efc9bb9df0a8547abfa59756202760, type: 2}
-  explosion2: {fileID: 1988139470245746, guid: 686416fb3ec0d33459fa35211611927f, type: 2}
-  playerScript: {fileID: 114972071414102640}
-  number: 1
-  rb: {fileID: 54374786587947066}
-  setActive: 0
-  setExplosion: 0
---- !u!114 &114674859963038436
+--- !u!114 &114292319433966764
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -8379,16 +8507,199 @@ MonoBehaviour:
   m_GameObject: {fileID: 1781676495173954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f09f42cea0311604b97940332e304cbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 4
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 10
+    InterpolateMoveTowardsAcceleration: 2
+    InterpolateMoveTowardsDeceleration: 2
+    InterpolateSpeedCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: -1
+        value: 0
+        inSlope: 0
+        outSlope: Infinity
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 4
+        value: 4
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+    DrawErrorGizmo: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 2
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
+--- !u!114 &114461544859791638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1159488757480042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 114094479599130624}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
+--- !u!114 &114528066222387196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598413722231954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aed76aedbfff524abd8d84cf81fa31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  number: 1
+  rotateTransform: {fileID: 4671421466835886}
+  cameraObj: {fileID: 1661720529770566}
+  speed: 0.05
+  jumpForce: 300
+  bombPower: 7
+  control: 1
+  bombCount: 3
+  bombPrefabs:
+  - {fileID: 1159488757480042}
+  - {fileID: 1781676495173954}
+  - {fileID: 1169792768504842}
+  bombPos: {fileID: 4214513548417600}
+  grounded: 0
+  jumped: 0
+  animator: {fileID: 95374013476136654}
+--- !u!114 &114569182105562778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1169792768504842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 4
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 10
+    InterpolateMoveTowardsAcceleration: 2
+    InterpolateMoveTowardsDeceleration: 2
+    InterpolateSpeedCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: -1
+        value: 0
+        inSlope: 0
+        outSlope: Infinity
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 4
+        value: 4
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+    DrawErrorGizmo: 1
+  m_RotationModel:
+    SynchronizeEnabled: 1
+    InterpolateOption: 2
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
+--- !u!114 &114641071832457448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1169792768504842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043a7e6b3c83ee043a8558be2f12048b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   power: 300
   rotatePower: -30
   explosion: {fileID: 1599172921027072, guid: 73efc9bb9df0a8547abfa59756202760, type: 2}
   explosion2: {fileID: 1988139470245746, guid: 686416fb3ec0d33459fa35211611927f, type: 2}
-  playerScript: {fileID: 114972071414102640}
+  playerScript: {fileID: 114528066222387196}
   number: 1
-  rb: {fileID: 54915500654945788}
+  rb: {fileID: 54374786587947066}
   setActive: 0
   setExplosion: 0
 --- !u!114 &114696723830012826
@@ -8408,19 +8719,6 @@ MonoBehaviour:
   roteteLimitX: 0
   charaTransform: {fileID: 4787878829635560}
   cameraTransform: {fileID: 4671421466835886}
---- !u!114 &114699660604538378
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1598413722231954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3a4b3d190ad1464f992e48cce76aa40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 114972071414102640}
-  cameraScript: {fileID: 114696723830012826}
 --- !u!114 &114717926848508716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8447,54 +8745,26 @@ MonoBehaviour:
   instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
---- !u!114 &114924707538035412
+--- !u!114 &114959627331873788
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1159488757480042}
+  m_GameObject: {fileID: 1781676495173954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f09f42cea0311604b97940332e304cbf, type: 3}
+  m_Script: {fileID: 11500000, guid: 043a7e6b3c83ee043a8558be2f12048b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   power: 300
   rotatePower: -30
   explosion: {fileID: 1599172921027072, guid: 73efc9bb9df0a8547abfa59756202760, type: 2}
   explosion2: {fileID: 1988139470245746, guid: 686416fb3ec0d33459fa35211611927f, type: 2}
-  playerScript: {fileID: 114972071414102640}
+  playerScript: {fileID: 114528066222387196}
   number: 1
-  rb: {fileID: 54251632547323676}
+  rb: {fileID: 54915500654945788}
   setActive: 0
   setExplosion: 0
---- !u!114 &114972071414102640
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1598413722231954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1bc82aca48f3b84dab962d46bdaff2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  number: 1
-  rotateTransform: {fileID: 4671421466835886}
-  myRb: {fileID: 54901442146172994}
-  cameraObj: {fileID: 1661720529770566}
-  speed: 0.05
-  jumpForce: 300
-  bombPower: 7
-  control: 1
-  bombCount: 3
-  bombPrefabs:
-  - {fileID: 1159488757480042}
-  - {fileID: 1781676495173954}
-  - {fileID: 1169792768504842}
-  bombPos: {fileID: 4214513548417600}
-  grounded: 0
-  jumped: 0
-  animator: {fileID: 95374013476136654}
 --- !u!124 &124073622911745572
 Behaviour:
   m_ObjectHideFlags: 1
