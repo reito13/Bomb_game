@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 114042996094951912}
   m_Layer: 10
   m_Name: CarotoBomb 1
-  m_TagString: Bomb
+  m_TagString: PhotonBomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 114641071832457448}
   m_Layer: 10
   m_Name: CarotoBomb 3
-  m_TagString: Bomb
+  m_TagString: PhotonBomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1890,7 +1890,7 @@ GameObject:
   - component: {fileID: 114959627331873788}
   m_Layer: 10
   m_Name: CarotoBomb 2
-  m_TagString: Bomb
+  m_TagString: PhotonBomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2165,7 +2165,7 @@ GameObject:
   - component: {fileID: 136922467530288898}
   m_Layer: 0
   m_Name: Rabbit
-  m_TagString: Player
+  m_TagString: PhotonPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8282,8 +8282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bdb9611f8947db419a4b8b534cd98af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 114528066222387196}
-  cameraScript: {fileID: 114696723830012826}
 --- !u!114 &114042169520827510
 MonoBehaviour:
   m_ObjectHideFlags: 1

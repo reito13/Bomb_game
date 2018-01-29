@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class PhotonPlayerInput : MonoBehaviour {
 
-	[SerializeField] private PhotonPlayerController player = null;
-	[SerializeField] private CameraController cameraScript = null;
+	private PhotonPlayerController player = null;
+	private CameraController cameraScript = null;
 
 	private bool bombSet = false;
 	private float bombTime = 0.0f;
 
-	private void Update()
+	private void Start()
 	{
-		if (!player.photonView.isMine)
-			return;
-			
+		player = GetComponent<PhotonPlayerController>();
+		cameraScript = GetComponent<CameraController>();
+	}
+
+	private void Update()
+	{		
 		if (!player.Control)
 		{
 			player.SetMoveDir(0, 0);
@@ -24,24 +27,21 @@ public class PhotonPlayerInput : MonoBehaviour {
 		MoveInput();
 		RotateInput();
 
-		if (player.number == MainManager.playerNum) //このスクリプトをアタッチしたプレイヤーキャラの番号が操作キャラの番号であるとき
+		if ((Input.GetButtonDown("Jump")) || (Input.GetButtonDown("R2")))
 		{
-			if ((Input.GetButtonDown("Jump")) || (Input.GetButtonDown("R2")))
-			{
-				player.Jump();
-				//player.photonView.RPC("Jump",PhotonTargets.AllViaServer);
-			}
+			player.Jump();
+			//player.photonView.RPC("Jump",PhotonTargets.AllViaServer);
+		}
 
-			if ((Input.GetKeyDown(KeyCode.Z)) || (Input.GetButtonDown("R1") || Input.GetMouseButtonDown(0)))
-			{
-				bombSet = true;
-			}
-			if ((Input.GetKeyUp(KeyCode.Z)) || (Input.GetButtonUp("R1") || Input.GetMouseButtonUp(0)))
-			{
-				player.Bomb(bombTime);
-				bombSet = false;
-				bombTime = 0.0f;
-			}
+		if ((Input.GetKeyDown(KeyCode.Z)) || (Input.GetButtonDown("R1") || Input.GetMouseButtonDown(0)))
+		{
+			bombSet = true;
+		}
+		if ((Input.GetKeyUp(KeyCode.Z)) || (Input.GetButtonUp("R1") || Input.GetMouseButtonUp(0)))
+		{
+			player.Bomb(bombTime);
+			bombSet = false;
+			bombTime = 0.0f;
 		}
 
 		if (bombSet)
@@ -51,17 +51,11 @@ public class PhotonPlayerInput : MonoBehaviour {
 
 	private void MoveInput()
 	{
-		if (player.number == MainManager.playerNum)
-		{
-			player.SetMoveDir(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-		}
+		player.SetMoveDir(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 	}
 
 	private void RotateInput()
 	{
-		if (player.number == MainManager.playerNum)
-		{
-			cameraScript.SetRotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
-		}
+		cameraScript.SetRotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
 	}
 }

@@ -21,6 +21,10 @@ public class ExplosionObject : MonoBehaviour
 		{
 			other.transform.parent.GetComponent<Player>().Damage(transform);
 		}
+		else if (other.tag == "PhotonPlayer")
+		{
+			other.transform.parent.GetComponent<PhotonPlayerController>().Damage(transform);
+		}
 		else if(other.tag == "StageObject")
 		{
 			rb = other.GetComponent<Rigidbody>();
@@ -34,6 +38,11 @@ public class ExplosionObject : MonoBehaviour
 		else if (other.tag == "Bomb")
 		{
 			other.GetComponent<Bomb>().ExplosionSet();
+		}
+
+		else if (other.tag == "PhotonBomb")
+		{
+			other.GetComponent<PhotonBomb>().ExplosionSet();
 		}
 	}
 

@@ -746,6 +746,7 @@ MonoBehaviour:
   playerPosition:
   - {x: 13, y: 20.5, z: 6}
   - {x: 10.5, y: 19.5, z: -6}
+  photonPlayer: {fileID: 0}
 --- !u!1 &503939073
 GameObject:
   m_ObjectHideFlags: 0
