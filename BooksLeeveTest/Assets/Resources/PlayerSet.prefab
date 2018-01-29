@@ -8352,8 +8352,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 5
-  instantiationId: 5
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114164320331226472
@@ -8378,8 +8378,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114548039185276214}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 3
-  instantiationId: 3
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114219765988919006
@@ -8474,8 +8474,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114630409514709232}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 2
-  instantiationId: 2
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114502885358704230
@@ -8641,6 +8641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   number: 1
   rotateTransform: {fileID: 4925203217748420}
+  myRb: {fileID: 54153828209633616}
   cameraObj: {fileID: 1691696419037380}
   moveDir: {x: 0, y: 0, z: 0}
   speed: 0.05
@@ -8678,8 +8679,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114817088733855786}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 1
-  instantiationId: 1
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114739479133383536
@@ -8705,8 +8706,8 @@ MonoBehaviour:
   - {fileID: 114784028958656438}
   - {fileID: 114641471033401932}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 4
-  instantiationId: 4
+  viewIdField: 0
+  instantiationId: -1
   currentMasterID: -1
   isRuntimeInstantiated: 0
 --- !u!114 &114784028958656438

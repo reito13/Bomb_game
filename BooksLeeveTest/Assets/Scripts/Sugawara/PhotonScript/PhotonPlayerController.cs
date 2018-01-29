@@ -8,7 +8,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 	private Transform myTransform;
 	[SerializeField] private Transform rotateTransform = null;
-	private Rigidbody myRb;
+	[SerializeField] private Rigidbody myRb;
 
 	[SerializeField] private GameObject cameraObj = null;
 
@@ -81,8 +81,6 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			GetComponent<Rigidbody>().isKinematic = true;
 			return;
 		}
-
-		myRb = GetComponent<Rigidbody>();
 		myTransform = GetComponent<Transform>();
 		groundScript = GetComponent<GroundCheck>();
 		cameraScript = GetComponent<CameraController>();
