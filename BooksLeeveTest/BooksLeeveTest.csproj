@@ -446,6 +446,7 @@
     <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
     <Compile Include="Assets\Scripts\MatchingSystemByRedis.cs" />
+    <Compile Include="Assets\Scripts\RandomMatchingSystem.cs" />
     <Compile Include="Assets\Scripts\Redis.cs" />
     <Compile Include="Assets\Scripts\RobbyUI.cs" />
     <Compile Include="Assets\Scripts\Sample.cs" />
