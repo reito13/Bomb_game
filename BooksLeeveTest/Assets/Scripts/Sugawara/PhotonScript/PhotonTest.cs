@@ -5,6 +5,9 @@ public class PhotonTest :Photon.MonoBehaviour
 {
 
 	[SerializeField] private Vector3[] playerPosition;
+	private PhotonPlayerController photonPlayer;
+	private GameObject[] bombs = new GameObject[3];
+	private PhotonBomb[] bombScripts = new PhotonBomb[3];
 
 	void Start()
 	{
@@ -26,13 +29,17 @@ public class PhotonTest :Photon.MonoBehaviour
 	{
 		Debug.Log("ルームへ入室しました。");
 
-		if (!GameObject.Find("1Player"))
+		for (int i = 0; i < 3; i++)
 		{
-			GameObject player1 = PhotonNetwork.Instantiate("1Player", playerPosition[0], transform.rotation, 0);
+			bombs[i] = PhotonNetwork.Instantiate("Bomb", transform.position, transform.rotation, 0);
+			bombScripts[i] = bombs[i].GetComponent<PhotonBomb>();
 		}
-		else
+
+		GameObject player = PhotonNetwork.Instantiate("Player", playerPosition[0], transform.rotation, 0);
+
+		for (int i = 0; i < 3; i++)
 		{
-			GameObject player2 = PhotonNetwork.Instantiate("2Player", playerPosition[1], transform.rotation, 0);
+			photonPlayer.bombPrefabs[i] = bombs[i];
 		}
 	}
 
