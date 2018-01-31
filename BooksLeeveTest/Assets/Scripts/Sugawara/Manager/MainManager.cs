@@ -6,6 +6,7 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 {
 	private UIManager uiManager;
 	private ScoreManager scoreManager;
+	private TimeManager timeManager;
 
 	private new Renderer renderer;
 
@@ -19,6 +20,7 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 		{
 			uiManager = GetComponent<UIManager>();
 			scoreManager = GetComponent<ScoreManager>();
+			timeManager = GetComponent<TimeManager>();
 			scoreManager.ResetScore();
 			StartCoroutine(GameStart());
 		}
@@ -99,4 +101,8 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 		ren.enabled = true;
 	}
 
+	public int GetTime()
+	{
+		return timeManager.timeCount;
+	}
 }

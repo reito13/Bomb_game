@@ -4,7 +4,7 @@ using System.Collections;
 public class PhotonTest :Photon.MonoBehaviour
 {
 
-	[SerializeField] private Vector3[] playerPosition;
+	[SerializeField] private Transform[] playerPosition;
 	public PhotonPlayerController photonPlayer;
 	private GameObject[] bombs = new GameObject[3];
 	private PhotonBomb[] bombScripts = new PhotonBomb[3];
@@ -29,8 +29,10 @@ public class PhotonTest :Photon.MonoBehaviour
 	{
 		Debug.Log("ルームへ入室しました。");
 
-		GameObject player = PhotonNetwork.Instantiate("PlayerSet", playerPosition[0], transform.rotation, 0);
+		GameObject player = PhotonNetwork.Instantiate("PlayerSet", playerPosition[PhotonNetwork.player.ID-1].position, transform.rotation, 0);
+		PhotonNetwork.playerName = "player" + PhotonNetwork.playerList.Length;
 		photonPlayer = player.transform.Find("Player").GetComponent<PhotonPlayerController>();
+		photonPlayer.playerName = PhotonNetwork.playerName;
 		for(int i = 0; i < 3; i++)
 		{
 			bombs[i] = photonPlayer.bombPrefabs[i];

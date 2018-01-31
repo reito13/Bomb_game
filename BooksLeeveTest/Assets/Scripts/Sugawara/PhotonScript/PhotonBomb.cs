@@ -31,8 +31,9 @@ public class PhotonBomb : Photon.MonoBehaviour {
 		//transform.parent = GameObject.Find("Bombs").transform;
 	}
 
-	public void Set(Vector3 pos, Quaternion ro, float time)
+	public void Set(Vector3 pos, Quaternion ro, float time,int num)
 	{
+		number = num;
 		photonView = PhotonView.Get(this);
 		setActive = true;
 		gameObject.SetActive(true);
@@ -61,6 +62,7 @@ public class PhotonBomb : Photon.MonoBehaviour {
 	[PunRPC]
 	public void Explosion()
 	{
+		Debug.Log(number);
 		SoundManager.Instance.PlaySE("Explosion");
 
 		playerScript.BombCount = 1;
