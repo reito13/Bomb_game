@@ -15,12 +15,12 @@ public class MenuBomb : MonoBehaviour {
 
 	public void Set(Vector3 pos, Quaternion ro, float time)
 	{
-		Debug.Log(pos);
 		transform.position = pos;
 		transform.rotation = ro;
 		power = power * (1 + transform.localRotation.x);
 		rb.AddForce(transform.forward * power);
-		rb.angularVelocity = new Vector3(-1, 0, 0) * rotatePower;
+		Debug.Log(rb.velocity);
+		//rb.angularVelocity = new Vector3(-1, 0, 0) * rotatePower;
 		Invoke("GetHit", 0.3f);
 		Invoke("ExplosionSet", time);
 	}
@@ -45,5 +45,6 @@ public class MenuBomb : MonoBehaviour {
 		obj.GetComponent<ExplosionObject>().Set(1);
 
 		Destroy(obj, 1.0f);
+		Destroy(this.gameObject);
 	}
 }

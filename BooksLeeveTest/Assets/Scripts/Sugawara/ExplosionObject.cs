@@ -44,6 +44,11 @@ public class ExplosionObject : MonoBehaviour
 		{
 			other.GetComponent<PhotonBomb>().ExplosionSet();
 		}
+
+		else if(other.tag == "MenuBomb")
+		{
+			other.GetComponent<MenuBomb>().ExplosionSet();
+		}
 	}
 
 	private void TimeOver()

@@ -358,13 +358,12 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4969029381554788}
-  - component: {fileID: 114235930759301572}
   - component: {fileID: 54126792211313670}
   - component: {fileID: 136476406995131990}
   - component: {fileID: 114715116221753602}
   m_Layer: 10
   m_Name: MenuBomb
-  m_TagString: Bomb
+  m_TagString: MenuBomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2049,26 +2048,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114235930759301572
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1661752219830958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f09f42cea0311604b97940332e304cbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  power: 300
-  rotatePower: -30
-  explosion: {fileID: 1599172921027072, guid: 73efc9bb9df0a8547abfa59756202760, type: 2}
-  explosion2: {fileID: 1988139470245746, guid: 686416fb3ec0d33459fa35211611927f, type: 2}
-  playerScript: {fileID: 0}
-  number: 0
-  rb: {fileID: 0}
-  setActive: 0
-  setExplosion: 0
 --- !u!114 &114715116221753602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2080,8 +2059,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d75237e535d822448b26cfdf6e758ea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 10
-  rotatePower: 10
+  power: 300
+  rotatePower: -30
   explosion: {fileID: 1599172921027072, guid: 73efc9bb9df0a8547abfa59756202760, type: 2}
   explosion2: {fileID: 1988139470245746, guid: 686416fb3ec0d33459fa35211611927f, type: 2}
   rb: {fileID: 54126792211313670}
