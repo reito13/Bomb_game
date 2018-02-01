@@ -7,18 +7,24 @@ public class SceneTransitionManager : SingletonMonoBehaviour<SceneTransitionMana
 
 	private enum SceneName
 	{
-		Title,Menu,OthersRoom,FriendsRoom,Main,Result
+		Title,Menu,OthersRoom,FriendsRoom,Main,Result,PhotonMenu,PhotonMain
+	}
+
+	private void Start()
+	{
+		//FadeInの処理
 	}
 
 	[SerializeField] private SceneName sceneName = SceneName.Title;
 
 	public void SceneTransition()
 	{
-	SceneManager.LoadScene(sceneName.ToString());
+		SceneManager.LoadScene(sceneName.ToString());
 	}
 
 	public void SceneTransition(string sceneName)
 	{
 		SceneManager.LoadScene(sceneName);
 	}
+
 }

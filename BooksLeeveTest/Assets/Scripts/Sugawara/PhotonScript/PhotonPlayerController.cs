@@ -27,8 +27,13 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 	private PhotonView photonView;
 	private PhotonTransformView photonTransformView;
+	private TimeManager timeManager;
+	private ScoreManager scoreManager;
 	private Vector3 syncPos;
 	private float syncRoY;
+
+	private int time = 60;
+	private int[] scores = new int[2];
 
 	public bool Control
 	{
@@ -66,15 +71,24 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 	[SerializeField] private Animator animator = null;
 
+	public string playerName;
+
 	public enum AnimStats
 	{
 		WAIT, RUN, LANDING, JUMP, THROW, DAMAGE,
 	}
 
+	public AnimStats animStats = AnimStats.WAIT;
+
 	private void Awake()
 	{
 		photonTransformView = GetComponent<PhotonTransformView>();
 		photonView = PhotonView.Get(this);
+
+		timeManager = GameObject.Find("GameManager").GetComponent<TimeManager>();
+		scoreManager = GameObject.Find("GameManager").GetComponent<ScoreManager>();
+		if (PhotonNetwork.player.ID == 1)
+			timeManager.id = PhotonNetwork.player.ID;
 
 		if (!photonView.isMine)
 		{
@@ -93,14 +107,14 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 	private void Start()
 	{
-		if (!photonView.isMine)
-			return;
+		
 		moveDir = Vector3.zero;
 		startPosition = myTransform.position;
 	}
 
 	private void FixedUpdate()
 	{
+
 		if (!photonView.isMine)
 		{
 			cameraObj.SetActive(false);
@@ -165,7 +179,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			myRb.velocity = new Vector3(myRb.velocity.x, 0, myRb.velocity.z);
 			myRb.AddForce(Vector3.up * jumpForce);
 
-			//AnimationChange(AnimStats.JUMP);
+			AnimationChange(AnimStats.JUMP);
 			SoundManager.Instance.PlaySE("Jump");
 
 		}
@@ -187,7 +201,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			bombRo.eulerAngles = rotateTransform.eulerAngles;
 
 			bombPrefabs[bombCount - 1].SetActive(true);
-			bombScripts[bombCount - 1].Set(bombPos.position, bombRo, 3.0f - time);
+			bombScripts[bombCount - 1].Set(bombPos.position, bombRo, 3.0f - time, number);
 			BombCount = -1;
 		}
 	}
@@ -241,10 +255,12 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		if (animation == AnimStats.WAIT || animation == AnimStats.RUN)
 		{
 			animator.Play(animation.ToString());
+			animStats = animation;
 		}
 		else
 		{
 			animator.Play(animation.ToString(), 0, 0.0f);
+			animStats = animation;
 		}
 	}
 
@@ -255,6 +271,11 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			stream.SendNext(bombPrefabs[0].activeSelf);
 			stream.SendNext(bombPrefabs[1].activeSelf);
 			stream.SendNext(bombPrefabs[2].activeSelf);
+
+			stream.SendNext(animStats);
+
+			stream.SendNext(MainManager.Instance.GetTime());
+
 		}
 		else
 		{
@@ -262,6 +283,22 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			bombPrefabs[0].SetActive((bool)stream.ReceiveNext());
 			bombPrefabs[1].SetActive((bool)stream.ReceiveNext());
 			bombPrefabs[2].SetActive((bool)stream.ReceiveNext());
+
+			animStats = (AnimStats)stream.ReceiveNext();
+
+			time = (int)stream.ReceiveNext();
+
 		}
+		if (PhotonNetwork.player.ID != 1 && !photonView.isMine)
+		{
+			MainManager.Instance.TimeUpdate(time);
+		}
+		if(!photonView.isMine)
+			AnimationChange(animStats);
+	}
+
+	public int GetID ()
+	{
+		return PhotonNetwork.player.ID;
 	}
 }

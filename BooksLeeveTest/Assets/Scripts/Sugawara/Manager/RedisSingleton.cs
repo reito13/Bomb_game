@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 public class RedisSingleton : SingletonMonoBehaviour<RedisSingleton>
 {
 
-	[SerializeField] private string ipAddress = "133.18.173.94";
+	[SerializeField] private string ipAddress = "133.18.195.80";
 	[SerializeField] private int port = 6379;
 
 	private Redis redis;

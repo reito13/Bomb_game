@@ -6,7 +6,8 @@ public class StageCreate : MonoBehaviour {
 
 	[SerializeField] private GameObject[] blocks = null;
 	[SerializeField] Transform parentObj = null; 
-	private float startPos = 31.0f;
+	public float startPos = 31.0f;
+	public int yValue = 3;
 	private int count = 0;
 	// Use this for initialization
 	private void Start () {
@@ -15,7 +16,7 @@ public class StageCreate : MonoBehaviour {
 
 	private void Create()
 	{
-		for (int y = 0; y < 3; y++)
+		for (int y = 0; y < yValue; y++)
 		{
 			for (int z = 0; z < startPos; z++)
 			{

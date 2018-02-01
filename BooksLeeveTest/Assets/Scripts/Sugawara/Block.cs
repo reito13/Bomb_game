@@ -5,6 +5,7 @@ using UnityEngine;
 public class Block : MonoBehaviour {
 
 	[SerializeField] private int hp = 1;
+	[SerializeField] private bool menu = true;
 
 	public void Damage(int number)
 	{
@@ -12,7 +13,10 @@ public class Block : MonoBehaviour {
 		if(hp<= 0)
 		{
 			hp = 0;
-			MainManager.Instance.AddScore(number);
+			if (menu)
+			{
+				MainManager.Instance.AddScore(number);
+			}
 			Destroy(gameObject);
 		}
 	}

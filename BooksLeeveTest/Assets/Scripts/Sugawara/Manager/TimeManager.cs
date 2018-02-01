@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 public class TimeManager : MonoBehaviour {
 
 	private float timer;
-	[SerializeField] private int timeCount = 60;
+	public int timeCount = 60;
 
+	public int id = -1;
 
     private void Start()
 	{
 		timer = 0.0f;
 	}
 
-	private async void Update()
+	/*private async void Update()  //redis用
 	{
 		if (!GameStatusManager.Instance.NormalState)
 			return;
@@ -31,10 +32,25 @@ public class TimeManager : MonoBehaviour {
 
 		}
 
+	}*/
+
+	private void Update()
+	{
+		if (!GameStatusManager.Instance.NormalState)
+			return;
+		if (id == 1)
+		{
+			TimeCount();
+		}
+
+		if (timeCount <= 0)
+		{
+			StartCoroutine(MainManager.Instance.GameEnd());
+		}
 	}
 
 
-    private async Task <int> TimeGet()
+	private async Task <int> TimeGet()
 	{
         float testTime = await RedisSingleton.Instance.RedisGet("TimeManager1",false);
         return (int)testTime;
@@ -53,10 +69,6 @@ public class TimeManager : MonoBehaviour {
 			timer = 0.0f;
 			timeCount--;
 			MainManager.Instance.TimeUpdate(timeCount);
-			if (timeCount <= 0)
-			{
-				StartCoroutine(MainManager.Instance.GameEnd());
-			}
 		}
 	}
 }
