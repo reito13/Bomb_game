@@ -15,6 +15,7 @@ public class MenuBomb : MonoBehaviour {
 
 	public void Set(Vector3 pos, Quaternion ro, float time)
 	{
+		Debug.Log(pos);
 		transform.position = pos;
 		transform.rotation = ro;
 		power = power * (1 + transform.localRotation.x);

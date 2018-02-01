@@ -7,7 +7,7 @@ public class SceneTransitionManager : SingletonMonoBehaviour<SceneTransitionMana
 
 	private enum SceneName
 	{
-		Title,Menu,OthersRoom,FriendsRoom,Main,Result
+		Title,Menu,OthersRoom,FriendsRoom,Main,Result,PhotonMenu,PhotonMain
 	}
 
 	private void Start()
