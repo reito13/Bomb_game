@@ -107,15 +107,13 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 	private void Start()
 	{
-		if (!photonView.isMine)
-			return;
+		
 		moveDir = Vector3.zero;
 		startPosition = myTransform.position;
 	}
 
 	private void FixedUpdate()
 	{
-
 
 		if (!photonView.isMine)
 		{
