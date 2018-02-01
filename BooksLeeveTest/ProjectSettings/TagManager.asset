@@ -11,6 +11,7 @@ TagManager:
   - StageObject
   - PhotonBomb
   - PhotonPlayer
+  - MenuBomb
   layers:
   - Default
   - TransparentFX
