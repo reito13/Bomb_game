@@ -453,6 +453,8 @@
     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
     <Compile Include="Assets\Scripts\FadeController.cs" />
     <Compile Include="Assets\Scripts\MatchingSystemByRedis.cs" />
+    <Compile Include="Assets\Scripts\P_Matching_2018_0131_base.cs" />
+    <Compile Include="Assets\Scripts\PhotonMatching.cs" />
     <Compile Include="Assets\Scripts\RandomMatchingSystem.cs" />
     <Compile Include="Assets\Scripts\Redis.cs" />
     <Compile Include="Assets\Scripts\RobbyUI.cs" />
@@ -494,6 +496,7 @@
     <Compile Include="Assets\Scripts\Sugawara\SetTest.cs" />
     <Compile Include="Assets\Scripts\Sugawara\SyncPlayer.cs" />
     <Compile Include="Assets\Scripts\UredisTest.cs" />
+    <Compile Include="Assets\TestDummy\moving.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\FromStore\Fantasy Skybox FREE\Fog and Ambient reference.txt" />
