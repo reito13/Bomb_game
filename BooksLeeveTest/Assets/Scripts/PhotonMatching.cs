@@ -18,6 +18,8 @@ public class PhotonMatching : Photon.MonoBehaviour {
 
     [SerializeField] private int ready = 0; //参戦準備完了（参戦ボタン）
 
+    [SerializeField] private  MenuPlayer menuPlayer;
+
 
     void Awake()
     {
@@ -147,6 +149,8 @@ public class PhotonMatching : Photon.MonoBehaviour {
         Debug.Log("入室");
         joinedFlag = true;
         matchedPeople++;
+        StartCoroutine("DereyCorutine");
+
     }
 
     //接続が切断されたときに呼ばれる
@@ -174,9 +178,19 @@ public class PhotonMatching : Photon.MonoBehaviour {
         Debug.Log("ルームから退出");
         joinedFlag = false;
         matchedPeople--;
+        StartCoroutine("DereyCorutine");
     }
 
 
+    //操作不能ディレイ用コルーチン
+    private IEnumerator DereyCorutine()
+    {
+
+        menuPlayer.Control = false;
+        yield return new WaitForSeconds(1); // num秒待機
+        menuPlayer.Control = true;
+        yield break;
+    }
 
 
 }
