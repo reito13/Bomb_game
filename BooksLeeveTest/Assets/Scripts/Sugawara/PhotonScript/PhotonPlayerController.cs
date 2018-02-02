@@ -82,6 +82,11 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 	private void Awake()
 	{
+
+		myTransform = GetComponent<Transform>();
+		groundScript = GetComponent<GroundCheck>();
+		cameraScript = GetComponent<CameraController>();
+
 		photonTransformView = GetComponent<PhotonTransformView>();
 		photonView = PhotonView.Get(this);
 
@@ -95,10 +100,8 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			GetComponent<Rigidbody>().isKinematic = true;
 			return;
 		}
-		myTransform = GetComponent<Transform>();
-		groundScript = GetComponent<GroundCheck>();
-		cameraScript = GetComponent<CameraController>();
 
+	
 		for (int i = 0; i < 3; i++)
 		{
 			bombScripts[i] = bombPrefabs[i].GetComponent<PhotonBomb>();

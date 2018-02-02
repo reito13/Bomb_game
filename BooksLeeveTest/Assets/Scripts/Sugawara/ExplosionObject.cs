@@ -42,12 +42,12 @@ public class ExplosionObject : MonoBehaviour
 
 		else if (other.tag == "PhotonBomb")
 		{
-			other.GetComponent<PhotonBomb>().ExplosionSet();
+			//other.GetComponent<PhotonBomb>().ExplosionSet();
 		}
 
 		else if(other.tag == "MenuBomb")
 		{
-			other.GetComponent<MenuBomb>().ExplosionSet();
+			//other.GetComponent<MenuBomb>().ExplosionSet();
 		}
 	}
 

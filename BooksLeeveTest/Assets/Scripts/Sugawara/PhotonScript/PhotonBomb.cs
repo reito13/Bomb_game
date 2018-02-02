@@ -20,6 +20,8 @@ public class PhotonBomb : Photon.MonoBehaviour {
 
 	private PhotonView photonView;
 
+	private float timer = 0.0f;
+
 	private void Awake()
 	{
 		photonView = PhotonView.Get(this);
@@ -33,6 +35,7 @@ public class PhotonBomb : Photon.MonoBehaviour {
 
 	public void Set(Vector3 pos, Quaternion ro, float time,int num)
 	{
+		timer = time;
 		number = num;
 		photonView = PhotonView.Get(this);
 		setActive = true;
@@ -40,10 +43,11 @@ public class PhotonBomb : Photon.MonoBehaviour {
 		transform.position = pos;
 		transform.rotation = ro;
 		power = power * (1 + transform.localRotation.x);
+		rb.velocity = Vector3.zero;
 		rb.AddForce(transform.forward * power);
 		rb.angularVelocity = new Vector3(-1, 0, 0) * rotatePower;
 		Invoke("GetHit", 0.3f);
-		Invoke("ExplosionSet", time);
+		//Invoke("ExplosionSet", time);
 	}
 
 	private void GetHit()
@@ -57,12 +61,12 @@ public class PhotonBomb : Photon.MonoBehaviour {
 			return;
 
 		//setExplosion = true;
-		photonView.RPC("Explosion",PhotonTargets.All);
+	//	photonView.RPC("Explosion",PhotonTargets.All);
 	}
+
 	[PunRPC]
 	public void Explosion()
 	{
-		Debug.Log(number);
 		SoundManager.Instance.PlaySE("Explosion");
 
 		playerScript.BombCount = 1;
@@ -74,8 +78,21 @@ public class PhotonBomb : Photon.MonoBehaviour {
 
 		Destroy(obj, 1.0f);
 		setActive = false;
-		setExplosion = false;
+		//setExplosion = false;
 		gameObject.SetActive(false);
+	}
+
+	private void Update()
+	{
+		timer -= Time.deltaTime;
+		if (timer <= 0)
+		{
+			if (photonView.isMine)
+			{
+				Debug.Log(timer);
+				photonView.RPC("Explosion", PhotonTargets.All);
+			}
+		}
 	}
 
 }

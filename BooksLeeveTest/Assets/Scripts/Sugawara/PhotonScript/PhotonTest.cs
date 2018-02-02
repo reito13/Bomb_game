@@ -30,9 +30,7 @@ public class PhotonTest :Photon.MonoBehaviour
 		Debug.Log("ルームへ入室しました。");
 
 		GameObject player = PhotonNetwork.Instantiate("PlayerSet", playerPosition[PhotonNetwork.player.ID-1].position, transform.rotation, 0);
-		PhotonNetwork.playerName = "player" + PhotonNetwork.playerList.Length;
 		photonPlayer = player.transform.Find("Player").GetComponent<PhotonPlayerController>();
-		photonPlayer.playerName = PhotonNetwork.playerName;
 		for(int i = 0; i < 3; i++)
 		{
 			bombs[i] = photonPlayer.bombPrefabs[i];

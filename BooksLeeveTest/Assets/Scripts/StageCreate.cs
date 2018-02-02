@@ -9,7 +9,7 @@ public class StageCreate : MonoBehaviour {
 	public float startPos = 31.0f;
 	public int yValue = 3;
 	private int count = 0;
-	// Use this for initialization
+
 	private void Start () {
 		Create();
 	}
