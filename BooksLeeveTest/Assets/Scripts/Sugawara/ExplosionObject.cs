@@ -19,11 +19,11 @@ public class ExplosionObject : MonoBehaviour
 	{
 		if (other.tag == "Player")
 		{
-			//other.transform.parent.GetComponent<Player>().Damage(transform);
+			other.transform.parent.GetComponent<Player>().Damage(transform);
 		}
 		else if (other.tag == "PhotonPlayer")
 		{
-			//other.transform.parent.GetComponent<PhotonPlayerController>().Damage(transform);
+			other.transform.parent.GetComponent<PhotonPlayerController>().Damage(transform);
 		}
 		else if(other.tag == "StageObject")
 		{
