@@ -8646,7 +8646,7 @@ MonoBehaviour:
   moveDir: {x: 0, y: 0, z: 0}
   speed: 0.05
   jumpForce: 300
-  bombPower: 7
+  bombPower: 1.5
   control: 1
   bombCount: 3
   bombPrefabs:
