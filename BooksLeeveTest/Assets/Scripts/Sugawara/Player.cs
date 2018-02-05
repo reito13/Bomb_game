@@ -2,29 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
-
-	[Range(1,4)] public int number = 1;
-
-	private Transform myTransform;
-	[SerializeField] private Transform rotateTransform = null;
-	[SerializeField] private Rigidbody myRb = null;
-
-	[SerializeField] private GameObject cameraObj = null;
-
-	private Vector3 moveDir;
-
-	private Vector3 startPosition;
-
-	private GroundCheck groundScript = null;
-	private CameraController cameraScript = null;
+public class Player : MonoBehaviour
+{
+	//---------------------------------------------------------------------------------------------------------
+	[Range(1,4)] public int number = 1; //プレイヤー番号　ネットワーク対戦においてプレイヤーの識別に使用
 
 	[SerializeField] private float speed = 10.0f;
 	[SerializeField] private float jumpForce = 10.0f;
 	[SerializeField] private float bombPower = 1.0f;
 
 	[SerializeField] private bool control = true;
-
 	public bool Control
 	{
 		set
@@ -37,23 +24,21 @@ public class Player : MonoBehaviour {
 			return control;
 		}
 	}
+	//---------------------------------------------------------------------------------------------------------
+
+	private Transform myTransform; //Transformのキャッシュ
+	[SerializeField] private Transform rotateTransform = null; //X軸回転をさせるオブジェクトのTransform
+	[SerializeField] private Transform bombPos = null; //ボムの生成位置
+	[SerializeField] private Rigidbody myRb = null; //RigidBodyのキャッシュ
+	[SerializeField] private GameObject cameraObj = null; //MainCameraオブジェクト
+	private Vector3 moveDir;
+	private Vector3 startPosition;
+	private GroundCheck groundScript = null;
+	private CameraController cameraScript = null;
+	[SerializeField] private GameObject[] bombPrefabs = new GameObject[10];
+	private Bomb[] bombScripts = new Bomb[10];
+
 	private bool damaged = false;
-	[SerializeField] private int bombCount = 3; //爆弾の同時使用可能個数
-	public int BombCount
-	{
-		set { bombCount += value;
-			if (bombCount > 3)
-				bombCount = 3;
-			MainManager.Instance.BombUpdate(bombCount);
-
-		}
-		get { return bombCount; }
-	}
-
-	[SerializeField] private GameObject[] bombPrefabs = new GameObject[3];
-	private Bomb[] bombScripts = new Bomb[3];
-	[SerializeField] private Transform bombPos = null;
-
 	public bool grounded = false;
 	public bool jumped = false;
 
@@ -69,6 +54,7 @@ public class Player : MonoBehaviour {
 		myTransform = GetComponent<Transform>();
 		groundScript = GetComponent<GroundCheck>();
 		cameraScript = GetComponent<CameraController>();
+
 		for (int i = 0;i<3;i++)
 		{
 			bombScripts[i] = bombPrefabs[i].GetComponent<Bomb>();
@@ -153,16 +139,19 @@ public class Player : MonoBehaviour {
 		if (GameStatusManager.Instance.GameStart)
 			return;
 
-		if (bombCount > 0)
+		for (int i = 0; i < bombPrefabs.Length; i++)
 		{
-			SoundManager.Instance.PlaySE("BombThrow");
+			if (!bombPrefabs[i].activeSelf)
+			{
+				Quaternion bombRo = myTransform.rotation;
+				bombRo.eulerAngles = rotateTransform.eulerAngles;
 
-			Quaternion bombRo = myTransform.rotation;
-			bombRo.eulerAngles = rotateTransform.eulerAngles;
+				bombPrefabs[i].SetActive(true);
+				bombScripts[i].Set(bombPos.position, bombRo, 3.0f - time);
+				SoundManager.Instance.PlaySE("BombThrow");
 
-			bombPrefabs[bombCount - 1].SetActive(true);
-			bombScripts[bombCount - 1].Set(bombPos.position,bombRo,3.0f - time);
-			BombCount = -1;
+				return;
+			}
 		}
 	}
 
@@ -185,9 +174,6 @@ public class Player : MonoBehaviour {
 		myRb.AddForce(dir * bombPower, ForceMode.Impulse);
 		Invoke("Damaged", 2.0f);
 		Invoke("ControlOn", 0.7f);
-		StartCoroutine(MainManager.Instance.TakeScore(number, false, 0.3f));
-
-		SoundManager.Instance.PlaySE("ScoreDown");
 	}
 
 
@@ -204,10 +190,7 @@ public class Player : MonoBehaviour {
 	private void Fall()
 	{
 		myRb.velocity = Vector3.zero;
-		StartCoroutine(MainManager.Instance.TakeScore(number, true, 0.3f));
 		myTransform.position = startPosition;
-
-		SoundManager.Instance.PlaySE("ScoreDown");
 	}
 
 	private void AnimationChange(AnimStats animation)

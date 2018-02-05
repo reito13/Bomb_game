@@ -58,7 +58,7 @@ public class PlayerInput : MonoBehaviour {
 	{
 		if (player.number == MainManager.playerNum)
 		{
-			cameraScript.SetRotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
+			cameraScript.SetRotate(Input.GetAxis("Mouse X"));
 		}
 	}
 

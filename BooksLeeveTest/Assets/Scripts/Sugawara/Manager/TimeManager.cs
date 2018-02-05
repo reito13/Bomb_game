@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 public class TimeManager : MonoBehaviour {
 
+	[SerializeField] private RedisSingleton redis;
+
 	private float timer;
 	public int timeCount = 60;
 
@@ -52,13 +54,13 @@ public class TimeManager : MonoBehaviour {
 
 	private async Task <int> TimeGet()
 	{
-        float testTime = await RedisSingleton.Instance.RedisGet("TimeManager1",false);
+        float testTime = await redis.RedisGet("TimeManager1",false);
         return (int)testTime;
     }
 	private async Task TimeSet(int timeCount, int number)
 	{
         string currentTime = timeCount.ToString();
-        await RedisSingleton.Instance.RedisSet("TimeManager1", currentTime);
+        await redis.RedisSet("TimeManager1", currentTime);
     }
 
 	private void TimeCount()
@@ -68,7 +70,6 @@ public class TimeManager : MonoBehaviour {
 		{
 			timer = 0.0f;
 			timeCount--;
-			MainManager.Instance.TimeUpdate(timeCount);
 		}
 	}
 }

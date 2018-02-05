@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class ExplosionStage : MonoBehaviour {
 
-	private int number;
-
-	public void Set(int num)
+	private void Awake()
 	{
-		number = num;
-		Invoke("TimeOver",1.0f);
+		Destroy(this.gameObject, 1.0f);
 	}
 
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Block")
 		{
-			other.GetComponent<Block>().Damage(number);
+			other.GetComponent<Block>().Damage();
 		}
 	}
 
-	private void TimeOver()
-	{
-		Destroy(this.gameObject);
-	}
 }

@@ -66,7 +66,7 @@ public class BombManager : BaseAsyncLoop {
 
 		while (true)
 		{
-			if (RedisSingleton.Instance.connect)
+			if (redis.connect)
 			{
 				//CountStart();
 				await FlagSet();
@@ -79,7 +79,7 @@ public class BombManager : BaseAsyncLoop {
 
 	protected override async Task Set(int count)
 	{
-		await RedisSingleton.Instance.RedisSet(setKey,bombs[myPlayerNum].position.x.ToString("f2") + "," + bombs[myPlayerNum].position.y.ToString("f2") + "," + bombs[myPlayerNum].position.z.ToString("f2") + "," +
+		await redis.RedisSet(setKey,bombs[myPlayerNum].position.x.ToString("f2") + "," + bombs[myPlayerNum].position.y.ToString("f2") + "," + bombs[myPlayerNum].position.z.ToString("f2") + "," +
 			bombs[myPlayerNum].eulerAngles.x.ToString("f2") + "," + bombs[myPlayerNum].eulerAngles.y.ToString("f2") + "," + bombs[myPlayerNum].eulerAngles.z.ToString("f2") + "," +
 			bombs[myPlayerNum+1].position.x.ToString("f2") + "," + bombs[myPlayerNum+1].position.y.ToString("f2") + "," + bombs[myPlayerNum+1].position.z.ToString("f2") + "," +
 			bombs[myPlayerNum+1].eulerAngles.x.ToString("f2") + "," + bombs[myPlayerNum+1].eulerAngles.y.ToString("f2") + "," + bombs[myPlayerNum+1].eulerAngles.z.ToString("f2") + "," +
@@ -89,12 +89,12 @@ public class BombManager : BaseAsyncLoop {
 
 	protected override async Task Get(int count)
 	{ 
-		str = await RedisSingleton.Instance.RedisGet(getKey);
+		str = await redis.RedisGet(getKey);
 	}
 
 	private async Task FlagSet()
 	{
-		await RedisSingleton.Instance.RedisSet(flagSetKey, bombScripts[myPlayerNum].setActive.ToString() + "," + bombScripts[myPlayerNum].setExplosion.ToString()
+		await redis.RedisSet(flagSetKey, bombScripts[myPlayerNum].setActive.ToString() + "," + bombScripts[myPlayerNum].setExplosion.ToString()
 			+ "," + bombScripts[myPlayerNum + 1].setActive.ToString() + "," + bombScripts[myPlayerNum + 1].setExplosion.ToString()
 			+ "," + bombScripts[myPlayerNum + 2].setActive.ToString() + "," + bombScripts[myPlayerNum + 2].setExplosion.ToString());
 	}
@@ -103,11 +103,11 @@ public class BombManager : BaseAsyncLoop {
 	{
 		if (myPlayerNum == 0)
 		{
-			flagStr = await RedisSingleton.Instance.RedisGet(flagSetKey) + "," + await RedisSingleton.Instance.RedisGet(flagGetKey);
+			flagStr = await redis.RedisGet(flagSetKey) + "," + await redis.RedisGet(flagGetKey);
 		}
 		else
 		{
-			flagStr = await RedisSingleton.Instance.RedisGet(flagGetKey) + "," + await RedisSingleton.Instance.RedisGet(flagSetKey);
+			flagStr = await redis.RedisGet(flagGetKey) + "," + await redis.RedisGet(flagSetKey);
 		}
 
 		FlagCheck();
@@ -132,7 +132,7 @@ public class BombManager : BaseAsyncLoop {
 
 	private async Task GetExplosion(int num)
 	{
-		string setExplosion = await RedisSingleton.Instance.RedisGet("Bomb,SetExplosion," + num.ToString());
+		string setExplosion = await redis.RedisGet("Bomb,SetExplosion," + num.ToString());
 		if (setExplosion == "true")
 		{
 			bombScripts[num].Explosion();
