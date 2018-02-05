@@ -5,7 +5,6 @@ using UnityEngine;
 public class MenuBomb : MonoBehaviour {
 
 	[SerializeField] float power = 10.0f;
-	[SerializeField] float rotatePower = 10.0f;
 
 	[SerializeField] GameObject explosion = null;
 	[SerializeField] GameObject explosion2 = null;
@@ -16,7 +15,7 @@ public class MenuBomb : MonoBehaviour {
 	public void Set(Vector3 pos, Quaternion ro, float time)
 	{
 		transform.position = pos;
-		transform.rotation = ro;
+		transform.eulerAngles = Vector3.zero;
 		power = power * (1 + transform.localRotation.x);
 		rb.AddForce(transform.forward * power);
 		Debug.Log(rb.velocity);
@@ -40,9 +39,7 @@ public class MenuBomb : MonoBehaviour {
 		SoundManager.Instance.PlaySE("Explosion");
 
 		GameObject obj = Instantiate(explosion, transform.position, transform.rotation) as GameObject;
-		obj.GetComponent<ExplosionStage>().Set(1);
 		obj = Instantiate(explosion2, transform.position, transform.rotation) as GameObject;
-		obj.GetComponent<ExplosionObject>().Set(1);
 
 		Destroy(obj, 1.0f);
 		Destroy(this.gameObject);

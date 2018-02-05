@@ -10,9 +10,6 @@ public class Bomb : MonoBehaviour
 	[SerializeField] GameObject explosion = null;
 	[SerializeField] GameObject explosion2 = null;
 
-	[SerializeField] private Player playerScript = null;
-	[SerializeField] private int number = 0;
-
 	[SerializeField] Rigidbody rb = null;
 
 	public bool setActive = false;
@@ -53,13 +50,9 @@ public class Bomb : MonoBehaviour
 	public void Explosion()
 	{
 		SoundManager.Instance.PlaySE("Explosion");
-		if(playerScript!= null)
-			playerScript.BombCount = 1;
 
 		GameObject obj = Instantiate(explosion, transform.position, transform.rotation)as GameObject;
-		obj.GetComponent<ExplosionStage>().Set(number);
 		obj = Instantiate(explosion2,transform.position,transform.rotation)as GameObject;
-		obj.GetComponent<ExplosionObject>().Set(number);
 
 		Destroy(obj,1.0f);
 		setActive = false;

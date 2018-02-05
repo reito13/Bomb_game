@@ -8,7 +8,7 @@ using UnityEngine;
 using URedis;
 using System.Threading.Tasks;
 
-public class RedisSingleton : SingletonMonoBehaviour<RedisSingleton>
+public class RedisSingleton : MonoBehaviour
 {
 
 	[SerializeField] private string ipAddress = "133.18.195.80";

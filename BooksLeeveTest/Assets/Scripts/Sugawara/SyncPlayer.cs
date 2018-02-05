@@ -6,12 +6,12 @@ using System.Linq;
 
 public class SyncPlayer : BaseAsyncLoop {
 
-    [SerializeField] JsonTest jsonScript = null; 
+    [SerializeField] private JsonTest jsonScript = null; 
 
-    private Transform playerTransform1; //1PのTransform
-    private Transform playerTransform2; //2PのTransform
+    [SerializeField] private Transform playerTransform1; //1PのTransform
+    [SerializeField] private Transform playerTransform2; //2PのTransform
 
-	[System.NonSerialized] public float lerpRate = 1; //2ベクトル間を補間する
+	[SerializeField] private float lerpRate = 1; //2ベクトル間を補間する
 	public Vector3 syncPos; //サーバーからGetした全プレイヤーの座標を格納する変数。座標移動の補間に使用する
 	public float syncRotateY;
 
@@ -23,44 +23,38 @@ public class SyncPlayer : BaseAsyncLoop {
 
 	private int myPlayerNum = 1; //自分が操作しているプレイヤーの番号 MainManagerのPlayerNumが入る
 
-	AsyncPlayerData playerData;
+	private SyncPlayerData playerData;
 
 	protected override void Awake()
 	{
-
-		playerTransform1 = GameObject.Find("1Player").transform;
-		playerTransform2 = GameObject.Find("2Player").transform;
+		count = 0;
 
 		myPlayerNum = MainManager.playerNum;
 
-		playerData = new AsyncPlayerData();
+		playerData = new SyncPlayerData();
 		PlayerDataSet();
 
-		setKey = "," + myPlayerNum + "PlayerTransform";
-		getKey = "," + ((myPlayerNum == 1) ? 2 : 1) + "PlayerTransform";
-
-		Debug.Log(setKey);
-		Debug.Log(getKey);
+		setKey = "," + myPlayerNum + "," + "PlayerTransform";
+		getKey = "," + ((myPlayerNum == 1) ? 2 : 1) + "," + "PlayerTransform";
 
 		Task task = TransformCoroutine();
 	}
 
 	protected override async Task TransformCoroutine()
 	{
-		await RedisSingleton.Instance.RedisSet(count + setKey, jsonSet);
-		await RedisSingleton.Instance.RedisSet(count + setKey, jsonSet);
+		await Task.Delay(3000);
+		await redis.RedisSet(count + setKey, jsonSet);
+		await redis.RedisSet(count + getKey, jsonSet);
 
 		while (true)
 		{
 			CountStart();
 			count++;
-			Debug.Log(count);
-			//await Set(count);
-			await RedisSingleton.Instance.RedisSet(count + setKey, jsonSet);
+			await redis.RedisSet(count + setKey, jsonSet);
+			//await redis.RedisSet(setKey, jsonSet);
 			await Task.Delay(100);
-			jsonGet = await RedisSingleton.Instance.RedisGet(count + getKey);
-			Debug.Log(jsonGet);
-			//await Get(count);
+			jsonGet = await redis.RedisGet(count + getKey);
+			//jsonGet = await redis.RedisGet(getKey);
 			CountEnd();
 		}
 	}
@@ -81,19 +75,9 @@ public class SyncPlayer : BaseAsyncLoop {
 		}
 	}
 
-	protected override async Task Set(int count)
-	{
-		await RedisSingleton.Instance.RedisSet(count + setKey, jsonSet);
-	}
-
-	protected override async Task Get(int count)
-	{
-		jsonGet = await RedisSingleton.Instance.RedisGet(count + getKey);
-	}
-
 	private void Json()
 	{
-		jsonSet = jsonScript.GetJson(playerData); //このクラスのインスタンスを渡し、それをJson形式にしたものをjsonSetに代入
+		jsonSet = jsonScript.GetJson(playerData); //データクラスのインスタンスを渡し、それをJson形式にしたものをjsonSetに代入
 		if (jsonGet != null) {
 			syncPos = jsonScript.GetPosition(jsonGet);
 			syncRotateY = jsonScript.GetEularAngelY(jsonGet);

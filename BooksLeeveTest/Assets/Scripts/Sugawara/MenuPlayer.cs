@@ -230,7 +230,7 @@ public class MenuPlayer : MonoBehaviour {
 
 	private void RotateInput()
 	{
-		cameraScript.SetRotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
+		cameraScript.SetRotate(Input.GetAxis("Mouse X"));
 	}
 
 }

@@ -9,10 +9,9 @@ public class ExplosionObject : MonoBehaviour
 
 	private int number;
 
-	public void Set(int num)
+	private void Awake()
 	{
-		number = num;
-		Invoke("TimeOver", 0.5f);
+		Destroy(this.gameObject,0.5f);
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -35,24 +34,6 @@ public class ExplosionObject : MonoBehaviour
 			rb.AddForce(dir * power, ForceMode.Impulse);
 
 		}
-		else if (other.tag == "Bomb")
-		{
-			other.GetComponent<Bomb>().ExplosionSet();
-		}
-
-		else if (other.tag == "PhotonBomb")
-		{
-			//other.GetComponent<PhotonBomb>().ExplosionSet();
-		}
-
-		else if(other.tag == "MenuBomb")
-		{
-			//other.GetComponent<MenuBomb>().ExplosionSet();
-		}
 	}
 
-	private void TimeOver()
-	{
-		Destroy(this.gameObject);
-	}
 }

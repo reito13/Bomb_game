@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 public class BaseAsyncLoop : MonoBehaviour
 {
+	public RedisSingleton redis;
 
 	private float timer = 0;
 	private bool timerFlag = false;
@@ -12,6 +13,7 @@ public class BaseAsyncLoop : MonoBehaviour
 
 	protected virtual void Awake()
 	{
+		count = 0;
 		Task task = TransformCoroutine();
 	}
 
@@ -19,7 +21,7 @@ public class BaseAsyncLoop : MonoBehaviour
 	{
 		while (true)
 		{
-			if (RedisSingleton.Instance.connect)
+			if (redis.connect)
    			{
                 count++;
 				await Set(count);

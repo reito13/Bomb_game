@@ -4,10 +4,8 @@ using System.Collections;
 public class PhotonTest :Photon.MonoBehaviour
 {
 
-	[SerializeField] private Transform[] playerPosition;
+	[SerializeField] private Transform[] playerPosition = null;
 	public PhotonPlayerController photonPlayer;
-	private GameObject[] bombs = new GameObject[3];
-	private PhotonBomb[] bombScripts = new PhotonBomb[3];
 
 	void Start()
 	{
@@ -31,10 +29,6 @@ public class PhotonTest :Photon.MonoBehaviour
 
 		GameObject player = PhotonNetwork.Instantiate("PlayerSet", playerPosition[PhotonNetwork.player.ID-1].position, transform.rotation, 0);
 		photonPlayer = player.transform.Find("Player").GetComponent<PhotonPlayerController>();
-		for(int i = 0; i < 3; i++)
-		{
-			bombs[i] = photonPlayer.bombPrefabs[i];
-		}
 	}
 
 	// ルームの入室に失敗すると呼ばれる

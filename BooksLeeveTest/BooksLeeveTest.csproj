@@ -299,9 +299,6 @@
     <Compile Include="Assets\FromStore\JMO Assets\WarFX\Scripts\WFX_BulletHoleDecal.cs" />
     <Compile Include="Assets\FromStore\JMO Assets\WarFX\Scripts\WFX_LightFlicker.cs" />
     <Compile Include="Assets\FromStore\JMO Assets\WarFX\Spawn System\CFX_SpawnSystem.cs" />
-    <Compile Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Scripts\HUDFPS.cs" />
-    <Compile Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Scripts\PDS_GameController.cs" />
-    <Compile Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Scripts\ScrollingUVs_PDS.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\Demo2DJumpAndRun.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\JumpAndRunMovement.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\DemoBoxes\ColorPerPlayer.cs" />
@@ -457,13 +454,12 @@
     <Compile Include="Assets\Scripts\Sugawara\BaseAsyncLoop.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Block.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Bomb.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\BombLanding.cs" />
     <Compile Include="Assets\Scripts\Sugawara\BombManager.cs" />
-    <Compile Include="Assets\Scripts\Sugawara\BombPosition.cs" />
     <Compile Include="Assets\Scripts\Sugawara\CameraController.cs" />
     <Compile Include="Assets\Scripts\Sugawara\ExplosionObject.cs" />
     <Compile Include="Assets\Scripts\Sugawara\ExplosionStage.cs" />
     <Compile Include="Assets\Scripts\Sugawara\GroundCheck.cs" />
-    <Compile Include="Assets\Scripts\Sugawara\InputController.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Json\JsonData.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Json\JsonTest.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Manager\AnimationManager.cs" />
@@ -488,10 +484,9 @@
     <Compile Include="Assets\Scripts\Sugawara\PhotonScript\PhotonTest.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Player.cs" />
     <Compile Include="Assets\Scripts\Sugawara\PlayerInput.cs" />
-    <Compile Include="Assets\Scripts\Sugawara\PlayerTransformManager.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\Sync\SyncBomb.cs" />
     <Compile Include="Assets\Scripts\Sugawara\SyncPlayer.cs" />
     <Compile Include="Assets\Scripts\Sugawara\UpDown.cs" />
-    <Compile Include="Assets\Scripts\UredisTest.cs" />
     <Compile Include="Assets\TestDummy\moving.cs" />
   </ItemGroup>
   <ItemGroup>

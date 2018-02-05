@@ -5,12 +5,11 @@ using UnityEngine;
 public class MainManager : SingletonMonoBehaviour<MainManager>
 {
 	private UIManager uiManager;
-	private ScoreManager scoreManager;
 	private TimeManager timeManager;
 
-	private new Renderer renderer;
-
 	public static int playerNum = 1;
+
+	private int i; //loop用
 
 	public bool mainScene = true;
 
@@ -19,30 +18,41 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 		if (mainScene)
 		{
 			uiManager = GetComponent<UIManager>();
-			scoreManager = GetComponent<ScoreManager>();
 			timeManager = GetComponent<TimeManager>();
-			scoreManager.ResetScore();
-			StartCoroutine(GameStart());
+
+			StartCoroutine(MainCoroutine());
 		}
+	}
+
+	private IEnumerator MainCoroutine()
+	{
+		yield return StartCoroutine(GameStart());
+
+		yield return StartCoroutine(GameMainLoop());
+
+		yield return StartCoroutine(GameEnd());
 	}
 
 	private IEnumerator GameStart()
 	{
-		uiManager.CountDown("3");
-		SoundManager.Instance.PlaySE("Count");
-		yield return new WaitForSeconds(1.0f);
-		uiManager.CountDown("2");
-		SoundManager.Instance.PlaySE("Count");
-		yield return new WaitForSeconds(1.0f);
-		uiManager.CountDown("1");
-		SoundManager.Instance.PlaySE("Count");
-		yield return new WaitForSeconds(1.0f);
+		for (i = 3;i>=0;i--)
+		{
+			uiManager.CountDown(i.ToString()); //カウントの文字を変更
+			SoundManager.Instance.PlaySE("Count"); //カウントのSEを鳴らす
+			yield return new WaitForSeconds(1.0f); //1秒待つ
+		}
 		uiManager.CountDown("GameStart");
-		SoundManager.Instance.PlaySE("GameStart");
-
 		GameStatusManager.Instance.GameStart = false;
 		yield return new WaitForSeconds(1.0f);
 		uiManager.CountTextDelete();
+	}
+
+	private IEnumerator GameMainLoop()
+	{
+		while (!GameStatusManager.Instance.GameEnd) {
+		
+			yield return new WaitForSeconds(1.0f);
+		}
 	}
 	
 	public IEnumerator GameEnd()
@@ -55,50 +65,9 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 		SceneTransitionManager.Instance.SceneTransition();
 	}
 
-	public void TimeUpdate(int timeCount)
+	public void TimeUpdate()
 	{
-		uiManager.TimeUpdate(timeCount);
-	}
-
-	public void AddScore(int num)
-	{
-		scoreManager.AddScore(num);
-		uiManager.ScoreUpdate(num,scoreManager.GetScore(num));
-	}
-
-	public void BombUpdate(int value)
-	{
-		uiManager.BombUpdate(value);
-	}
-
-	public IEnumerator TakeScore(int num,bool fall,float delayTime)
-	{
-		yield return new WaitForSeconds(delayTime);
-
-		if (fall)
-		{
-			scoreManager.DivideScore(num);
-		}
-		else
-		{
-			scoreManager.TakeScore(num,20);
-		}
-		uiManager.ScoreUpdate(num, scoreManager.GetScore(num));
-	}
-
-	public void StageDelete(Collider collider)
-	{
-		collider.enabled = false;
-		renderer = collider.GetComponent<Renderer>();
-		renderer.enabled = false;
-		//StartCoroutine(StageRepair(collider,renderer));
-	}
-
-	private IEnumerator StageRepair(Collider coll, Renderer ren)
-	{
-		yield return new WaitForSeconds(5.0f);
-		coll.enabled = true;
-		ren.enabled = true;
+		uiManager.TimeUpdate(GetTime());
 	}
 
 	public int GetTime()

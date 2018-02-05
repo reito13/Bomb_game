@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class PhotonPlayerInput : MonoBehaviour {
 
-	private PhotonPlayerController player = null;
-	private CameraController cameraScript = null;
+	private PhotonPlayerController player;
+	private CameraController cameraScript;
+	private BombLanding bombLanding;
 
 	private bool bombSet = false;
 	private float bombTime = 0.0f;
+
+	private float bombInterval = 0;
+	private float bombIntervalMax = 1.0f;
 
 	private void Start()
 	{
 		player = GetComponent<PhotonPlayerController>();
 		cameraScript = GetComponent<CameraController>();
+		bombLanding = GetComponent<BombLanding>();
 	}
 
 	private void Update()
@@ -26,7 +31,17 @@ public class PhotonPlayerInput : MonoBehaviour {
 
 		MoveInput();
 		RotateInput();
+		BombLandPosInput();
+		ActionInput();
 
+		if (bombSet)
+			bombTime += Time.deltaTime;
+
+		bombInterval += Time.deltaTime;
+	}
+
+	private void ActionInput()
+	{
 		if ((Input.GetButtonDown("Jump")) || (Input.GetButtonDown("R2")))
 		{
 			player.Jump();
@@ -35,18 +50,18 @@ public class PhotonPlayerInput : MonoBehaviour {
 
 		if ((Input.GetKeyDown(KeyCode.Z)) || (Input.GetButtonDown("R1") || Input.GetMouseButtonDown(0)))
 		{
-			bombSet = true;
+			//bombSet = true;
 		}
 		if ((Input.GetKeyUp(KeyCode.Z)) || (Input.GetButtonUp("R1") || Input.GetMouseButtonUp(0)))
 		{
-			player.Bomb(bombTime);
+			if (bombInterval < bombIntervalMax)
+				return;
+
+			bombInterval = 0;
+			player.StartCoroutine(player.Bomb(bombTime));
 			bombSet = false;
 			bombTime = 0.0f;
 		}
-
-		if (bombSet)
-			bombTime += Time.deltaTime;
-
 	}
 
 	private void MoveInput()
@@ -56,6 +71,11 @@ public class PhotonPlayerInput : MonoBehaviour {
 
 	private void RotateInput()
 	{
-		cameraScript.SetRotate(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"));
+		cameraScript.SetRotate(Input.GetAxis("Mouse X"));
+	}
+
+	private void BombLandPosInput()
+	{
+		bombLanding.SetBombLandingPosition(Input.GetAxis("Mouse Y"));
 	}
 }
