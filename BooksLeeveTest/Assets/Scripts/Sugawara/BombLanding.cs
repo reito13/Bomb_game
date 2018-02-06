@@ -38,5 +38,10 @@ public class BombLanding : MonoBehaviour {
 		//return Vector3.Distance(bombLandTransform.position, playerTransform.position);
 	}
 
+	public float GetDistance(Transform playerTransform)
+	{
+		return Vector3.Distance(bombLandTransform.position, playerTransform.position);
+	}
+
 
 }

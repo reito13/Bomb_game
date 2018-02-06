@@ -62,6 +62,11 @@ public class PhotonPlayerInput : MonoBehaviour {
 			bombSet = false;
 			bombTime = 0.0f;
 		}
+
+		if (Input.GetMouseButtonDown(1))
+		{
+			StartCoroutine(player.SPBomb(0));
+		}
 	}
 
 	private void MoveInput()
