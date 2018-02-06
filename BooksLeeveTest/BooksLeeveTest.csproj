@@ -443,6 +443,7 @@
     <Compile Include="Assets\PhotonChatApi\ChatUserStatus.cs" />
     <Compile Include="Assets\PhotonChatApi\IChatClientListener.cs" />
     <Compile Include="Assets\Scripts\FadeController.cs" />
+    <Compile Include="Assets\Scripts\GifAnime.cs" />
     <Compile Include="Assets\Scripts\MatchingSystemByRedis.cs" />
     <Compile Include="Assets\Scripts\P_Matching_2018_0131_base.cs" />
     <Compile Include="Assets\Scripts\PhotonMatching.cs" />
