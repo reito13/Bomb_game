@@ -395,10 +395,6 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			time = (int)stream.ReceiveNext();
 
 		}
-		/*if (PhotonNetwork.player.ID != 1 && !photonView.isMine)
-		{
-			MainManager.Instance.TimeUpdate(time);
-		}*/
 
 		if(!photonView.isMine)
 			AnimationChange(animStats);

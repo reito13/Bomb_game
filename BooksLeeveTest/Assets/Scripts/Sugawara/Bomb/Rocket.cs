@@ -7,7 +7,6 @@ public class Rocket : PhotonBomb {
 	private Vector3 startPos;
 	private float setDistance;
 	private float distance;
-	private bool set = false;
 
 	private void Start()
 	{
