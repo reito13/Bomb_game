@@ -35,6 +35,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	private bool throwed = false; //爆弾を投げるアニメーションの直後に歩行アニメーションを挟まないようにするため
 
 	public bool[] bombActiveFlag;
+	public bool[] spBombActiveFlag;
 	//-------------------------------------------------------------
 	private Transform myTransform;
 	[SerializeField] private Transform rotateTransform = null;
@@ -54,6 +55,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	private Vector3 startPosition;
 	private int time = 60;
 
+	//[SerializeField] private GameObject 
 	public GameObject[] bombPrefabs = new GameObject[10];
 	[System.NonSerialized] public PhotonBomb[] bombScripts = new PhotonBomb[10];
 	public GameObject[] spBombPrefabs = new GameObject[9];
@@ -88,6 +90,8 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		bombArrayLength = bombPrefabs.Length;
 		spBombArrayLength = spBombPrefabs.Length;
 		Array.Resize(ref bombActiveFlag, bombArrayLength);
+		Array.Resize(ref spBombActiveFlag, spBombArrayLength);
+
 		for (i = 0; i < bombArrayLength; i++)
 		{
 			bombScripts[i] = bombPrefabs[i].GetComponent<PhotonBomb>();
@@ -97,6 +101,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		for (i = 0; i < spBombArrayLength; i++)
 		{
 			spBombScripts[i] = spBombPrefabs[i].GetComponent<PhotonBomb>();
+			spBombActiveFlag[i] = false;
 		}
 
 		if (!photonView.isMine)
@@ -140,12 +145,20 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			{
 				bombActiveFlag[i] = bombScripts[i].setActive;
 			}
+			for(i = 0; i < spBombArrayLength; i++)
+			{
+				spBombActiveFlag[i] = spBombScripts[i].setActive;
+			}
 		}
 		else
 		{
 			for (i = 0; i < bombArrayLength; i++)
 			{
 				bombPrefabs[i].SetActive(bombActiveFlag[i]);
+			}
+			for (i = 0; i < spBombArrayLength; i++)
+			{
+				spBombPrefabs[i].SetActive(spBombActiveFlag[i]);
 			}
 		}
 	}
@@ -379,6 +392,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		if (stream.isWriting)
 		{
 			stream.SendNext(bombActiveFlag);
+			stream.SendNext(spBombActiveFlag);
 
 			stream.SendNext(animStats);
 
@@ -389,6 +403,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		{
 			//データの受信
 			bombActiveFlag = (bool[])stream.ReceiveNext();
+			spBombActiveFlag = (bool[])stream.ReceiveNext();
 
 			animStats = (AnimStats)stream.ReceiveNext();
 

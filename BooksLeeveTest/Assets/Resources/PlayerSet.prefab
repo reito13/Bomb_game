@@ -32246,10 +32246,11 @@ MonoBehaviour:
   bombPower: 1.7
   jumpCount: 2
   animStats: 0
-  bombType: 4
+  bombType: 2
   control: 1
   grounded: 0
   bombActiveFlag: 
+  spBombActiveFlag: 
   rotateTransform: {fileID: 4925203217748420}
   myRb: {fileID: 54153828209633616}
   cameraObj: {fileID: 1172882227309006}
