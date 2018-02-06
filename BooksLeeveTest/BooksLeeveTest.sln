@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksLeeveTest.Plugins", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksLeeveTest.Editor", "BooksLeeveTest.Editor.csproj", "{C5652E82-0370-DA4A-E305-2B96CB159F4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooksLeeveTest.Editor.Plugins", "BooksLeeveTest.Editor.Plugins.csproj", "{F762794D-7739-C22D-9DBB-B15AB13D6D63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{C5652E82-0370-DA4A-E305-2B96CB159F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5652E82-0370-DA4A-E305-2B96CB159F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5652E82-0370-DA4A-E305-2B96CB159F4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F762794D-7739-C22D-9DBB-B15AB13D6D63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F762794D-7739-C22D-9DBB-B15AB13D6D63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F762794D-7739-C22D-9DBB-B15AB13D6D63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F762794D-7739-C22D-9DBB-B15AB13D6D63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,6 +12,8 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	[SerializeField] private float jumpForce = 10.0f;
 	[SerializeField] private float bombPower = 1.0f;
 	[SerializeField] private int jumpCount = 2;
+	public AnimStats animStats = AnimStats.WAIT;
+	public BombType bombType = BombType.NONE;
 	//-------------------------------------------------------------
 	[SerializeField] private bool control = true;
 	public bool Control
@@ -54,6 +56,8 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 	public GameObject[] bombPrefabs = new GameObject[10];
 	[System.NonSerialized] public PhotonBomb[] bombScripts = new PhotonBomb[10];
+	public GameObject[] spBombPrefabs = new GameObject[9];
+	[System.NonSerialized] public PhotonBomb[] spBombScripts = new PhotonBomb[9];
 
 	public string playerName;
 
@@ -61,10 +65,12 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	{
 		WAIT, RUN, LANDING, JUMP, THROW, DAMAGE,
 	}
+	public enum BombType
+	{
+		NONE,MISSILE,ROCKET,METAL,MINE,SMOKE, DOT,THREEWAY
+	}
 
-	public AnimStats animStats = AnimStats.WAIT;
-
-	int i,j,arrayLength;
+	int i, j, bombArrayLength, spBombArrayLength;
 
 	private void Awake()
 	{
@@ -79,12 +85,18 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 		timeManager = GameObject.Find("GameManager").GetComponent<TimeManager>();
 
-		arrayLength = bombPrefabs.Length;
-		Array.Resize(ref bombActiveFlag, arrayLength);
-		for (i = 0; i < arrayLength; i++)
+		bombArrayLength = bombPrefabs.Length;
+		spBombArrayLength = spBombPrefabs.Length;
+		Array.Resize(ref bombActiveFlag, bombArrayLength);
+		for (i = 0; i < bombArrayLength; i++)
 		{
 			bombScripts[i] = bombPrefabs[i].GetComponent<PhotonBomb>();
 			bombActiveFlag[i] = false;
+		}
+
+		for (i = 0; i < spBombArrayLength; i++)
+		{
+			spBombScripts[i] = spBombPrefabs[i].GetComponent<PhotonBomb>();
 		}
 
 		if (!photonView.isMine)
@@ -124,14 +136,14 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	private void BombCheck()
 	{
 		if (photonView.isMine){
-			for (i = 0; i < arrayLength; i++)
+			for (i = 0; i < bombArrayLength; i++)
 			{
 				bombActiveFlag[i] = bombScripts[i].setActive;
 			}
 		}
 		else
 		{
-			for (i = 0; i < arrayLength; i++)
+			for (i = 0; i < bombArrayLength; i++)
 			{
 				bombPrefabs[i].SetActive(bombActiveFlag[i]);
 			}
@@ -206,7 +218,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		if (GameStatusManager.Instance.GameStart)
 			yield break;
 
-		for (j = 0; j < arrayLength; j++)
+		for (j = 0; j < bombArrayLength; j++)
 		{
 			if (!bombPrefabs[j].activeSelf)
 			{
@@ -215,11 +227,9 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 				AnimationChange(AnimStats.THROW);
 				Quaternion bombRo = myTransform.rotation;
 				bombRo.eulerAngles = rotateTransform.eulerAngles;
-				Debug.Log(bombLanding.GetPower(myTransform));
 				yield return new WaitForSeconds(0.4f);
 
 				bombPrefabs[j].SetActive(true);
-				//bombScripts[j].Set(bombPos.position, myTransform.rotation, 3.0f - time);
 				bombScripts[j].Set(bombPos.position, myTransform.rotation, 3.0f - time,bombLanding.GetPower(myTransform));
 				yield return new WaitForSeconds(0.2f);
 				throwed = false;
@@ -228,6 +238,55 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 				yield break;
 			}
 		}
+	}
+
+	public IEnumerator SPBomb(float time)
+	{
+		if (!photonView.isMine)
+			yield break;
+
+		if (GameStatusManager.Instance.GameStart)
+			yield break;
+
+		if (bombType == BombType.NONE)
+			yield break;
+
+		int bombNumber = (int)bombType - 1;
+		throwed = true;
+		AnimationChange(AnimStats.THROW);
+		Quaternion bombRo = myTransform.rotation;
+		bombRo.eulerAngles = rotateTransform.eulerAngles;
+		yield return new WaitForSeconds(0.4f);
+
+		spBombPrefabs[bombNumber].SetActive(true);
+		Debug.Log(bombNumber);
+		if (bombNumber == 1)
+		{
+			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetDistance(myTransform));
+		}
+		else if (bombNumber == 3)
+		{
+			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetPower(myTransform));
+		}
+		else if (bombNumber == 6)
+		{
+			spBombPrefabs[bombNumber + 1].SetActive(true);
+			spBombPrefabs[bombNumber + 2].SetActive(true);
+			Vector3 bombPos1 = bombPos.position;
+			bombPos1 -= transform.right * 0.2f;
+			Vector3 bombPos2 = bombPos.position;
+			bombPos2 += transform.right * 0.2f;
+			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetPower(myTransform));
+			spBombScripts[bombNumber + 1].Set(bombPos1, myTransform.rotation, 3.0f - time, bombLanding.GetPower(myTransform));
+			spBombScripts[bombNumber + 2].Set(bombPos2, myTransform.rotation, 3.0f - time, bombLanding.GetPower(myTransform));
+		}
+		else
+		{
+			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetPower(myTransform));
+		}
+		yield return new WaitForSeconds(0.2f);
+		throwed = false;
+		SoundManager.Instance.PlaySE("BombThrow");
 	}
 
 	public void SetMoveDir(float x, float z)
@@ -308,6 +367,11 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			animator.Play(animation.ToString(), 0, 0.0f);
 			animStats = animation;
 		}
+	}
+
+	public void SetBombType(BombType type)
+	{
+		bombType= type;
 	}
 
 	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

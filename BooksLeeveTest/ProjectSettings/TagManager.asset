@@ -12,6 +12,7 @@ TagManager:
   - PhotonBomb
   - PhotonPlayer
   - MenuBomb
+  - Item
   layers:
   - Default
   - TransparentFX
