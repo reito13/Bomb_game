@@ -4,17 +4,31 @@ using UnityEngine;
 
 public class GifAnime : MonoBehaviour
 {
+    public Texture[] textures;
+    public GameObject obj;
+    public float changeFrameSecond;
+    private float dTime;
+    private int frameNum;
 
-    public Texture[] PlayerTexture;
-    public float gifNum = 0;
-    public float fps = 24;
+    // Use this for initialization
+    void Start()
+    {
+        dTime = 0.0f;
+        frameNum = 0;
+    }
 
+    // Update is called once per frame
     void Update()
     {
-        gifNum = Time.time * fps;
-        gifNum = gifNum % PlayerTexture.Length;
-    //    renderer.material.mainTexture = PlayerTexture[(int)gifNum];
-        Debug.Log(Mathf.Floor(gifNum));
+        dTime += Time.deltaTime;
+        if (changeFrameSecond < dTime)
+        {
+            dTime = 0.0f;
+            frameNum++;
+            if (frameNum >= textures.Length) frameNum = 0;
+        }
+        gameObject.GetComponent<Renderer>().material.SetTexture("_MainTex", textures[frameNum]);
     }
+
 }
-	
+
