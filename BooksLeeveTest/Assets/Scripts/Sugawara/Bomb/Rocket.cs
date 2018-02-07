@@ -33,11 +33,17 @@ public class Rocket : PhotonBomb {
 		if (!setActive)
 			return;
 
+		if (photonView.isMine)
+		{
+			//現在の移動速度
+			Vector3 velocity = rb.velocity;
+			//移動速度を指定
+			photonTransformView.SetSynchronizedValues(speed: velocity, turnSpeed: 0);
+		}
+
 		distance = Vector3.Distance(startPos, transform.position);
 		if (distance > setDistance)
 		{
-			Debug.Log(startPos + "," + transform.position);
-			Debug.Log(distance);
 			if (photonView.isMine)
 			{
 				photonView.RPC("Explosion", PhotonTargets.All);

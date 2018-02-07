@@ -46,6 +46,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	private new PhotonView photonView;
 	private PhotonTransformView photonTransformView;
 	private TimeManager timeManager;
+	[SerializeField] private BombLine bombLine = null;
 	[SerializeField] private Transform bombPos = null;
 	[SerializeField] private Animator animator = null;
 	private BombLanding bombLanding;
@@ -75,8 +76,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	int i, j, bombArrayLength, spBombArrayLength;
 
 	private void Awake()
-	{
-
+	{ 
 		myTransform = GetComponent<Transform>();
 		groundScript = GetComponent<GroundCheck>();
 		cameraScript = GetComponent<CameraController>();
@@ -112,6 +112,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		}
 	}
 
+
 	private void Start()
 	{
 		
@@ -135,7 +136,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		Move();
 		Rotate();
 		GroundCheck();
-
+		bombLine.ValueSet(bombPos.position,bombLanding.GetPower(),bombLanding.GetDistance());
 	}
 
 	private void BombCheck()
@@ -243,7 +244,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 				yield return new WaitForSeconds(0.4f);
 
 				bombPrefabs[j].SetActive(true);
-				bombScripts[j].Set(bombPos.position, myTransform.rotation, 3.0f - time,bombLanding.GetPower(myTransform));
+				bombScripts[j].Set(bombPos.position, myTransform.rotation, 3.0f - time,bombLanding.GetPower());
 				yield return new WaitForSeconds(0.2f);
 				throwed = false;
 				SoundManager.Instance.PlaySE("BombThrow");
@@ -269,17 +270,20 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		AnimationChange(AnimStats.THROW);
 		Quaternion bombRo = myTransform.rotation;
 		bombRo.eulerAngles = rotateTransform.eulerAngles;
+
+		bombType = BombType.NONE;
+
 		yield return new WaitForSeconds(0.4f);
 
 		spBombPrefabs[bombNumber].SetActive(true);
 		Debug.Log(bombNumber);
 		if (bombNumber == 1)
 		{
-			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetDistance(myTransform));
+			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetDistance());
 		}
 		else if (bombNumber == 3)
 		{
-			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetPower(myTransform));
+			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetPower());
 		}
 		else if (bombNumber == 6)
 		{
@@ -289,13 +293,13 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			bombPos1 -= transform.right * 0.2f;
 			Vector3 bombPos2 = bombPos.position;
 			bombPos2 += transform.right * 0.2f;
-			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetPower(myTransform));
-			spBombScripts[bombNumber + 1].Set(bombPos1, myTransform.rotation, 3.0f - time, bombLanding.GetPower(myTransform));
-			spBombScripts[bombNumber + 2].Set(bombPos2, myTransform.rotation, 3.0f - time, bombLanding.GetPower(myTransform));
+			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetPower());
+			spBombScripts[bombNumber + 1].Set(bombPos1, myTransform.rotation, 3.0f - time, bombLanding.GetPower());
+			spBombScripts[bombNumber + 2].Set(bombPos2, myTransform.rotation, 3.0f - time, bombLanding.GetPower());
 		}
 		else
 		{
-			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetPower(myTransform));
+			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetPower());
 		}
 		yield return new WaitForSeconds(0.2f);
 		throwed = false;
