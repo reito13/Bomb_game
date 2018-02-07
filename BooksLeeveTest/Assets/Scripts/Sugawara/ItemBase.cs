@@ -10,7 +10,8 @@ public class ItemBase : MonoBehaviour {
 	{
 		if(other.tag == "PhotonPlayer")
 		{
-			other.GetComponent<PhotonPlayerController>().SetBombType(bombType);
+			other.transform.parent.GetComponent<PhotonPlayerController>().SetBombType(bombType);
+			this.gameObject.SetActive(false);
 		}
 	}
 }

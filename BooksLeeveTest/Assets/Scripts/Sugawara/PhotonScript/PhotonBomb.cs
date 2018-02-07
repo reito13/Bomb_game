@@ -17,16 +17,20 @@ public class PhotonBomb : Photon.MonoBehaviour {
 	public bool setActive = false;
 
 	public new PhotonView photonView;
+	public PhotonTransformView photonTransformView;
 
 	public float timer = 0.0f;
 
 	private bool set = false;
+
+	private float count = 0;
 
 	protected virtual void Awake()
 	{
 		if (!set)
 		{
 			photonView = PhotonView.Get(this);
+			photonTransformView = GetComponent<PhotonTransformView>();
 			if (!photonView.isMine)
 			{
 				rb.isKinematic = true;
@@ -39,6 +43,7 @@ public class PhotonBomb : Photon.MonoBehaviour {
 
 	public virtual void Set(Vector3 pos, Quaternion ro, float time, float p)
 	{
+		count = 0;
 		power = p;
 		timer = time;
 		setActive = true;
@@ -88,13 +93,32 @@ public class PhotonBomb : Photon.MonoBehaviour {
 
 	protected virtual void Update()
 	{
+		count += Time.deltaTime;
+
 		timer -= Time.deltaTime;
+
+		if (photonView.isMine)
+		{
+			//現在の移動速度
+			Vector3 velocity = rb.velocity;
+			//移動速度を指定
+			photonTransformView.SetSynchronizedValues(speed: velocity, turnSpeed: 0);
+		}
+
 		if (timer <= 0)
 		{
 			if (photonView.isMine)
 			{
 				photonView.RPC("Explosion", PhotonTargets.All);
 			}
+		}
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		if(collision.gameObject.tag == "Block")
+		{
+			Debug.Log(count);
 		}
 	}
 
