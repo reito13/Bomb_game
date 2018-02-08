@@ -5,7 +5,8 @@ public class PhotonTest :Photon.MonoBehaviour
 {
 
 	[SerializeField] private Transform[] playerPosition = null;
-	public PhotonPlayerController photonPlayer;
+
+	[SerializeField] private Transform[] itemManagerPosition = null;
 
 	void Start()
 	{
@@ -28,7 +29,7 @@ public class PhotonTest :Photon.MonoBehaviour
 		Debug.Log("ルームへ入室しました。");
 
 		GameObject player = PhotonNetwork.Instantiate("PlayerSet", playerPosition[PhotonNetwork.player.ID-1].position, transform.rotation, 0);
-		photonPlayer = player.transform.Find("Player").GetComponent<PhotonPlayerController>();
+		PhotonNetwork.Instantiate("ItemManager",itemManagerPosition[PhotonNetwork.player.ID-1].position,transform.rotation,0);
 	}
 
 	// ルームの入室に失敗すると呼ばれる

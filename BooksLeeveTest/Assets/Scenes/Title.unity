@@ -156,7 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &2379692
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -254,7 +253,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &2701837
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -352,7 +350,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &8669050
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -450,7 +447,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &10125435
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -548,7 +544,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &26398455
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -646,7 +641,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &35567329
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -828,7 +822,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &35987239
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -926,7 +919,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &36649287
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1108,7 +1100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &41893437
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1374,7 +1365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &59707174
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1472,7 +1462,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &60928136
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1570,7 +1559,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &65028021
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1710,7 +1698,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &75534621
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1808,7 +1795,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &84625263
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1990,7 +1976,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &98396393
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2088,7 +2073,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &98531012
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2186,7 +2170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &99266043
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2284,7 +2267,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &112221654
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2382,7 +2364,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &116669260
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2648,7 +2629,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &128185391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2835,7 +2815,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &133852652
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2933,7 +2912,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &147600791
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3115,7 +3093,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &151011839
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3213,7 +3190,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &151541775
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3311,7 +3287,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &156995890
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3409,7 +3384,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &157656051
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3507,7 +3481,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &161058705
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3605,7 +3578,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &161284830
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3703,7 +3675,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &170661603
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3801,7 +3772,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &191628096
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3899,7 +3869,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &196343775
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3997,7 +3966,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &201113150
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4095,7 +4063,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &202985951
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4193,7 +4160,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &204868854
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4375,7 +4341,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &215394220
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4473,7 +4438,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &216845680
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4571,7 +4535,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &227394987
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4669,7 +4632,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &230877026
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4935,7 +4897,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &251489251
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5117,7 +5078,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &252549524
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5215,7 +5175,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &256735486
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5562,7 +5521,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &321901712
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5939,7 +5897,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &350073361
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6037,7 +5994,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &350536041
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6219,7 +6175,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &353491238
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6317,7 +6272,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &363840178
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6415,7 +6369,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &363961557
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6513,7 +6466,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &365268400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6611,7 +6563,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &365494070
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6797,7 +6748,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &375086462
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6895,7 +6845,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &379176947
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6993,7 +6942,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &380331585
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7091,7 +7039,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &393709466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7189,7 +7136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &396405475
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7371,7 +7317,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &416941735
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7469,7 +7414,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &417426303
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7567,7 +7511,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &422253062
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7749,7 +7692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &427206141
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7847,7 +7789,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &441179654
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7945,7 +7886,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &450591400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8047,7 +7987,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &453844456
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8229,7 +8168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &455837031
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8327,7 +8265,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &458113455
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8509,7 +8446,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &459944944
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8607,7 +8543,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &466931694
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8705,7 +8640,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &467047539
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8803,7 +8737,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &467878042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8901,7 +8834,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &472720191
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8999,7 +8931,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &479155532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9097,7 +9028,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &483074212
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9195,7 +9125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &488095832
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9293,7 +9222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &491144225
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9475,7 +9403,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &496856194
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9657,7 +9584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &510977611
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9755,7 +9681,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &512137736
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9937,7 +9862,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &529311576
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10035,7 +9959,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &539745673
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10133,7 +10056,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &541083380
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10315,7 +10237,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &543325952
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10413,7 +10334,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &543432988
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10511,7 +10431,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &546915321
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10609,7 +10528,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &550357561
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10707,7 +10625,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &554395313
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10805,7 +10722,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &555435267
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10903,7 +10819,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &556584856
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11085,7 +11000,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &585569558
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11183,7 +11097,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &593181852
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11281,7 +11194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &594707357
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11379,7 +11291,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &600274940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11477,7 +11388,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &606239661
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11659,7 +11569,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &618489085
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11757,7 +11666,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &620133434
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11855,7 +11763,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &631680217
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11953,7 +11860,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &633323567
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12135,7 +12041,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &638076530
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12233,7 +12138,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &640194324
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12583,7 +12487,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &665591308
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12681,7 +12584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &667945484
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12779,7 +12681,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &670304497
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12877,7 +12778,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &672881744
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12975,7 +12875,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &678321105
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13073,7 +12972,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &683743848
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13171,7 +13069,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &698808355
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13269,7 +13166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &708486499
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13367,7 +13263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &708780306
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13465,7 +13360,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &709043638
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13563,7 +13457,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &711774466
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13661,7 +13554,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &715178494
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13759,7 +13651,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &715491749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13857,7 +13748,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &730806412
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14039,7 +13929,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &737823155
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14221,7 +14110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &748366552
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14319,7 +14207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &754389515
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14417,7 +14304,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &762882652
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14515,7 +14401,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &764581996
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14613,7 +14498,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &772024580
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14711,7 +14595,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &772843161
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14809,7 +14692,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &780431423
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14991,7 +14873,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &799161203
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15089,7 +14970,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &810392417
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15187,7 +15067,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &816084952
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15285,7 +15164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &821552025
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15467,7 +15345,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &833487268
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15565,7 +15442,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &848090797
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15663,7 +15539,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &863043165
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15761,7 +15636,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &885652836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15859,7 +15733,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &894879252
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16095,7 +15968,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &914845576
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16193,7 +16065,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &915304391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16291,7 +16162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &916417137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16473,7 +16343,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &917752372
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16571,7 +16440,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &920161895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16669,7 +16537,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &920713652
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16767,7 +16634,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &922311579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17121,7 +16987,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &956585899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17247,7 +17112,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &957144344
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17345,7 +17209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &958570915
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17443,7 +17306,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &962608224
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17625,7 +17487,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &995293679
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17723,7 +17584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1005176089
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17821,7 +17681,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1006781320
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17919,7 +17778,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1009677196
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18017,7 +17875,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1013268851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18115,7 +17972,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1014179750
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18213,7 +18069,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1019462942
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18311,7 +18166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1029901678
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18409,7 +18263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1032139451
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18507,7 +18360,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1040470892
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18605,7 +18457,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1050513120
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18703,7 +18554,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1051103914
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18885,7 +18735,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1068599286
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18983,7 +18832,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1070093751
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19081,7 +18929,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1072869327
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19179,7 +19026,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1073065760
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19277,7 +19123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1075953981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19459,7 +19304,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1077841848
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19529,7 +19373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1080101176
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19537,7 +19381,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1080101175}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 98, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1295436791}
@@ -19545,8 +19389,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchoredPosition: {x: 0, y: 98}
+  m_SizeDelta: {x: 1500, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1080101177
 MonoBehaviour:
@@ -19567,7 +19411,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4c4932e766801f648b07b58278ffe55d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6851f6d4136581f4286b31218ec026ff, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19625,7 +19469,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1087450013
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19975,7 +19818,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1130791287
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20157,7 +19999,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1138744527
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20339,7 +20180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1146306264
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20437,7 +20277,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1150380089
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20535,7 +20374,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1155587829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20633,7 +20471,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1156104799
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20731,7 +20568,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1157580394
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20829,7 +20665,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1163113469
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20927,7 +20762,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1164574120
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21025,7 +20859,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1167258703
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21123,7 +20956,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1171314923
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21221,7 +21053,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1174799653
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21403,7 +21234,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1177960671
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21501,7 +21331,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1180972924
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21599,7 +21428,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1187991273
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21697,7 +21525,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1189100219
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21910,7 +21737,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1192265699
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22008,7 +21834,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1198547610
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22190,7 +22015,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1202462564
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22288,7 +22112,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1204987539
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22386,7 +22209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1205000243
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22484,7 +22306,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1208378679
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22582,7 +22403,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1216128259
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22680,7 +22500,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1216921091
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22778,7 +22597,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1218676708
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22876,7 +22694,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1227729486
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22974,7 +22791,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1229129124
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23072,7 +22888,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1243314616
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23170,7 +22985,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1244285668
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23268,7 +23082,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1246855649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23515,7 +23328,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1265287582
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23713,7 +23525,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1270586237
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23811,7 +23622,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1279351875
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23993,7 +23803,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1283604176
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24091,7 +23900,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1285659777
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24189,7 +23997,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1287029274
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24287,7 +24094,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1289249340
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24566,7 +24372,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1306677132
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24664,7 +24469,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1307260778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24762,7 +24566,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1307314929
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24860,7 +24663,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1312020235
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24958,7 +24760,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1326124374
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25056,7 +24857,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1329394171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25154,7 +24954,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1330496142
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25252,7 +25051,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1332175629
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25434,7 +25232,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1333676300
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25532,7 +25329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1336866504
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25714,7 +25510,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1363239225
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25812,7 +25607,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1363863300
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25993,7 +25787,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1370899942
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26091,7 +25884,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1373555035
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26189,7 +25981,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1376367904
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26371,7 +26162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1378347424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26469,7 +26259,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1380852269
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26567,7 +26356,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1382494054
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26665,7 +26453,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1384855570
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26763,7 +26550,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1389033790
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26861,7 +26647,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1389147674
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26959,7 +26744,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1389608621
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27057,7 +26841,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1408473829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27155,7 +26938,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1410578450
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27253,7 +27035,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1419790728
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27405,7 +27186,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1429829822
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27503,7 +27283,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1434382472
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27685,7 +27464,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1441618803
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27783,7 +27561,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1450388422
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27881,7 +27658,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1454843781
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27979,7 +27755,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1456343230
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28077,7 +27852,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1457385319
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28259,7 +28033,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1467614672
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28357,7 +28130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1467711374
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28539,7 +28311,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1488374315
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28637,7 +28408,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1488485429
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28735,7 +28505,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1503265441
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28833,7 +28602,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1507261788
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28931,7 +28699,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1518110182
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29457,7 +29224,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1522187527
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29555,7 +29321,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1524321638
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29653,7 +29418,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1525482521
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29751,7 +29515,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1543347558
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29849,7 +29612,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1546942971
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29947,7 +29709,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1550130302
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30045,7 +29806,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1556383127
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30227,7 +29987,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1558431225
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30325,7 +30084,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1562244855
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30423,7 +30181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1566731345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30583,7 +30340,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1571720627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30765,7 +30521,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1586169182
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30863,7 +30618,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1590344484
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31045,7 +30799,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1590525699
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31143,7 +30896,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1591433131
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31241,7 +30993,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1591897286
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31507,7 +31258,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1610069579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31605,7 +31355,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1634600553
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31871,7 +31620,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1650849620
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31969,7 +31717,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1653137315
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32067,7 +31814,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1653292352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32165,7 +31911,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1662640477
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32263,7 +32008,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1663586430
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32361,7 +32105,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1664749770
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32432,7 +32175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1673102917
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32632,7 +32375,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1676441034
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32730,7 +32472,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1676901829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32828,7 +32569,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1679989317
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32926,7 +32666,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1684139494
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33024,7 +32763,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1693347359
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33122,7 +32860,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1698375804
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33220,7 +32957,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1710914599
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33318,7 +33054,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1711789804
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33500,7 +33235,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1715536733
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33598,7 +33332,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1716218420
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33696,7 +33429,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1717865062
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33794,7 +33526,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1723092735
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33892,7 +33623,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1749933912
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33990,7 +33720,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1760376143
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34172,7 +33901,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1802396835
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34270,7 +33998,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1811358627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34452,7 +34179,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1816523429
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34550,7 +34276,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1828410730
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34648,7 +34373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1830244321
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34830,7 +34554,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1842665631
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35012,7 +34735,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1847816224
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35167,7 +34889,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1858174648
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35265,7 +34986,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1860743028
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35363,7 +35083,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1876909869
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35545,7 +35264,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1884527752
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35643,7 +35361,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1893714127
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35741,7 +35458,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1899166715
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35839,7 +35555,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1906595343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35937,7 +35652,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1909275422
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36035,7 +35749,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1914773900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36133,7 +35846,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1926443072
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36231,7 +35943,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1945898062
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36413,7 +36124,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1952222248
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36511,7 +36221,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1955585938
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36693,7 +36402,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1964339484
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36791,7 +36499,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1969073381
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36889,7 +36596,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1970173976
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36987,7 +36693,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1973247737
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37085,7 +36790,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1980797787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37267,7 +36971,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &1997301664
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37365,7 +37068,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1997662298
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37547,7 +37249,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &1999557370
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37729,7 +37430,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &2024776587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37827,7 +37527,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &2046090895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37925,7 +37624,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &2047888867
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38023,7 +37721,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &2053310102
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38121,7 +37818,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &2055465787
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38219,7 +37915,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &2059021291
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38401,7 +38096,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &2069267894
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38499,7 +38193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &2071693822
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38681,7 +38374,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &2091138602
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38779,7 +38471,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &2099281562
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38961,7 +38652,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &2113168768
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39059,7 +38749,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &2117709022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39157,7 +38846,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 2
-  menu: 1
 --- !u!65 &2118462256
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39255,7 +38943,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &2120107676
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39353,7 +39040,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &2124600428
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39535,7 +39221,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: 1
-  menu: 1
 --- !u!65 &2140529822
 BoxCollider:
   m_ObjectHideFlags: 0

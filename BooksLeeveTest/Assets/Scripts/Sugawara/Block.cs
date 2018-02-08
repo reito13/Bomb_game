@@ -12,6 +12,7 @@ public class Block : MonoBehaviour {
 		if(hp<= 0)
 		{
 			hp = 0;
+			ItemManager.Instance.ProbabilityCalculation();
 			this.gameObject.SetActive(false);
 		}
 	}

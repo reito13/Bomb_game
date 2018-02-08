@@ -47,4 +47,5 @@ MonoBehaviour:
   - Explosiona
   - Bomb
   - Set
+  - ItemCreate
   DisableAutoOpenWizard: 1

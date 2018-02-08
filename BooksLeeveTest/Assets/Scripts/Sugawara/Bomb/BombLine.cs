@@ -45,6 +45,5 @@ public class BombLine : MonoBehaviour {
 		//距離250:時間0.85秒
 		//    700.:    1.89
 		//    475.:    1.35
-		Debug.Log(time);
 	}
 }
