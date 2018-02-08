@@ -475,6 +475,7 @@
     <Compile Include="Assets\Scripts\Sugawara\CameraController.cs" />
     <Compile Include="Assets\Scripts\Sugawara\GroundCheck.cs" />
     <Compile Include="Assets\Scripts\Sugawara\ItemBase.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\ItemManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Json\JsonData.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Json\JsonTest.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Manager\AnimationManager.cs" />
