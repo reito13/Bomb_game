@@ -476,6 +476,7 @@
     <Compile Include="Assets\Scripts\Sugawara\Manager\GameStatusManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Manager\MainManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Manager\MenuManager.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\Manager\PhotonManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Manager\RedisSingleton.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Manager\ResultManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Manager\SceneTransitionManager.cs" />

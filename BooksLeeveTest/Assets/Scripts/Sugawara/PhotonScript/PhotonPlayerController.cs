@@ -184,7 +184,6 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		if (myTransform.position.y < -10.0f)
 		{
 			Fall();
-			Damage();
 		}
 
 	}
@@ -276,15 +275,19 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		yield return new WaitForSeconds(0.4f);
 
 		spBombPrefabs[bombNumber].SetActive(true);
-		Debug.Log(bombNumber);
-		if (bombNumber == 1)
+
+		if (bombNumber == 1) //ロケット
 		{
-			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetDistance());
+			Vector3 pos = bombPos.position;
+			pos.y = pos.y - 1.0f;
+			spBombScripts[bombNumber].Set(pos, myTransform.rotation, 3.0f - time, bombLanding.GetDistance()); 
 		}
+
 		else if (bombNumber == 3)
 		{
 			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetPower());
 		}
+
 		else if (bombNumber == 6)
 		{
 			spBombPrefabs[bombNumber + 1].SetActive(true);
@@ -363,8 +366,10 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 	private void Fall()
 	{
-		myRb.velocity = Vector3.zero;
+		/*myRb.velocity = Vector3.zero;
 		myTransform.position = startPosition;
+		Damage();*/
+		GameStatusManager.Instance.GameEnd = true;
 	}
 
 	private void AnimationChange(AnimStats animation)
