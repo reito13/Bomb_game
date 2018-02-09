@@ -1146,10 +1146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a13eb3f38ea305f48ad453d3b0ba1be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xRotate: 0
   mouseSpeed: 3
   cameraSpeed: 5
-  roteteLimitX: 0
   charaTransform: {fileID: 522076881}
   cameraTransform: {fileID: 574150812}
 --- !u!114 &522076877
@@ -3228,10 +3226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a13eb3f38ea305f48ad453d3b0ba1be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xRotate: 0
   mouseSpeed: 3
   cameraSpeed: 5
-  roteteLimitX: 0
   charaTransform: {fileID: 1737089713}
   cameraTransform: {fileID: 1514141650}
 --- !u!1001 &1742610197
