@@ -325,6 +325,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		dir.x = (((dir.x >= 0) ? 3 : -3) - dir.x) * 1;
 		dir.y = 1.3f;
 		dir.z = (((dir.z >= 0) ? 3 : -3) - dir.z) * 1;
+		myRb.velocity = Vector3.zero;
 		myRb.AddForce(dir * bombPower, ForceMode.Impulse);
 		AnimationChange(AnimStats.DAMAGE);
 		Invoke("Damaged", 2.0f);
