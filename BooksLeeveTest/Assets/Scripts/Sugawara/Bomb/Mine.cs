@@ -47,6 +47,7 @@ public class Mine : PhotonBomb {
 			transform.eulerAngles = new Vector3(90, 0, 0);
 			rb.useGravity = false;
 			rb.velocity = Vector3.zero;
+			rb.angularVelocity = Vector3.zero;
 		}
 	}
 }

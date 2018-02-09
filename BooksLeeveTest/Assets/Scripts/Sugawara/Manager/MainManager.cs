@@ -13,6 +13,8 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 
 	public bool mainScene = true;
 
+	private int count = 0;
+
 	private void Awake()
 	{
 		if (mainScene)
@@ -20,11 +22,11 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 			uiManager = GetComponent<UIManager>();
 			timeManager = GetComponent<TimeManager>();
 
-			StartCoroutine(MainCoroutine());
+			//StartCoroutine(MainCoroutine());
 		}
 	}
 
-	private IEnumerator MainCoroutine()
+	public IEnumerator MainCoroutine()
 	{
 		yield return StartCoroutine(GameStart());
 
@@ -35,13 +37,13 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 
 	private IEnumerator GameStart()
 	{
-		for (i = 3;i>=0;i--)
+		for (i = 3;i >= 1;i--)
 		{
 			uiManager.CountDown(i.ToString()); //カウントの文字を変更
 			SoundManager.Instance.PlaySE("Count"); //カウントのSEを鳴らす
 			yield return new WaitForSeconds(1.0f); //1秒待つ
 		}
-		uiManager.CountDown("GameStart");
+		uiManager.CountDown("すたーと");
 		GameStatusManager.Instance.GameStart = false;
 		yield return new WaitForSeconds(1.0f);
 		uiManager.CountTextDelete();
@@ -51,7 +53,8 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 	{
 		while (!GameStatusManager.Instance.GameEnd) {
 		
-			yield return new WaitForSeconds(1.0f);
+			yield return new WaitForSeconds(0.1f);
+			count++;
 		}
 	}
 	
@@ -59,10 +62,9 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 	{
 		SoundManager.Instance.PlaySE("GameEnd");
 
-		GameStatusManager.Instance.GameEnd = true;
 		uiManager.EndText();
 		yield return new WaitForSeconds(1.0f);
-		SceneTransitionManager.Instance.SceneTransition();
+		//SceneTransitionManager.Instance.SceneTransition();
 	}
 
 	public void TimeUpdate()
