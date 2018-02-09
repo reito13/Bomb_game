@@ -9,6 +9,8 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 
 	public static int playerNum = 1;
 
+	[SerializeField] FadeController fadeController;
+
 	private int i; //loop用
 
 	public bool mainScene = true;
@@ -28,6 +30,7 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 
 	public IEnumerator MainCoroutine()
 	{
+		fadeController.isFadeIn = true;
 		yield return StartCoroutine(GameStart());
 
 		yield return StartCoroutine(GameMainLoop());
@@ -64,6 +67,9 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 
 		uiManager.EndText();
 		yield return new WaitForSeconds(1.0f);
+
+		fadeController.isFadeOut = true;
+		
 		//SceneTransitionManager.Instance.SceneTransition();
 	}
 

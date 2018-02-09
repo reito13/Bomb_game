@@ -18,6 +18,10 @@ public class ItemManager : SingletonMonoBehaviour<ItemManager> {
 	private void Start()
 	{
 		photonView = PhotonView.Get(this);
+		if (!photonView.isMine)
+		{
+			this.gameObject.SetActive(false);
+		}
 		basePos = transform.position;
 		Debug.Log(transform.localPosition);
 	}
