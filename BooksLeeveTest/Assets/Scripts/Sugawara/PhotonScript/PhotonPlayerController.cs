@@ -13,6 +13,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	[SerializeField] private float bombPower = 1.0f;
 	[SerializeField] private int jumpCount = 2;
 	public AnimStats animStats = AnimStats.WAIT;
+	public bool setBomb = false;
 	public BombType bombType = BombType.NONE;
 	//-------------------------------------------------------------
 	[SerializeField] private bool control = true;
@@ -30,9 +31,10 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	}
 
 	public bool grounded = false;
-	private bool damaged = false;
-	private bool jumped = false; //ジャンプ直後に接地判定をしないようにするため
-	private bool throwed = false; //爆弾を投げるアニメーションの直後に歩行アニメーションを挟まないようにするため
+	public bool damaged = false;
+	public bool jumped = false; //ジャンプ直後に接地判定をしないようにするため
+	public bool throwed = false; //爆弾を投げるアニメーションの直後に歩行アニメーションを挟まないようにするため
+	public bool picked = false;
 
 	public bool[] bombActiveFlag;
 	public bool[] spBombActiveFlag;
@@ -41,6 +43,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	[SerializeField] private Transform rotateTransform = null;
 	[SerializeField] private Rigidbody myRb = null;
 	[SerializeField] private GameObject cameraObj = null;
+	[SerializeField] private GameObject bombLineObj = null;
 	private GroundCheck groundScript = null;
 	private CameraController cameraScript = null;
 	private new PhotonView photonView;
@@ -66,11 +69,11 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 	public enum AnimStats
 	{
-		WAIT, RUN, LANDING, JUMP, THROW, DAMAGE,
+		WAIT, RUN, LANDING, JUMP, THROW, DAMAGE,PICKUP,
 	}
 	public enum BombType
 	{
-		NONE,MISSILE,ROCKET,METAL,MINE,SMOKE, DOT,THREEWAY
+		NONE,NORMAL,MISSILE,ROCKET,METAL,MINE,SMOKE, DOT,THREEWAY
 	}
 
 	int i, j, bombArrayLength, spBombArrayLength;
@@ -108,6 +111,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		{
 			GetComponent<Rigidbody>().isKinematic = true;
 			bombLanding.bombLandTransform.gameObject.SetActive(false);
+			bombLineObj.SetActive(false);
 			return;
 		}
 	}
@@ -168,7 +172,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	{
 		myTransform.Translate(moveDir * speed);
 
-		if (grounded && !damaged && !throwed)
+		if (grounded && !damaged && !throwed && !picked)
 		{
 			if (moveDir.x != 0 || moveDir.z != 0)
 			{
@@ -214,7 +218,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			grounded = false;
 			jumped = true;
 			jumpCount--;
-			Invoke("JumpedOn",0.2f);
+			Invoke("JumpedOn",0.3f);
 			myRb.velocity = new Vector3(myRb.velocity.x, 0, myRb.velocity.z);
 			myRb.AddForce(Vector3.up * jumpForce);
 
@@ -231,11 +235,15 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		if (GameStatusManager.Instance.GameStart)
 			yield break;
 
+		if (!setBomb)
+			yield break;
+
 		for (j = 0; j < bombArrayLength; j++)
 		{
 			if (!bombPrefabs[j].activeSelf)
 			{
 				throwed = true;
+				setBomb = false;
 				//Invoke("ThrowedOn",0.6f);
 				AnimationChange(AnimStats.THROW);
 				Quaternion bombRo = myTransform.rotation;
@@ -276,19 +284,19 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 		spBombPrefabs[bombNumber].SetActive(true);
 
-		if (bombNumber == 1) //ロケット
+		if (bombNumber == 2) //ロケット
 		{
 			Vector3 pos = bombPos.position;
 			pos.y = pos.y - 1.0f;
 			spBombScripts[bombNumber].Set(pos, myTransform.rotation, 3.0f - time, bombLanding.GetDistance()); 
 		}
 
-		else if (bombNumber == 3)
+		else if (bombNumber == 4)
 		{
 			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetPower());
 		}
 
-		else if (bombNumber == 6)
+		else if (bombNumber == 7)
 		{
 			spBombPrefabs[bombNumber + 1].SetActive(true);
 			spBombPrefabs[bombNumber + 2].SetActive(true);
@@ -365,6 +373,11 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		throwed = false;
 	}
 
+	private void PickUpOn()
+	{
+		picked = false;
+	}
+
 	private void Fall()
 	{
 		/*myRb.velocity = Vector3.zero;
@@ -395,6 +408,14 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	public void SetBombType(BombType type)
 	{
 		bombType= type;
+	}
+
+	public void SetBomb()
+	{
+		setBomb= true;
+		AnimationChange(AnimStats.PICKUP);
+		picked = true;
+		Invoke("PickUpOn",0.5f);
 	}
 
 	void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

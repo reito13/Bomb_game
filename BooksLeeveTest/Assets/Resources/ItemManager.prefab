@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114071692035467904}
   m_Layer: 0
   m_Name: ItemManager
-  m_TagString: Untagged
+  m_TagString: ItemManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,3 +86,5 @@ MonoBehaviour:
   - {fileID: 1781377600441944, guid: 95393e6efef25e449881006a674c3be9, type: 2}
   - {fileID: 1499851313740048, guid: cc5a39fe49d578c4eba00d13cb841bbe, type: 2}
   - {fileID: 1308844585361728, guid: 128438557f2f51345942ef0723088c83, type: 2}
+  carrotPrefabs:
+  - {fileID: 1684342823367958, guid: 9da3e87deacaf284d85d0397f62fa7d2, type: 2}

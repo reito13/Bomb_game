@@ -30,7 +30,7 @@ public class PhotonManager : MonoBehaviour {
 		Debug.Log("ルームへ入室しました。"); 
 
 		PhotonNetwork.Instantiate("PlayerSet", playerPosition[PhotonNetwork.player.ID - 1].position, transform.rotation, 0); //Playerを生成する
-		PhotonNetwork.Instantiate("ItemManager", itemManagerPosition[PhotonNetwork.player.ID - 1].position, transform.rotation, 0); //ItemManagerを生成する
+		GameObject itemManager = PhotonNetwork.Instantiate("ItemManager", transform.position, transform.rotation, 0); //ItemManagerを生成する
 
 		mainManager.StartCoroutine(mainManager.MainCoroutine());
 

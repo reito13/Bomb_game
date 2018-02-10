@@ -9,7 +9,8 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 
 	public static int playerNum = 1;
 
-	[SerializeField] FadeController fadeController;
+	[SerializeField] FadeController fadeController = null;
+	[SerializeField] StageCreate stageCreate = null;
 
 	private int i; //loop用
 

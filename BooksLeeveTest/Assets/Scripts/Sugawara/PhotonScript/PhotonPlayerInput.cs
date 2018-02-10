@@ -22,15 +22,16 @@ public class PhotonPlayerInput : MonoBehaviour {
 	}
 
 	private void Update()
-	{		
-		if (!player.Control)
+	{
+		RotateInput();
+
+		if (!player.Control || player.damaged || player.picked || player.throwed)
 		{
 			player.SetMoveDir(0, 0);
 			return;
 		}
 
 		MoveInput();
-		RotateInput();
 		BombLandPosInput();
 		ActionInput();
 
@@ -82,5 +83,17 @@ public class PhotonPlayerInput : MonoBehaviour {
 	private void BombLandPosInput()
 	{
 		bombLanding.SetBombLandingPosition(Input.GetAxis("Mouse Y"));
+	}
+
+	private void OnTriggerStay(Collider other)
+	{
+		if (other.tag == "Carrot")
+		{
+			if (Input.GetMouseButtonDown(1))
+			{
+				player.SetBomb();
+				Destroy(other.gameObject);
+			}
+		}
 	}
 }

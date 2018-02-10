@@ -465,6 +465,7 @@
     <Compile Include="Assets\Scripts\Sugawara\Bomb\Missile.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Bomb\Rocket.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Bomb\TrajectoryCalculate.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\BombBase.cs" />
     <Compile Include="Assets\Scripts\Sugawara\BombLanding.cs" />
     <Compile Include="Assets\Scripts\Sugawara\CameraController.cs" />
     <Compile Include="Assets\Scripts\Sugawara\GroundCheck.cs" />
