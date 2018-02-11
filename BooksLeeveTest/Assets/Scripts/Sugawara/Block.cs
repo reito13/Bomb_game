@@ -5,6 +5,7 @@ using UnityEngine;
 public class Block : MonoBehaviour {
 
 	[SerializeField] private int hp = 1;
+	[SerializeField] private GameObject particlePrefab = null;
 
 	public void Damage()
 	{
@@ -13,6 +14,7 @@ public class Block : MonoBehaviour {
 		{
 			hp = 0;
 			GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ItemManager>().ProbabilityCalculation();
+			Instantiate(particlePrefab,transform.position,transform.rotation);
 			this.gameObject.SetActive(false);
 		}
 	}

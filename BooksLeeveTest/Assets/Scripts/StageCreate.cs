@@ -12,8 +12,10 @@ public class StageCreate : Photon.MonoBehaviour
 	[SerializeField] private int yValue = 3;
 	[SerializeField] private float space = 3;
 
-	public GameObject[] blocks;
-	public Transform[] stages;
+	private GameObject[] blocks = new GameObject[4800];
+	private Transform[] stages = new Transform[16];
+	private int[] blocksNum = new int[4800];
+
 
 	private int spaceCountX = 0;
 	private int spaceCountZ = 0;
@@ -25,20 +27,23 @@ public class StageCreate : Photon.MonoBehaviour
 
 	private void Start()
 	{
-		//SetUp();
+		if(PhotonNetwork.player.ID == 1)
+		SetUp();
 	}
 
 	public void SetUp()
 	{
-	spaceCountX = 0;
-	spaceCountZ = 0;
-	count = 0;
+		spaceCountX = 0;
+		spaceCountZ = 0;
+		count = 0;
 
-	System.Array.Resize(ref stages, areasQty * areasQty);
-		System.Array.Resize(ref blocks, 4800);
+		for(x = 0; x < 4800; x++)
+		{
+			blocksNum[x] = GetRandamBlock();
+		}
 
-		//photonView.RPC("Create",PhotonTargets.All);
-		Create();
+		photonView.RPC("Create",PhotonTargets.All,blocksNum);
+		//Create();
 	}
 
 	public void Reset()
@@ -51,7 +56,8 @@ public class StageCreate : Photon.MonoBehaviour
 		System.Array.Resize(ref blocks, 0);
 	}
 
-	private void Create()
+	[PunRPC]
+	private void Create(int[] array)
 	{
 		for (x = 0; x < areasQty * areasQty; x++)
 		{
@@ -72,9 +78,8 @@ public class StageCreate : Photon.MonoBehaviour
 					spaceCountX = x / sideLength;
 					pos = new Vector3(startPosition.x + x + space * spaceCountX, y, startPosition.y + z + space * spaceCountZ);
 
-					obj = Instantiate(blockPrefabs[GetRandamBlock()], pos, transform.rotation) as GameObject;
+					obj = Instantiate(blockPrefabs[array[count-1]], pos, transform.rotation) as GameObject;
 					blocks[count-1] = obj;
-					//obj.transform.parent = parentObj.transform;
 					obj.transform.parent = stages[spaceCountX * areasQty + (1 + spaceCountZ) - 1];
 					obj.name = count.ToString();
 				}
@@ -84,18 +89,20 @@ public class StageCreate : Photon.MonoBehaviour
 		for (x = 0; x < areasQty * areasQty; x++)
 		{
 			int num = Random.Range(0,5);
-		/*	if (PhotonNetwork.player.ID == 1)
+			if (PhotonNetwork.player.ID == 1)
 			{
 				photonView.RPC("MoveArea", PhotonTargets.All, x, num);
-			}*/
-			stages[x].Translate(Vector3.up * Random.Range(0, 5) * -1);
+			}
+			//stages[x].Translate(Vector3.up * Random.Range(0, 5) * -1);
 		}
 	}
 
+	[PunRPC]
 	private void MoveArea(int stageNum,int value)
 	{
 		stages[stageNum].Translate(Vector3.up * value * -1);
 	}
+
 
 	private int GetRandamBlock()
 	{
