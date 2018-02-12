@@ -7,6 +7,7 @@ public class PhotonTest :Photon.MonoBehaviour
 	[SerializeField] private Transform[] playerPosition = null;
 
 	[SerializeField] private Transform[] itemManagerPosition = null;
+	[SerializeField] private StageCreate stageCreate = null;
 
 	void Start()
 	{
@@ -29,7 +30,6 @@ public class PhotonTest :Photon.MonoBehaviour
 		Debug.Log("ルームへ入室しました。");
 
 		GameObject player = PhotonNetwork.Instantiate("PlayerSet", playerPosition[PhotonNetwork.player.ID-1].position, transform.rotation, 0);
-		PhotonNetwork.Instantiate("ItemManager",itemManagerPosition[PhotonNetwork.player.ID-1].position,transform.rotation,0);
 	}
 
 	// ルームの入室に失敗すると呼ばれる
@@ -40,7 +40,7 @@ public class PhotonTest :Photon.MonoBehaviour
 		// ルームがないと入室に失敗するため、その時は自分で作る
 		// 引数でルーム名を指定できる
 		PhotonNetwork.CreateRoom("myRoomName");
-
+		//GameObject itemManager = PhotonNetwork.Instantiate("ItemManager", transform.position, transform.rotation, 0);
 	}
 
 }

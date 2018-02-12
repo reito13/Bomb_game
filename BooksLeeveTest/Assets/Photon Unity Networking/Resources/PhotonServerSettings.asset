@@ -48,4 +48,8 @@ MonoBehaviour:
   - Bomb
   - Set
   - ItemCreate
+  - CarrotCreate
+  - Create
+  - CreateBlock
+  - MoveArea
   DisableAutoOpenWizard: 1

@@ -13,6 +13,9 @@ TagManager:
   - PhotonPlayer
   - MenuBomb
   - Item
+  - Carrot
+  - StageCreate
+  - ItemManager
   layers:
   - Default
   - TransparentFX
