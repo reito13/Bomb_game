@@ -10,6 +10,8 @@ public class PhotonManager : MonoBehaviour {
 
 	[SerializeField] private int players = 2;
 
+	[SerializeField] private Material[] materials = new Material[4];
+
 	void Start()
 	{
 		// Photonに接続する(引数でゲームのバージョンを指定できる)
@@ -64,8 +66,8 @@ public class PhotonManager : MonoBehaviour {
 
 		Debug.Log(PhotonNetwork.player.ID);
 		
-		PhotonNetwork.Instantiate("PlayerSet", playerPosition[PhotonNetwork.player.ID - 1].position, transform.rotation, 0); //Playerを生成する
-
+		GameObject player = PhotonNetwork.Instantiate("PlayerSet", playerPosition[PhotonNetwork.player.ID - 1].position, transform.rotation, 0); //Playerを生成する
+		player.transform.Find("Player/Rabbit/RabbitModel").GetComponent<Renderer>().material= materials[PhotonNetwork.player.ID - 1];
 		mainManager.StartCoroutine(mainManager.MainCoroutine());
 	}
 

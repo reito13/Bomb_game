@@ -30,9 +30,9 @@ namespace TakashiCompany.Unity.Util
 			float time
 		)
 		{
-			var speedX = force.x / mass * Time.fixedDeltaTime;
-			var speedY = force.y / mass * Time.fixedDeltaTime;
-			var speedZ = force.z / mass * Time.fixedDeltaTime;
+			var speedX = force.x / mass;
+			var speedY = force.y / mass;
+			var speedZ = force.z / mass;
 
 			var halfGravityX = gravity.x * 0.5f * gravityScale;
 			var halfGravityY = gravity.y * 0.5f * gravityScale;

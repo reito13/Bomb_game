@@ -49,6 +49,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	private new PhotonView photonView;
 	private PhotonTransformView photonTransformView;
 	private TimeManager timeManager;
+	private ThrowCalculation throwScript;
 	[SerializeField] private BombLine bombLine = null;
 	[SerializeField] private Transform bombPos = null;
 	[SerializeField] private Animator animator = null;
@@ -84,6 +85,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		groundScript = GetComponent<GroundCheck>();
 		cameraScript = GetComponent<CameraController>();
 		bombLanding = GetComponent<BombLanding>();
+		throwScript = GetComponent<ThrowCalculation>();
 
 		photonTransformView = GetComponent<PhotonTransformView>();
 		photonView = PhotonView.Get(this);
@@ -110,7 +112,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		if (!photonView.isMine)
 		{
 			GetComponent<Rigidbody>().isKinematic = true;
-			bombLanding.bombLandTransform.gameObject.SetActive(false);
+			bombLanding.targetTransform.gameObject.SetActive(false);
 			bombLineObj.SetActive(false);
 			return;
 		}
@@ -140,7 +142,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		Move();
 		Rotate();
 		GroundCheck();
-		bombLine.ValueSet(bombPos.position,bombLanding.GetPower(),bombLanding.GetDistance());
+		bombLine.ValueSet(bombPos.position,throwScript.GetForce());
 	}
 
 	private void BombCheck()
@@ -251,10 +253,13 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 				yield return new WaitForSeconds(0.4f);
 
 				bombPrefabs[j].SetActive(true);
-				bombScripts[j].Set(bombPos.position, myTransform.rotation, 3.0f - time,bombLanding.GetPower());
-				yield return new WaitForSeconds(0.2f);
-				throwed = false;
+				StartCoroutine(bombScripts[j].Set(bombPos.position,myTransform.rotation, throwScript.GetForce()));
+				//bombScripts[j].Set(bombPos.position, myTransform.rotation, 3.0f - time,bombLanding.GetPower());
 				SoundManager.Instance.PlaySE("BombThrow");
+
+				yield return new WaitForSeconds(0.4f);
+				throwed = false;
+				animStats = AnimStats.WAIT;
 
 				yield break;
 			}
@@ -314,6 +319,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		}
 		yield return new WaitForSeconds(0.2f);
 		throwed = false;
+		animStats = AnimStats.WAIT;
 		SoundManager.Instance.PlaySE("BombThrow");
 	}
 
@@ -376,6 +382,8 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	private void PickUpOn()
 	{
 		picked = false;
+		animStats = AnimStats.WAIT;
+
 	}
 
 	private void Fall()
@@ -395,12 +403,18 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 		if (animation == AnimStats.WAIT || animation == AnimStats.RUN)
 		{
-			animator.Play(animation.ToString());
-			animStats = animation;
+			if (animStats == AnimStats.WAIT || animStats == AnimStats.RUN || animStats == AnimStats.JUMP)
+			{
+
+				animator.Play(animation.ToString());
+				//animator.CrossFade(animation.ToString(),0.1f);
+				animStats = animation;
+			}
 		}
 		else
 		{
-			animator.Play(animation.ToString(), 0, 0.0f);
+			//animator.Play(animation.ToString(), 0, 0.0f);
+			animator.CrossFade(animation.ToString(), 0.5f,0,0.0f);
 			animStats = animation;
 		}
 	}

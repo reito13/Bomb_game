@@ -460,10 +460,13 @@
     <Compile Include="Assets\Scripts\Sugawara\Bomb\BombLine.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Bomb\ExplosionObject.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Bomb\ExplosionStage.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\Bomb\LandingArea.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Bomb\MenuBomb.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Bomb\Mine.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Bomb\Missile.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Bomb\Rocket.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\Bomb\ThrowCalculation.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\Bomb\ThrowTest.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Bomb\TrajectoryCalculate.cs" />
     <Compile Include="Assets\Scripts\Sugawara\BombBase.cs" />
     <Compile Include="Assets\Scripts\Sugawara\BombLanding.cs" />
