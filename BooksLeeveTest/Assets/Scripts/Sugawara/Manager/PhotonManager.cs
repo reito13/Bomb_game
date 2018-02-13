@@ -8,7 +8,7 @@ public class PhotonManager : MonoBehaviour {
 
 	[SerializeField] private Transform[] playerPosition = null;//Playerの生成位置
 
-	[SerializeField] private int players = 2;
+	public int players = 2;
 
 	[SerializeField] private Material[] materials = new Material[4];
 
@@ -68,6 +68,8 @@ public class PhotonManager : MonoBehaviour {
 		
 		GameObject player = PhotonNetwork.Instantiate("PlayerSet", playerPosition[PhotonNetwork.player.ID - 1].position, transform.rotation, 0); //Playerを生成する
 		player.transform.Find("Player/Rabbit/RabbitModel").GetComponent<Renderer>().material= materials[PhotonNetwork.player.ID - 1];
+		player.name = player.name + PhotonNetwork.player.ID;
+		player.transform.Find("Player").GetComponent<PhotonPlayerController>().number = PhotonNetwork.player.ID;
 		mainManager.StartCoroutine(mainManager.MainCoroutine());
 	}
 

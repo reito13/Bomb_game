@@ -10,13 +10,15 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 	public static int playerNum = 1;
 
 	[SerializeField] FadeController fadeController = null;
-	[SerializeField] StageCreate stageCreate = null;
-
 	private int i; //loop用
 
 	public bool mainScene = true;
 
 	private int count = 0;
+
+	public bool[] playerGameOver = new bool[4];
+
+	[SerializeField] private PhotonManager photonManager = null;
 
 	private void Awake()
 	{
@@ -26,6 +28,11 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 			timeManager = GetComponent<TimeManager>();
 
 			//StartCoroutine(MainCoroutine());
+		}
+
+		for(i = 0; i < playerGameOver.Length; i++)
+		{
+			playerGameOver[i] = false;
 		}
 	}
 
@@ -55,10 +62,26 @@ public class MainManager : SingletonMonoBehaviour<MainManager>
 
 	private IEnumerator GameMainLoop()
 	{
-		while (!GameStatusManager.Instance.GameEnd) {
+		bool flag = false;
+		/*while (!GameStatusManager.Instance.GameEnd) {
 		
 			yield return new WaitForSeconds(0.1f);
 			count++;
+		}*/
+		while (!flag)
+		{
+			int gameOverCount = 0;
+
+			for (i = 0; i < playerGameOver.Length; i++)
+			{
+				if (playerGameOver[i])
+				{
+					gameOverCount++;
+					if (photonManager.players - 1 <= gameOverCount)
+						flag = true;
+				}
+			}
+			yield return new WaitForSeconds(0.1f);
 		}
 	}
 	

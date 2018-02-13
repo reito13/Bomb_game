@@ -10,7 +10,7 @@ public class Rocket : PhotonBomb {
 
 	[SerializeField] private float speed = 10.0f;
 
-	public override void Set(Vector3 pos, Quaternion ro, float time, float p)
+	public IEnumerator Set(Vector3 pos, Quaternion ro, float d)
 	{
 		transform.position = pos;
 		transform.rotation = ro;
@@ -18,13 +18,13 @@ public class Rocket : PhotonBomb {
 		setActive = true;
 		distance = 0;
 		gameObject.SetActive(true);
-		setDistance = p;
-		Debug.Log(setDistance + "," + p);
+		setDistance = d;
 		rb.useGravity = false;
 		rb.velocity = Vector3.zero;
 		rb.angularVelocity = Vector3.zero;
 		rb.AddForce(transform.forward * speed,ForceMode.Impulse);
-		//Invoke("GetHit", 0.3f);
+		yield return new WaitForSeconds(0.3f);
+		GetHit();
 	}
 	
 	protected override void Update()
