@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class Mine : PhotonBomb {
 
-	public override void Set(Vector3 pos, Quaternion ro, float time, float p)
+	public override IEnumerator Set(Vector3 pos, Quaternion ro, Vector3 force)
 	{
-		power = p;
-		timer = time;
-
 		rb.useGravity = true;
 		GetComponent<Collider>().isTrigger = false;
 
 		setActive = true;
 		gameObject.SetActive(true);
+		gameObject.layer = 8;
+
 		transform.position = pos;
 		transform.rotation = ro;
 		rb.velocity = Vector3.zero;
 		rb.angularVelocity = Vector3.zero;
-		rb.AddForce(transform.up * 0.5f * power);
-		rb.AddForce(transform.forward * power);
-		Invoke("GetHit", 0.3f);
-	}
+		rb.AddForce(force, ForceMode.Impulse);
 
-	protected override void Update()
-	{
-		
+		yield return new WaitForSeconds(0.3f);
+		GetHit();
+
+		if (!photonView.isMine)
+			yield break;
+
+		photonView.RPC("Explosion", PhotonTargets.All);
 	}
 
 	private void OnTriggerEnter(Collider other)

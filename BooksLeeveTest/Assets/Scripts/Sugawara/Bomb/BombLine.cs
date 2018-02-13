@@ -35,13 +35,10 @@ public class BombLine : MonoBehaviour {
 		}
 	}
 
-	public void ValueSet(Vector3 p,float f,float distance)
+	public void ValueSet(Vector3 p,Vector3 f)
 	{
 		pos = p;
-		force = transform.up * 0.5f * f;
-		force = force + (transform.forward * f);
-		float basePower = f - 250;
-		time = 0.85f + (basePower / 450);
+		force = f;
 		//距離250:時間0.85秒
 		//    700.:    1.89
 		//    475.:    1.35

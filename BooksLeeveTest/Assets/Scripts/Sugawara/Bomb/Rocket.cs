@@ -24,7 +24,7 @@ public class Rocket : PhotonBomb {
 		rb.useGravity = false;
 		rb.velocity = Vector3.zero;
 		rb.angularVelocity = Vector3.zero;
-		rb.AddForce(transform.forward * power);
+		rb.AddForce(transform.forward * p);
 		Invoke("GetHit", 0.3f);
 	}
 	

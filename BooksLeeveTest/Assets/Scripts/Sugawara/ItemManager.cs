@@ -6,6 +6,7 @@ public class ItemManager : Photon.MonoBehaviour {
 	
 	[SerializeField] private GameObject[] itemPrefabs = null;
 	[SerializeField] private GameObject[] carrotPrefabs = null;
+	[SerializeField] private Transform carrotParent = null;
 	private float probability;
 //	private float currentProbability = 0;
 	private int count = 0;
@@ -47,7 +48,8 @@ public class ItemManager : Photon.MonoBehaviour {
 	[PunRPC]
 	private void CarrotCreate(Vector3 pos)
 	{
-		Instantiate(carrotPrefabs[0],pos,transform.rotation);
+		GameObject carrot = Instantiate(carrotPrefabs[0],pos,transform.rotation);
+		carrot.transform.parent = carrotParent;
 	}
 
 	public void CarrotCreateSet()
