@@ -33,6 +33,7 @@ public class Bomb3WAY : PhotonBomb {
 		if (!photonView.isMine)
 			yield break;
 
+		yield return new WaitForSeconds(2.7f);
 		photonView.RPC("Explosion", PhotonTargets.All);
 	}
 }

@@ -44,6 +44,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	[SerializeField] private Rigidbody myRb = null;
 	[SerializeField] private GameObject cameraObj = null;
 	[SerializeField] private GameObject bombLineObj = null;
+	[SerializeField] private Canvas canvas = null;
 	private GroundCheck groundScript = null;
 	private CameraController cameraScript = null;
 	private new PhotonView photonView;
@@ -70,7 +71,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 	public enum AnimStats
 	{
-		WAIT, RUN, LANDING, JUMP, THROW, DAMAGE,PICKUP,
+		WAIT, RUN, LANDING, JUMP, THROW, DAMAGE, PICKUP, RIGHTRUN, LEFTRUN,
 	}
 	public enum BombType
 	{
@@ -116,6 +117,8 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			bombLineObj.SetActive(false);
 			return;
 		}
+		canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+		canvas.worldCamera = cameraObj.GetComponent<Camera>();
 	}
 
 
@@ -139,6 +142,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		if (GameStatusManager.Instance.GameEnd)
 			return;
 
+		
 		Move();
 		Rotate();
 		GroundCheck();
@@ -176,7 +180,15 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 		if (grounded && !damaged && !throwed && !picked)
 		{
-			if (moveDir.x != 0 || moveDir.z != 0)
+		/*	if (moveDir.x > 0)
+			{
+				AnimationChange(AnimStats.RIGHTRUN);
+			}
+			else if (moveDir.x < 0)
+			{
+				AnimationChange(AnimStats.LEFTRUN);
+			}
+			else */if (moveDir.x != 0 || moveDir.z != 0)
 			{
 				AnimationChange(AnimStats.RUN);
 				//SoundManager.Instance.PlaySE("");
@@ -204,12 +216,27 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		if (jumped)
 			return;
 
+		if(!grounded && groundScript.Grounded() && !jumped)
+		{
+			StartCoroutine(Landing());
+		}
 		grounded = groundScript.Grounded();
+
 		if (grounded)
 		{
 			jumpCount = 2;
 		}
 	}
+
+	private IEnumerator Landing()
+	{
+		grounded = true;
+		AnimationChange(AnimStats.LANDING);
+		yield return new WaitForSeconds(0.2f);
+		animStats = AnimStats.WAIT;
+
+	}
+
 	public void Jump()
 	{
 		if (!photonView.isMine)
@@ -289,29 +316,39 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 
 		spBombPrefabs[bombNumber].SetActive(true);
 
-		if (bombNumber == 2) //ロケット
+		if (bombNumber == 1) //ロケット
 		{
+			Debug.Log("Ricket");
 			Vector3 pos = bombPos.position;
-			pos.y = pos.y - 1.0f;
+			//pos.y = pos.y - 1.0f;
+			Debug.Log(bombLanding.GetDistance());
 			spBombScripts[bombNumber].Set(pos, myTransform.rotation, 3.0f - time, bombLanding.GetDistance()); 
 		}
 
-		else if (bombNumber == 4)
+		else if (bombNumber == 2)
 		{
-			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetPower());
+			Debug.Log("Ricket");
+			Vector3 pos = bombPos.position;
+			pos.y = pos.y - 1.0f;
+			Debug.Log(bombLanding.GetDistance());
+			spBombScripts[bombNumber].Set(pos, myTransform.rotation, 3.0f - time, bombLanding.GetDistance());
 		}
 
 		else if (bombNumber == 7)
 		{
-			spBombPrefabs[bombNumber + 1].SetActive(true);
-			spBombPrefabs[bombNumber + 2].SetActive(true);
+			Debug.Log("3WAY");
+			spBombPrefabs[bombNumber -1].SetActive(true);
+			spBombPrefabs[bombNumber +1].SetActive(true);
 			Vector3 bombPos1 = bombPos.position;
 			bombPos1 -= transform.right * 0.2f;
 			Vector3 bombPos2 = bombPos.position;
 			bombPos2 += transform.right * 0.2f;
-			spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, bombLanding.GetPower());
-			spBombScripts[bombNumber + 1].Set(bombPos1, myTransform.rotation, 3.0f - time, bombLanding.GetPower());
-			spBombScripts[bombNumber + 2].Set(bombPos2, myTransform.rotation, 3.0f - time, bombLanding.GetPower());
+			//spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, 3.0f - time, throwScript.GetForce());
+			StartCoroutine(spBombScripts[bombNumber-1].Set(bombPos1, myTransform.rotation, throwScript.GetForce()));
+			StartCoroutine(spBombScripts[bombNumber].Set(bombPos.position, myTransform.rotation, throwScript.GetForce()));
+			StartCoroutine(spBombScripts[bombNumber +1].Set(bombPos2, myTransform.rotation, throwScript.GetForce()));
+			//spBombScripts[bombNumber + 1].Set(bombPos1, myTransform.rotation, 3.0f - time, throwScript.GetForce());
+			//spBombScripts[bombNumber + 2].Set(bombPos2, myTransform.rotation, 3.0f - time, throwScript.GetForce());
 		}
 		else
 		{
@@ -401,9 +438,9 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			return;
 		}
 
-		if (animation == AnimStats.WAIT || animation == AnimStats.RUN)
+		if (animation == AnimStats.WAIT || animation == AnimStats.RUN || animation == AnimStats.RIGHTRUN || animation == AnimStats.LEFTRUN)
 		{
-			if (animStats == AnimStats.WAIT || animStats == AnimStats.RUN || animStats == AnimStats.JUMP)
+			if (animStats == AnimStats.WAIT || animStats == AnimStats.RUN || animStats == AnimStats.JUMP || animStats == AnimStats.RIGHTRUN || animStats == AnimStats.LEFTRUN)
 			{
 
 				animator.Play(animation.ToString());

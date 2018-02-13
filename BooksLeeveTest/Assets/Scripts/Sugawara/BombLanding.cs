@@ -49,6 +49,7 @@ public class BombLanding : MonoBehaviour {
 
 	public float GetDistance()
 	{
+		Debug.Log(Vector3.Distance(targetTransform.position, playerTransform.position));
 		return Vector3.Distance(targetTransform.position, playerTransform.position);
 	}
 

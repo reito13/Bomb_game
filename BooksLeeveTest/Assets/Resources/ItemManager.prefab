@@ -192,7 +192,7 @@ MonoBehaviour:
   - {fileID: 1241058417315416, guid: 50fab56d6f16b9b409b980e9fb6e4101, type: 2}
   parentObj: {fileID: 4092607543117526}
   sideLength: 10
-  areasQty: 4
+  areasQty: 3
   startPosition: {x: 0, y: 0}
   yValue: 3
   space: 3

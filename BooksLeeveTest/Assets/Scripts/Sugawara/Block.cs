@@ -14,7 +14,8 @@ public class Block : MonoBehaviour {
 		{
 			hp = 0;
 			GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ItemManager>().ProbabilityCalculation();
-			Instantiate(particlePrefab,transform.position,transform.rotation);
+			GameObject obj = Instantiate(particlePrefab,transform.position,transform.rotation);
+			Destroy(obj,1.0f);
 			this.gameObject.SetActive(false);
 		}
 	}

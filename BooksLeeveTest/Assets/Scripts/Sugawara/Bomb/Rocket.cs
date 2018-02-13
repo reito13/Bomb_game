@@ -8,24 +8,23 @@ public class Rocket : PhotonBomb {
 	private float setDistance;
 	private float distance;
 
-	private void Start()
-	{
+	[SerializeField] private float speed = 10.0f;
 
-	}
 	public override void Set(Vector3 pos, Quaternion ro, float time, float p)
 	{
-		Debug.Log(p);
 		transform.position = pos;
 		transform.rotation = ro;
 		startPos = transform.position;
 		setActive = true;
+		distance = 0;
 		gameObject.SetActive(true);
 		setDistance = p;
+		Debug.Log(setDistance + "," + p);
 		rb.useGravity = false;
 		rb.velocity = Vector3.zero;
 		rb.angularVelocity = Vector3.zero;
-		rb.AddForce(transform.forward * p);
-		Invoke("GetHit", 0.3f);
+		rb.AddForce(transform.forward * speed,ForceMode.Impulse);
+		//Invoke("GetHit", 0.3f);
 	}
 	
 	protected override void Update()
@@ -42,6 +41,8 @@ public class Rocket : PhotonBomb {
 		}
 
 		distance = Vector3.Distance(startPos, transform.position);
+
+		Debug.Log(distance);
 		if (distance > setDistance)
 		{
 			if (photonView.isMine)

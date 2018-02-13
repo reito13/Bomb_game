@@ -7,14 +7,16 @@ public class StageCreate : Photon.MonoBehaviour
 	[SerializeField] private GameObject[] blockPrefabs = null;
 	[SerializeField] private Transform parentObj = null;
 	[SerializeField] private int sideLength = 10;
-	[SerializeField] private int areasQty = 4;
+	[SerializeField] private int areasQty = 3;
 	[SerializeField] private Vector2 startPosition = Vector2.zero;
 	[SerializeField] private int yValue = 3;
 	[SerializeField] private float space = 3;
 
-	private GameObject[] blocks = new GameObject[4800];
+	private int allCount;
+
+	private GameObject[] blocks = new GameObject[2700];
 	private Transform[] stages = new Transform[16];
-	private int[] blocksNum = new int[4800];
+	private int[] blocksNum = new int[2700];
 
 
 	private int spaceCountX = 0;
@@ -37,7 +39,9 @@ public class StageCreate : Photon.MonoBehaviour
 		spaceCountZ = 0;
 		count = 0;
 
-		for(x = 0; x < 4800; x++)
+		allCount = areasQty * areasQty * yValue * sideLength * sideLength;
+		Debug.Log(allCount);
+		for (x = 0; x < allCount; x++)
 		{
 			blocksNum[x] = GetRandamBlock();
 		}
@@ -120,16 +124,16 @@ public class StageCreate : Photon.MonoBehaviour
 
 	public Vector3 CarrotCreate()
 	{
-		int num = Random.Range(3200,4800); //arraQty^2 * stageLength^2 * '2' +1, arraQty^2 * stageLength^2 * '3' +1
+		int num = Random.Range(1800, allCount); //arraQty^2 * stageLength^2 * '2' +1, arraQty^2 * stageLength^2 * '3' +1
 		while (!blocks[num].activeSelf)
 		{
-			if (num - 1600 >= 0)
+			if (num - 900 >= 0)
 			{
-				num -= 1600;
+				num -= 900;
 			}
 			else
 			{
-				num = Random.Range(3200, 4800);
+				num = Random.Range(1800, allCount);
 			}
 		}
 		return blocks[num].transform.position;
