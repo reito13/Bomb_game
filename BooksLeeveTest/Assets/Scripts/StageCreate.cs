@@ -68,6 +68,7 @@ public class StageCreate : Photon.MonoBehaviour
 			obj = new GameObject("stage" + (x + 1).ToString());
 			obj.transform.parent = parentObj;
 			stages[x] = obj.transform;
+			obj.AddComponent<StageArea>();
 		}
 
 		for (y = 0; y < yValue; y++)

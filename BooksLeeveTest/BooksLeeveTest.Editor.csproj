@@ -407,6 +407,7 @@
     <None Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Shaders\softrim\Particle_softrim_alpha_stretch.shader" />
     <None Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Shaders\unity5\Particle_Softrim_Dissolve_additive.shader" />
     <None Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Shaders\unity5\Particle_Softrim_Dissolve_alpha.shader" />
+    <None Include="Assets\FromStore\Simple UI\Fonts\OFL.txt" />
     <None Include="Assets\FromStore\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
     <None Include="Assets\Note about Editor Folder.txt" />
     <None Include="Assets\Photon Unity Networking\Demos\DemoBoxes\Resources\eurof_tt.txt" />

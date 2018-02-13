@@ -44,6 +44,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	[SerializeField] private Rigidbody myRb = null;
 	[SerializeField] private GameObject cameraObj = null;
 	[SerializeField] private GameObject bombLineObj = null;
+	[SerializeField] private GameObject bombAreaObj = null;
 	[SerializeField] private Canvas canvas = null;
 	private GroundCheck groundScript = null;
 	private CameraController cameraScript = null;
@@ -115,6 +116,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			GetComponent<Rigidbody>().isKinematic = true;
 			bombLanding.targetTransform.gameObject.SetActive(false);
 			bombLineObj.SetActive(false);
+			bombAreaObj.SetActive(false);
 			return;
 		}
 		canvas = GameObject.Find("Canvas").GetComponent<Canvas>();

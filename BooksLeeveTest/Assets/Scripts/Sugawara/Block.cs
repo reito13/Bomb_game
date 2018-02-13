@@ -15,6 +15,7 @@ public class Block : MonoBehaviour {
 			hp = 0;
 			GameObject.FindGameObjectWithTag("ItemManager").GetComponent<ItemManager>().ProbabilityCalculation();
 			GameObject obj = Instantiate(particlePrefab,transform.position,transform.rotation);
+			transform.parent.GetComponent<StageArea>().Impact();
 			Destroy(obj,1.0f);
 			this.gameObject.SetActive(false);
 		}

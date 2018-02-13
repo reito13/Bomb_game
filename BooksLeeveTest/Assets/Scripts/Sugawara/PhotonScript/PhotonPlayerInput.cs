@@ -92,7 +92,7 @@ public class PhotonPlayerInput : MonoBehaviour {
 			if (Input.GetMouseButtonDown(1))
 			{
 				player.SetBomb();
-				Destroy(other.gameObject);
+				Destroy(other.gameObject,0.2f);
 			}
 		}
 	}

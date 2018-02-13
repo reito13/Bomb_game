@@ -299,6 +299,7 @@
     <Compile Include="Assets\FromStore\JMO Assets\WarFX\Scripts\WFX_BulletHoleDecal.cs" />
     <Compile Include="Assets\FromStore\JMO Assets\WarFX\Scripts\WFX_LightFlicker.cs" />
     <Compile Include="Assets\FromStore\JMO Assets\WarFX\Spawn System\CFX_SpawnSystem.cs" />
+    <Compile Include="Assets\FromStore\Simple UI\Samples\IconPreview.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\Demo2DJumpAndRun.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\Demo2DJumpAndRunWithPhysics\Scripts\JumpAndRunMovement.cs" />
     <Compile Include="Assets\Photon Unity Networking\Demos\DemoBoxes\ColorPerPlayer.cs" />
@@ -470,6 +471,7 @@
     <Compile Include="Assets\Scripts\Sugawara\Bomb\TrajectoryCalculate.cs" />
     <Compile Include="Assets\Scripts\Sugawara\BombBase.cs" />
     <Compile Include="Assets\Scripts\Sugawara\BombLanding.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\BombText.cs" />
     <Compile Include="Assets\Scripts\Sugawara\CameraController.cs" />
     <Compile Include="Assets\Scripts\Sugawara\GroundCheck.cs" />
     <Compile Include="Assets\Scripts\Sugawara\ItemBase.cs" />
@@ -498,6 +500,7 @@
     <Compile Include="Assets\Scripts\Sugawara\PhotonScript\PhotonTest.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Player.cs" />
     <Compile Include="Assets\Scripts\Sugawara\PlayerInput.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\StageArea.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Sync\BaseAsyncLoop.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Sync\BombManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Sync\SyncBomb.cs" />
@@ -549,6 +552,7 @@
     <None Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Shaders\softrim\Particle_softrim_alpha_stretch.shader" />
     <None Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Shaders\unity5\Particle_Softrim_Dissolve_additive.shader" />
     <None Include="Assets\FromStore\Particle Dissolve Shader by Moonflower Carnivore\Shaders\unity5\Particle_Softrim_Dissolve_alpha.shader" />
+    <None Include="Assets\FromStore\Simple UI\Fonts\OFL.txt" />
     <None Include="Assets\FromStore\SimpleFX\Materials\UnlitVertexColour_Alpha.shader" />
     <None Include="Assets\Note about Editor Folder.txt" />
     <None Include="Assets\Photon Unity Networking\Demos\DemoBoxes\Resources\eurof_tt.txt" />
