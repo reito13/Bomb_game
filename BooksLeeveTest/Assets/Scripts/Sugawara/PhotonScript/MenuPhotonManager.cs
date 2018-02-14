@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuPhotonManager : Photon.MonoBehaviour
 {
@@ -29,7 +30,6 @@ public class MenuPhotonManager : Photon.MonoBehaviour
 		roomOptions.IsOpen = true;     // 部屋を開くか  
 		roomOptions.IsVisible = true;  // 一覧に表示するか  
 		roomOptions.MaxPlayers = (byte)players;        // 最大参加人数
-		Debug.Log(roomOptions.MaxPlayers);
 
 		PhotonNetwork.JoinOrCreateRoom(roomPath,roomOptions,new TypedLobby());
 		//PhotonNetwork.CreateRoom(roomPath);
@@ -52,9 +52,33 @@ public class MenuPhotonManager : Photon.MonoBehaviour
 		Debug.Log("ルーム" + roomPath + "へ入室しました。");
 
 		Debug.Log(PhotonNetwork.room.Name);
-	//	SceneManager.LoadScene("Test2");
+
+		Debug.Log(PhotonNetwork.room.PlayerCount);
+
+		if (PhotonNetwork.room.PlayerCount == PhotonNetwork.room.MaxPlayers)
+		{
+			Debug.Log("人数上限になりました。");
+			SceneManager.LoadScene("PhotonMain");
+		}
+		//	SceneManager.LoadScene("Test2");
 
 	}
+
+	/// <summary>
+	/// 他のプレイヤーが入室した際に呼ばれます。
+	/// </summary>
+	/// <param name='player'>
+	/// プレイヤー情報
+	/// </param>
+	void OnPhotonPlayerConnected(PhotonPlayer player)
+	{
+		if (PhotonNetwork.room.PlayerCount == PhotonNetwork.room.MaxPlayers)
+		{
+			Debug.Log("人数上限になりました。");
+			SceneManager.LoadScene("PhotonMain");
+		}
+	}
+
 
 	void OnPhotonRandomJoinFailed()
 	{

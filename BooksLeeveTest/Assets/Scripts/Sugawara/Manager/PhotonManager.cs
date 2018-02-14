@@ -16,6 +16,8 @@ public class PhotonManager : MonoBehaviour {
 	{
 		// Photonに接続する(引数でゲームのバージョンを指定できる)
 		PhotonNetwork.ConnectUsingSettings("1.0");
+		//StartCoroutine(GameStartCoroutine());
+
 	}
 
 	// ロビーに入ると呼ばれる

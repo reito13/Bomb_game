@@ -68,7 +68,6 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	[SerializeField] private Transform bombPos = null;
 	[SerializeField] private Animator animator = null;
 	private BombLanding bombLanding;
-	[SerializeField] private GameObject[] itemCarrots = null;
 	private int saveCattotNum;
 	//-------------------------------------------------------------
 	public Vector3 moveDir;
@@ -311,9 +310,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 				Quaternion bombRo = myTransform.rotation;
 				bombRo.eulerAngles = rotateTransform.eulerAngles;
 				bombType = BombType.NONE;
-
-				itemCarrots[saveCattotNum].SetActive(false);
-				bombText.TextUpdate(BombType.NONE.ToString());
+				bombText.TextUpdate(BombType.NONE.ToString(),-1);
 
 				yield return new WaitForSeconds(0.35f);
 				//----------------------------------------------------------
@@ -515,10 +512,9 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 			yield break;
 		bombType = (BombType)num;
 		saveCattotNum = num-1;
-		itemCarrots[saveCattotNum].SetActive(true);
 		picked = true;
 		AnimationChange(AnimStats.PICKUP);
-		bombText.TextUpdate(bombType.ToString());
+		bombText.TextUpdate(bombType.ToString(),saveCattotNum);
 
 		yield return new WaitForSeconds(0.5f);
 
