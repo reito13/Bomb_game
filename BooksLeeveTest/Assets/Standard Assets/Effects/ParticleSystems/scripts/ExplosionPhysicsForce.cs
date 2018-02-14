@@ -1,13 +1,14 @@
-﻿using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
-namespace UnitySampleAssets.Effects
+namespace UnityStandardAssets.Effects
 {
     public class ExplosionPhysicsForce : MonoBehaviour
     {
-
         public float explosionForce = 4;
+
 
         private IEnumerator Start()
         {
@@ -18,8 +19,8 @@ namespace UnitySampleAssets.Effects
             float multiplier = GetComponent<ParticleSystemMultiplier>().multiplier;
 
             float r = 10*multiplier;
-            Collider[] cols = Physics.OverlapSphere(transform.position, r);
-            List<Rigidbody> rigidbodies = new List<Rigidbody>();
+            var cols = Physics.OverlapSphere(transform.position, r);
+            var rigidbodies = new List<Rigidbody>();
             foreach (var col in cols)
             {
                 if (col.attachedRigidbody != null && !rigidbodies.Contains(col.attachedRigidbody))
