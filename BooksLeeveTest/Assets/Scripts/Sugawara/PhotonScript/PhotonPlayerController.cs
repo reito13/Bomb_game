@@ -63,6 +63,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	private PhotonTransformView photonTransformView;
 	private TimeManager timeManager;
 	private ThrowCalculation throwScript;
+	private BombText bombText = null; 
 	[SerializeField] private BombLine bombLine = null;
 	[SerializeField] private Transform bombPos = null;
 	[SerializeField] private Animator animator = null;
@@ -95,7 +96,8 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 	int i, j, k, bombArrayLength, spBombArrayLength;
 
 	private void Awake()
-	{ 
+	{
+		bombText = GameObject.Find("BombTextManager").GetComponent<BombText>();
 		myTransform = GetComponent<Transform>();
 		groundScript = GetComponent<GroundCheck>();
 		cameraScript = GetComponent<CameraController>();
@@ -311,6 +313,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 				bombType = BombType.NONE;
 
 				itemCarrots[saveCattotNum].SetActive(false);
+				bombText.TextUpdate(BombType.NONE.ToString());
 
 				yield return new WaitForSeconds(0.35f);
 				//----------------------------------------------------------
@@ -515,6 +518,7 @@ public class PhotonPlayerController : Photon.MonoBehaviour {
 		itemCarrots[saveCattotNum].SetActive(true);
 		picked = true;
 		AnimationChange(AnimStats.PICKUP);
+		bombText.TextUpdate(bombType.ToString());
 
 		yield return new WaitForSeconds(0.5f);
 

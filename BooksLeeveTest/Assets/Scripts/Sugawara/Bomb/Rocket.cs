@@ -32,12 +32,15 @@ public class Rocket : PhotonBomb {
 		if (!setActive)
 			return;
 
-		if (photonView.isMine)
+		if (photonMode)
 		{
-			//現在の移動速度
-			Vector3 velocity = rb.velocity;
-			//移動速度を指定
-			photonTransformView.SetSynchronizedValues(speed: velocity, turnSpeed: 0);
+			if (photonView.isMine)
+			{
+				//現在の移動速度
+				Vector3 velocity = rb.velocity;
+				//移動速度を指定
+				photonTransformView.SetSynchronizedValues(speed: velocity, turnSpeed: 0);
+			}
 		}
 
 		distance = Vector3.Distance(startPos, transform.position);
@@ -45,9 +48,16 @@ public class Rocket : PhotonBomb {
 		Debug.Log(distance);
 		if (distance > setDistance)
 		{
-			if (photonView.isMine)
+			if (photonMode)
 			{
-				photonView.RPC("Explosion", PhotonTargets.All);
+				if (photonView.isMine)
+				{
+					photonView.RPC("Explosion", PhotonTargets.All);
+				}
+			}
+			else
+			{
+				Explosion2();
 			}
 		}
 	}

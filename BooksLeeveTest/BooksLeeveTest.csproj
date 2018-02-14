@@ -492,12 +492,16 @@
     <Compile Include="Assets\Scripts\Sugawara\Manager\TimeManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Manager\TitleSceneManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Manager\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\MenuInput.cs" />
     <Compile Include="Assets\Scripts\Sugawara\MenuPlayer.cs" />
     <Compile Include="Assets\Scripts\Sugawara\MonoBehaviorExtentsion.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\PhotonScript\MatchingObject.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\PhotonScript\MenuPhotonManager.cs" />
     <Compile Include="Assets\Scripts\Sugawara\PhotonScript\PhotonBomb.cs" />
     <Compile Include="Assets\Scripts\Sugawara\PhotonScript\PhotonPlayerController.cs" />
     <Compile Include="Assets\Scripts\Sugawara\PhotonScript\PhotonPlayerInput.cs" />
     <Compile Include="Assets\Scripts\Sugawara\PhotonScript\PhotonTest.cs" />
+    <Compile Include="Assets\Scripts\Sugawara\PhotonScript\PhotonTest2.cs" />
     <Compile Include="Assets\Scripts\Sugawara\Player.cs" />
     <Compile Include="Assets\Scripts\Sugawara\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Sugawara\StageArea.cs" />

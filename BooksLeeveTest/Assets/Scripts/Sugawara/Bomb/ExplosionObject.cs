@@ -24,6 +24,10 @@ public class ExplosionObject : MonoBehaviour
 		{
 			other.transform.parent.GetComponent<PhotonPlayerController>().Damage(transform);
 		}
+		else if (other.tag == "MenuPlayer")
+		{
+			other.transform.parent.GetComponent<MenuPlayer>().Damage(transform);
+		}
 		else if (other.tag == "Carrot")
 		{
 			other.GetComponent<BombBase>().Explosion();
