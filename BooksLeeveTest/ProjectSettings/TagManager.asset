@@ -16,6 +16,8 @@ TagManager:
   - Carrot
   - StageCreate
   - ItemManager
+  - Fire
+  - MenuPlayer
   layers:
   - Default
   - TransparentFX

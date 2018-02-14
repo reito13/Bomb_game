@@ -10,7 +10,7 @@ public class Rocket : PhotonBomb {
 
 	[SerializeField] private float speed = 10.0f;
 
-	public override void Set(Vector3 pos, Quaternion ro, float time, float p)
+	public IEnumerator Set(Vector3 pos, Quaternion ro, float d)
 	{
 		transform.position = pos;
 		transform.rotation = ro;
@@ -18,13 +18,13 @@ public class Rocket : PhotonBomb {
 		setActive = true;
 		distance = 0;
 		gameObject.SetActive(true);
-		setDistance = p;
-		Debug.Log(setDistance + "," + p);
+		setDistance = d;
 		rb.useGravity = false;
 		rb.velocity = Vector3.zero;
 		rb.angularVelocity = Vector3.zero;
 		rb.AddForce(transform.forward * speed,ForceMode.Impulse);
-		//Invoke("GetHit", 0.3f);
+		yield return new WaitForSeconds(0.3f);
+		GetHit();
 	}
 	
 	protected override void Update()
@@ -32,12 +32,15 @@ public class Rocket : PhotonBomb {
 		if (!setActive)
 			return;
 
-		if (photonView.isMine)
+		if (photonMode)
 		{
-			//現在の移動速度
-			Vector3 velocity = rb.velocity;
-			//移動速度を指定
-			photonTransformView.SetSynchronizedValues(speed: velocity, turnSpeed: 0);
+			if (photonView.isMine)
+			{
+				//現在の移動速度
+				Vector3 velocity = rb.velocity;
+				//移動速度を指定
+				photonTransformView.SetSynchronizedValues(speed: velocity, turnSpeed: 0);
+			}
 		}
 
 		distance = Vector3.Distance(startPos, transform.position);
@@ -45,9 +48,16 @@ public class Rocket : PhotonBomb {
 		Debug.Log(distance);
 		if (distance > setDistance)
 		{
-			if (photonView.isMine)
+			if (photonMode)
 			{
-				photonView.RPC("Explosion", PhotonTargets.All);
+				if (photonView.isMine)
+				{
+					photonView.RPC("Explosion", PhotonTargets.All);
+				}
+			}
+			else
+			{
+				Explosion2();
 			}
 		}
 	}

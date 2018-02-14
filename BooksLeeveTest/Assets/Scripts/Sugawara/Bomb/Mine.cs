@@ -22,19 +22,27 @@ public class Mine : PhotonBomb {
 		yield return new WaitForSeconds(0.3f);
 		GetHit();
 
-		if (!photonView.isMine)
-			yield break;
-
-		photonView.RPC("Explosion", PhotonTargets.All);
+		if (photonMode)
+		{
+			if (!photonView.isMine)
+				yield break;
+		}
 	}
 
 	private void OnTriggerEnter(Collider other)
 	{
 		if(other.tag == "PhotonPlayer")
 		{
-			if (photonView.isMine)
+			if (photonMode)
 			{
-				photonView.RPC("Explosion", PhotonTargets.All);
+				if (photonView.isMine)
+				{
+					photonView.RPC("Explosion", PhotonTargets.All);
+				}
+			}
+			else
+			{
+				Explosion2();
 			}
 		}
 	}

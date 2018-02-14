@@ -53,7 +53,7 @@ public class PhotonPlayerInput : MonoBehaviour {
 		{
 			//bombSet = true;
 		}
-		if ((Input.GetKeyUp(KeyCode.Z)) || (Input.GetButtonUp("R1") || Input.GetMouseButtonUp(0)))
+		/*if ((Input.GetKeyUp(KeyCode.Z)) || (Input.GetButtonUp("R1") || Input.GetMouseButtonUp(0)))
 		{
 			if (bombInterval < bombIntervalMax)
 				return;
@@ -67,6 +67,10 @@ public class PhotonPlayerInput : MonoBehaviour {
 		if (Input.GetMouseButtonDown(1))
 		{
 			StartCoroutine(player.SPBomb(0));
+		}*/
+		if (Input.GetMouseButtonDown(0))
+		{
+			StartCoroutine(player.ThrowBomb());
 		}
 	}
 
@@ -91,8 +95,33 @@ public class PhotonPlayerInput : MonoBehaviour {
 		{
 			if (Input.GetMouseButtonDown(1))
 			{
-				player.SetBomb();
-				Destroy(other.gameObject);
+				int num;
+				int rand = Random.Range(1,11);
+
+				switch (rand)
+				{
+					case 1:
+						num = 2;
+						break;
+					case 2:
+						num = 3;
+						break;
+					case 3:
+						num = 4;
+						break;
+					case 4:
+						num = 5;
+						break;
+					case 5:
+						num = 6;
+						break;
+
+					default:
+						num = 1;
+						break;
+				}
+				StartCoroutine(player.SetBombType(num));
+				Destroy(other.gameObject,0.2f);
 			}
 		}
 	}

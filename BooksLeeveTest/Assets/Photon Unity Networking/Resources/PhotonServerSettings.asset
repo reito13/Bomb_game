@@ -52,4 +52,6 @@ MonoBehaviour:
   - Create
   - CreateBlock
   - MoveArea
+  - NumberSync
+  - GameOverFlagSet
   DisableAutoOpenWizard: 1

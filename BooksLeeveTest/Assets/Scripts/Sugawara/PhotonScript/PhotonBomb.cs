@@ -10,6 +10,8 @@ public class PhotonBomb : Photon.MonoBehaviour {
 	public Rigidbody rb = null;
 	public bool setActive = false;
 
+	public bool photonMode = true;
+
 	public new PhotonView photonView;
 	public PhotonTransformView photonTransformView;
 
@@ -17,6 +19,12 @@ public class PhotonBomb : Photon.MonoBehaviour {
 
 	protected virtual void Awake()
 	{
+		if (!photonMode)
+		{
+			gameObject.SetActive(false);
+			return;
+		}
+
 		if (!set)
 		{
 			photonView = PhotonView.Get(this);
@@ -46,11 +54,21 @@ public class PhotonBomb : Photon.MonoBehaviour {
 		yield return new WaitForSeconds(0.3f);
 		GetHit();
 
-		if (!photonView.isMine)
-			yield break;
+		if (photonMode)
+		{
+			if (!photonView.isMine)
+				yield break;
 
+		}
 		yield return new WaitForSeconds(2.7f);
-		photonView.RPC("Explosion", PhotonTargets.All);
+		if (photonMode)
+		{
+			photonView.RPC("Explosion", PhotonTargets.All);
+		}
+		else
+		{
+			Explosion2();
+		}
 	}
 
 	public virtual void Set(Vector3 pos, Quaternion ro, float time, float p)
@@ -87,8 +105,23 @@ public class PhotonBomb : Photon.MonoBehaviour {
 		gameObject.SetActive(false);
 	}
 
+	public void Explosion2()
+	{
+		setActive = false;
+		SoundManager.Instance.PlaySE("Explosion");
+
+		GameObject obj = Instantiate(explosion, transform.position, transform.rotation) as GameObject;
+		obj = Instantiate(explosion2, transform.position, transform.rotation) as GameObject;
+
+		Destroy(obj, 1.0f);
+		gameObject.SetActive(false);
+	}
+
 	protected virtual void Update()
 	{
+		if (!photonMode)
+			return;
+
 		if (photonView.isMine)
 		{
 			//現在の移動速度
